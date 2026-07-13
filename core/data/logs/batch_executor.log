@@ -1,0 +1,95 @@
+[2026-06-30 02:57:27] 
+============================================================
+[2026-06-30 02:57:27] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 02:57:27]    Comando: python3 core/sos_path_fixer.py --apply
+[2026-06-30 02:57:27]    Total archivos: 2
+[2026-06-30 02:57:27]    Delay: 1s
+[2026-06-30 02:57:27]    Modo: DRY-RUN
+[2026-06-30 02:57:27] ============================================================
+
+[2026-06-30 02:57:27] 
+[1/2] Procesando: start_all_daemons.sh
+[2026-06-30 02:57:27] 🔍 [DRY-RUN] start_all_daemons.sh: python3 core/sos_path_fixer.py --apply tests/start_all_daemons.sh
+[2026-06-30 02:57:27] 
+[2/2] Procesando: verify_all.sh
+[2026-06-30 02:57:27] 🔍 [DRY-RUN] verify_all.sh: python3 core/sos_path_fixer.py --apply tests/verify_all.sh
+[2026-06-30 02:57:27] 
+============================================================
+[2026-06-30 02:57:27] ✅ BATCH COMPLETADO
+[2026-06-30 02:57:27]    Tiempo total: 0.00s
+[2026-06-30 02:57:27]    Exitosos: 0
+[2026-06-30 02:57:27]    Errores: 0
+[2026-06-30 02:57:27]    Timeouts: 0
+[2026-06-30 02:57:27] ============================================================
+
+[2026-06-30 02:57:27] 📊 Reporte generado: /home/gus/ECN/core/data/batch_executor_report.json
+[2026-06-30 03:08:56] 🔍 Escaneados 5 scripts .sh en el workspace
+[2026-06-30 03:08:56] 
+============================================================
+[2026-06-30 03:08:56] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 03:08:56]    Comando: python3 core/sos_path_fixer.py --apply
+[2026-06-30 03:08:56]    Total archivos: 5
+[2026-06-30 03:08:56]    Delay: 1s
+[2026-06-30 03:08:56]    Modo: DRY-RUN
+[2026-06-30 03:08:56] ============================================================
+
+[2026-06-30 03:08:56] 
+[1/5] Procesando: Not_SPQ-Late.sh
+[2026-06-30 03:08:56] 🔍 [DRY-RUN] Not_SPQ-Late.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 03:08:56] 
+[2/5] Procesando: P_culiar.sh
+[2026-06-30 03:08:56] 🔍 [DRY-RUN] P_culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 03:08:56] 
+[3/5] Procesando: P_Culiar.sh
+[2026-06-30 03:08:56] 🔍 [DRY-RUN] P_Culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 03:08:56] 
+[4/5] Procesando: Not_SPQ-Late.sh
+[2026-06-30 03:08:56] 🔍 [DRY-RUN] Not_SPQ-Late.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 03:08:56] 
+[5/5] Procesando: P_Culiar.sh
+[2026-06-30 03:08:56] 🔍 [DRY-RUN] P_Culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 03:08:56] 
+============================================================
+[2026-06-30 03:08:56] ✅ BATCH COMPLETADO
+[2026-06-30 03:08:56]    Tiempo total: 0.00s
+[2026-06-30 03:08:56]    Exitosos: 0
+[2026-06-30 03:08:56]    Errores: 0
+[2026-06-30 03:08:56]    Timeouts: 0
+[2026-06-30 03:08:56] ============================================================
+
+[2026-06-30 03:08:56] 📊 Reporte generado: /home/gus/ECN/core/data/batch_executor_report.json
+[2026-06-30 03:12:17] 🔍 Escaneados 5 scripts .sh en el workspace
+[2026-06-30 03:12:17] 
+============================================================
+[2026-06-30 03:12:17] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 03:12:17]    Comando: python3 core/sos_path_fixer.py --apply
+[2026-06-30 03:12:17]    Total archivos: 5
+[2026-06-30 03:12:17]    Delay: 1s
+[2026-06-30 03:12:17]    Modo: DRY-RUN
+[2026-06-30 03:12:17] ============================================================
+
+[2026-06-30 03:12:17] 
+[1/5] Procesando: Not_SPQ-Late.sh
+[2026-06-30 03:12:17] 🔍 [DRY-RUN] Not_SPQ-Late.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 03:12:17] 
+[2/5] Procesando: P_culiar.sh
+[2026-06-30 03:12:17] 🔍 [DRY-RUN] P_culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 03:12:17] 
+[3/5] Procesando: P_Culiar.sh
+[2026-06-30 03:12:17] 🔍 [DRY-RUN] P_Culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 03:12:17] 
+[4/5] Procesando: Not_SPQ-Late.sh
+[2026-06-30 03:12:17] 🔍 [DRY-RUN] Not_SPQ-Late.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 03:12:17] 
+[5/5] Procesando: P_Culiar.sh
+[2026-06-30 03:12:17] 🔍 [DRY-RUN] P_Culiar.sh: python3 core/sos_path_fixer.py --apply /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 03:12:17] 
+============================================================
+[2026-06-30 03:12:17] ✅ BATCH COMPLETADO
+[2026-06-30 03:12:17]    Tiempo total: 0.00s
+[2026-06-30 03:12:17]    Exitosos: 0
+[2026-06-30 03:12:17]    Errores: 0
+[2026-06-30 03:12:17]    Timeouts: 0
+[2026-06-30 03:12:17] ============================================================
+
+[2026-06-30 03:12:17] 📊 Reporte generado: /home/gus/ECN/core/data/batch_executor_report.json

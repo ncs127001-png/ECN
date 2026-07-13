@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+MFN_LOCATION: core/SOS_NF-ADAPTERS/
+MFN_LEVEL: 3
+MFN_COORD: (7,7)
+MFN_UPDATED: 2026-06-30
+"""
+
+archivo de prueba de inbox eficiente

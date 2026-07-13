@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-06-30T03:12:17.902008",
+  "total_files": 5,
+  "success": 0,
+  "errors": 0,
+  "timeouts": 0,
+  "results": [
+    {
+      "file": "/home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh",
+      "command": "python3 core/sos_path_fixer.py --apply",
+      "status": "dry_run",
+      "return_code": null,
+      "stdout": "",
+      "stderr": "",
+      "timestamp": "2026-06-30T03:12:17.900835"
+    },
+    {
+      "file": "/home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh",
+      "command": "python3 core/sos_path_fixer.py --apply",
+      "status": "dry_run",
+      "return_code": null,
+      "stdout": "",
+      "stderr": "",
+      "timestamp": "2026-06-30T03:12:17.901046"
+    },
+    {
+      "file": "/home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh",
+      "command": "python3 core/sos_path_fixer.py --apply",
+      "status": "dry_run",
+      "return_code": null,
+      "stdout": "",
+      "stderr": "",
+      "timestamp": "2026-06-30T03:12:17.901238"
+    },
+    {
+      "file": "/home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh",
+      "command": "python3 core/sos_path_fixer.py --apply",
+      "status": "dry_run",
+      "return_code": null,
+      "stdout": "",
+      "stderr": "",
+      "timestamp": "2026-06-30T03:12:17.901431"
+    },
+    {
+      "file": "/home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh",
+      "command": "python3 core/sos_path_fixer.py --apply",
+      "status": "dry_run",
+      "return_code": null,
+      "stdout": "",
+      "stderr": "",
+      "timestamp": "2026-06-30T03:12:17.901612"
+    }
+  ]
+}

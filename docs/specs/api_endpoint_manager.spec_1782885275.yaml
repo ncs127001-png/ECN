@@ -1,0 +1,8 @@
+# spec/api_endpoint_manager.spec.yaml
+# MFN_LOCATION: docs/specs/
+# MFN_LEVEL: 1
+
+module_id: nb.core.api_endpoint_manager
+dependencies:
+  imports: [i1, i4, i5, i6]  # os, json, Path, datetime
+  from: [f1, f2]  # pathlib, datetime

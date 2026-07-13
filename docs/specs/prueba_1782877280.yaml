@@ -1,0 +1,5 @@
+# MFN_LOCATION: docs/specs/
+# MFN_LEVEL: 1
+module_id: nb.prueba.yaml.headers
+version: 2.0
+# resto del código

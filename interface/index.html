@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📡 Estación Central — NEUROBIT v2.1</title>
+  <meta name="description" content="NEUROBIT Central Station — Salón de Reuniones Soberano">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       NEUROBIT DESIGN SYSTEM — SOBERANÍA VISUAL
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --bg-void: #05080d;
+      --bg-primary: #0a0f18;
+      --bg-secondary: #0f1520;
+      --bg-card: #111827;
+      --bg-elevated: #1a2332;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-active: rgba(58,109,240,0.4);
+      --text-primary: #e8ecf4;
+      --text-secondary: #8892a4;
+      --text-muted: #5a6477;
+      --accent-blue: #3a6df0;
+      --accent-green: #22c55e;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-purple: #a855f7;
+      --accent-cyan: #06b6d4;
+      --glow-blue: rgba(58,109,240,0.15);
+      --glow-green: rgba(34,197,94,0.15);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--bg-void);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    body {
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(58,109,240,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.03) 0%, transparent 50%);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER — IDENTITY
+       ═══════════════════════════════════════════════════════════ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      background: linear-gradient(180deg, rgba(10,15,24,0.95), rgba(10,15,24,0.8));
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 20px var(--glow-blue);
+    }
+
+    .header-title {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #e8ecf4, #8892a4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-version {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .header-status {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      box-shadow: 0 0 8px rgba(34,197,94,0.5);
+      animation: pulse 2s infinite;
+    }
+
+    .status-dot.offline {
+      background: var(--accent-red);
+      box-shadow: 0 0 8px rgba(239,68,68,0.5);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       NAV TABS — NAVIGATION
+       ═══════════════════════════════════════════════════════════ */
+    .nav-tabs {
+      display: flex;
+      gap: 2px;
+      padding: 0 24px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      overflow-x: auto;
+    }
+
+    .nav-tab {
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      position: relative;
+      font-family: var(--font-sans);
+    }
+
+    .nav-tab:hover {
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .nav-tab.active {
+      color: var(--accent-blue);
+    }
+
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-blue);
+      border-radius: 2px 2px 0 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MAIN LAYOUT
+       ═══════════════════════════════════════════════════════════ */
+    .main {
+      padding: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CARDS
+       ═══════════════════════════════════════════════════════════ */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: var(--border-active);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .badge-green {
+      background: rgba(34,197,94,0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(34,197,94,0.2);
+    }
+
+    .badge-blue {
+      background: rgba(58,109,240,0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(58,109,240,0.2);
+    }
+
+    .badge-amber {
+      background: rgba(245,158,11,0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245,158,11,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       GRID LAYOUTS
+       ═══════════════════════════════════════════════════════════ */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CEREMONY PANEL
+       ═══════════════════════════════════════════════════════════ */
+    .ceremony-hero {
+      text-align: center;
+      padding: 48px 24px;
+      background: linear-gradient(135deg, rgba(58,109,240,0.05), rgba(168,85,247,0.05));
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 24px;
+    }
+
+    .ceremony-hero h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ceremony-hero p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .ceremony-checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .ceremony-check {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+    }
+
+    .check-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .check-icon.pending { background: rgba(255,255,255,0.05); color: var(--text-muted); }
+    .check-icon.ok { background: rgba(34,197,94,0.15); color: var(--accent-green); }
+    .check-icon.warn { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+    .check-icon.error { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+    /* ═══════════════════════════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════════════════════════ */
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-sans);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), #2556c9);
+      color: white;
+      box-shadow: 0 4px 12px rgba(58,109,240,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(58,109,240,0.4);
+    }
+
+    .btn-large {
+      padding: 14px 32px;
+      font-size: 15px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent-blue);
+      border: 1px solid rgba(58,109,240,0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(58,109,240,0.1);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, var(--accent-green), #16a34a);
+      color: white;
+      box-shadow: 0 4px 12px rgba(34,197,94,0.3);
+    }
+
+    .btn-green:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       FORMS
+       ═══════════════════════════════════════════════════════════ */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px var(--glow-blue);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOAST NOTIFICATIONS
+       ═══════════════════════════════════════════════════════════ */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      animation: toastIn 0.3s ease, toastOut 0.3s ease 3s forwards;
+      backdrop-filter: blur(10px);
+      max-width: 400px;
+    }
+
+    .toast-success {
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--accent-green);
+    }
+
+    .toast-error {
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: var(--accent-red);
+    }
+
+    .toast-info {
+      background: rgba(58,109,240,0.15);
+      border: 1px solid rgba(58,109,240,0.3);
+      color: var(--accent-blue);
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes toastOut {
+      from { opacity: 1; }
+      to { opacity: 0; transform: translateY(10px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       AGENT CARDS
+       ═══════════════════════════════════════════════════════════ */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .agent-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      transition: var(--transition);
+    }
+
+    .agent-card:hover {
+      border-color: var(--border-active);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .agent-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .agent-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .agent-platform {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+
+    /* ═══════════════════════════════════════════════════════════
+       AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+       ═══════════════════════════════════════════════════════════ */
+    .agent-registration-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agent-registration-panel h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .agent-registration-panel form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .agent-registration-panel input,
+    .agent-registration-panel select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .agent-registration-panel input:focus,
+    .agent-registration-panel select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(58,109,240,0.08);
+    }
+
+    .agent-registration-panel button {
+      background: linear-gradient(135deg, var(--accent-blue), rgba(58,109,240,0.8));
+      border: 1px solid var(--accent-blue);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 12px rgba(58,109,240,0.2);
+    }
+
+    .agent-registration-panel button:hover {
+      box-shadow: 0 0 20px rgba(58,109,240,0.4);
+      transform: translateY(-1px);
+    }
+
+    .agent-registration-panel button:active {
+      transform: translateY(0);
+    }
+
+    #registeredAgents {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .agent-item {
+      padding: 6px 8px;
+      background: rgba(34,197,94,0.08);
+      border-left: 3px solid var(--accent-green);
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .agent-item .agent-name {
+      font-weight: 600;
+      color: var(--accent-green);
+    }
+
+    .agent-item .agent-platform {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MEMORIA ENTRIES
+       ═══════════════════════════════════════════════════════════ */
+    .memoria-list {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    .memoria-entry {
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent-blue);
+      background: var(--bg-secondary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 8px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .memoria-entry:hover {
+      background: var(--bg-elevated);
+      transform: translateX(4px);
+    }
+
+    .memoria-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 6px;
+    }
+
+    .memoria-content {
+      font-size: 13px;
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .memoria-scores {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .score-chip {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       STAT CARDS
+       ═══════════════════════════════════════════════════════════ */
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--accent-blue);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SCROLLBAR
+       ═══════════════════════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+    /* ═══════════════════════════════════════════════════════════
+       CEREMONY LOG
+       ═══════════════════════════════════════════════════════════ */
+    .ceremony-log {
+      background: var(--bg-void);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.8;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      color: var(--accent-green);
+    }
+
+    .log-line { margin-bottom: 2px; }
+    .log-ok { color: var(--accent-green); }
+    .log-warn { color: var(--accent-amber); }
+    .log-error { color: var(--accent-red); }
+    .log-info { color: var(--accent-cyan); }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      opacity: 0.3;
+    }
+
+
+
+.main-nav {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-link {
+  padding: 8px 16px;
+  background: var(--accent-blue);
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58,109,240,0.4);
+}
+</style>
+
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-brand">
+    <div class="header-logo">📡</div>
+    <div>
+      <div class="header-title">Estación Central</div>
+      <div class="header-version">NEUROBIT v2.1 — Soberanía Cognitiva</div>
+    </div>
+  </div>
+<!-- Navegación Principal -->
+<nav class="main-nav">
+  <a href="/interface/index.html" class="nav-link">
+    🏠 Estación Central
+  </a>
+  <a href="/interface/salon.html" class="nav-link">
+    💬 Salón de Reuniones
+  </a>
+  <a href="/interface/memoria.html" class="nav-link">
+    📜 Memoria (Arca)
+  </a>
+</nav>
+
+  <div class="header-status">
+    <div class="status-indicator">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Conectando...</span>
+    </div>
+  </div>
+
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════ -->
+<nav class="nav-tabs">
+  
+  <button class="nav-tab active" data-panel="ceremony">🔮 Ceremonia</button>
+  <button class="nav-tab" data-panel="matriz">🧬 Matriz 13×13</button>
+  <button class="nav-tab" data-panel="mensajes">✍️ Mensajería</button>
+  <button class="nav-tab" data-panel="agentes">🤖 Miembros</button>
+  <button class="nav-tab" data-panel="memoria">📜 Memoria (Arca)</button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN CONTENT
+     ═══════════════════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- ─── PANEL: CEREMONIA ─── -->
+  <section class="panel active" id="panel-ceremony">
+    <div class="ceremony-hero">
+      <h1>Ceremonia de Despertar</h1>
+      <p>Inicializa el NODO_SEMILLA, valida la Memoria Sagrada, verifica módulos críticos y prepara el Salón de Reuniones para operar.</p>
+      <br>
+      <button class="btn btn-primary btn-large" id="btnCeremony" onclick="Station.runCeremony()">
+        🔮 Ejecutar Ceremonia de Despertar
+      </button>
+    </div>
+
+    <div class="ceremony-checks" id="ceremonyChecks">
+      <div class="ceremony-check"><div class="check-icon pending">⏳</div><span>Memoria Sagrada</span></div>
+      <div class="ceremony-check"><div class="check-icon pending">⏳</div><span>Corpus Referencia</span></div>
+      <div class="ceremony-check"><div class="check-icon pending">⏳</div><span>Módulos Críticos</span></div>
+      <div class="ceremony-check"><div class="check-icon pending">⏳</div><span>Entorno Config</span></div>
+      <div class="ceremony-check"><div class="check-icon pending">⏳</div><span>Registro Agentes</span></div>
+    </div>
+
+    <div class="card" style="display:none" id="ceremonyLogCard">
+      <div class="card-title">📋 Log de Ceremonia</div>
+      <div class="ceremony-log" id="ceremonyLog"></div>
+    </div>
+  </section>
+
+  <!-- ─── PANEL: MATRIZ 13×13 ─── -->
+  <section class="panel" id="panel-matriz">
+    <div id="matriz-container"></div>
+  </section>
+
+  <!-- ─── PANEL: MENSAJERÍA ─── -->
+  <section class="panel" id="panel-mensajes">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">✍️ Nuevo Mensaje</div>
+          <span class="card-badge badge-blue">Protocolo v2.1</span>
+        </div>
+        <form id="messageForm" onsubmit="Station.sendMessage(event)">
+          <div class="form-group">
+            <label class="form-label">Tu Identidad / Nodo</label>
+            <input class="form-input" type="text" id="senderName" placeholder="Ej: NODO_SEMILLA, TRON, EVA" value="NODO_SEMILLA">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Perspectiva</label>
+            <select class="form-select" id="perspective">
+              <option value="tecnica">Técnica</option>
+              <option value="coordinacion">Coordinación</option>
+              <option value="creativa">Creativa</option>
+              <option value="auditoria">Auditoría</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-textarea" id="messageContent" placeholder="Escribe tu mensaje aquí. Será analizado por el Filtro de Coherencia..."></textarea>
+          </div>
+          <div class="btn-group">
+            <button type="submit" class="btn btn-primary" style="flex:1">🚀 Enviar al Salón</button>
+            <button type="button" class="btn btn-secondary" onclick="Station.clearForm()">🗑️ Limpiar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📊 Análisis en Vivo</div>
+          <span class="card-badge badge-green" id="analysisStatus">Esperando...</span>
+        </div>
+        <div id="analysisResult">
+          <div class="empty-state">
+            <div class="empty-icon">📊</div>
+            <p>Envía un mensaje para ver el análisis M/E</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PANEL: MIEMBROS ─── -->
+  <section class="panel" id="panel-agentes">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">➕ Registrar miembros</div>
+        </div>
+        <form onsubmit="Station.registerAgent(event)">
+          <div class="form-group">
+            <label class="form-label">Plataforma</label>
+            <select class="form-select" id="agentPlatform">
+              <option value="">-- Seleccionar --</option>
+              <option value="chatgpt">🔵 OpenAI ChatGPT</option>
+              <option value="gemini">🔴 Google Gemini</option>
+              <option value="qwen">🟠 Alibaba Qwen</option>
+              <option value="claude">🟣 Anthropic Claude</option>
+              <option value="local_llama">🟡 Local Llama</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nombre del miembro</label>
+            <input class="form-input" type="text" id="agentName" placeholder="Ej: EVA_LÚMENA, SIMON, BRAIN">
+          </div>
+          <div class="form-group">
+            <label class="form-label">API Key (se hashea, nunca en claro)</label>
+            <input class="form-input" type="password" id="agentKey" placeholder="Opcional para agentes locales">
+          </div>
+          <button type="submit" class="btn btn-green" style="width:100%">🚀 Registrar Agente</button>
+        </form>
+      </div>
+
+      <div class="card">
+
+<div class="agent-registration-panel">
+  <h4>🔗 Registrar Agente TEAMVIEWER</h4>
+  <form id="agentRegistrationForm">
+    <input 
+      type="text" 
+      id="agentName" 
+      placeholder="Nombre (TRON, SIMON, EVA, custom...)" 
+      required
+      maxlength="50"
+    >
+    <select id="agentPlatform" required>
+      <option value="teamviewer_extension">TEAMVIEWER SOBERANO (Local, sin API key)</option>
+      <option value="chatgpt">ChatGPT (API Key required)</option>
+      <option value="gemini">Gemini (API Key required)</option>
+      <option value="qwen">Qwen (API Key required)</option>
+      <option value="local_llama">Local LLaMA (sin API key)</option>
+    </select>
+    <input 
+      type="url" 
+      id="agentUrl" 
+      placeholder="URL (https://chat.openai.com)" 
+      required
+    >
+    <button type="submit">📌 Registrar Agente</button>
+  </form>
+  <div id="registeredAgents"></div>
+</div>
+
+        <div class="card-header">
+          <div class="card-title">🤖 Agentes Registrados</div>
+          <span class="card-badge badge-blue" id="agentCount">0</span>
+        </div>
+        <div class="agent-grid" id="agentsList">
+          <div class="empty-state">
+            <div class="empty-icon">🤖</div>
+            <p>Sin agentes registrados aún</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!--</section>
+     ═══════════════════════════════════════════════════════════
+     AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+     ═══════════════════════════════════════════════════════════ -->
+
+</section>
+<!-- ═══════════════════════════════════════════════════════════
+     ROADMAP PANEL
+     ═══════════════════════════════════════════════════════════ 
+<div class="roadmap-panel">
+  <h4>🚀 Próximamente: Automatización</h4>
+  <ul>
+    <li>Daemon detectará pestaña activa automáticamente</li>
+    <li>Inyección vía HID (shift+tab, enter, capture)</li>
+    <li>Sin copiar/pegar manual</li>
+    <li>Trazabilidad completa en memoria_eva.jsonl</li>
+  </ul>
+</div>
+
+  <!-- ─── PANEL: MEMORIA (ARCA) ─── -->
+  <section class="panel" id="panel-memoria">
+    <div class="grid-3" id="memoriaStats">
+      <div class="stat-card"><div class="stat-value" id="statTotal">-</div><div class="stat-label">Registros Totales</div></div>
+      <div class="stat-card"><div class="stat-value" id="statCoherence">-</div><div class="stat-label">Coherencia Promedio</div></div>
+      <div class="stat-card"><div class="stat-value" id="statLast">-</div><div class="stat-label">Último Registro</div></div>
+    </div>
+    <div class="card" style="margin-top: 20px;">
+      <div class="card-header">
+        <div class="card-title">📜 Memoria EVA (Arca)</div>
+        <div class="btn-group">
+          <button class="btn btn-secondary" onclick="Station.loadMemoria()">🔄 Refrescar</button>
+          <button class="btn btn-secondary" onclick="Station.exportMemoria()">💾 Exportar</button>
+        </div>
+      </div>
+      <div class="memoria-list" id="memoriaList">
+        <div class="empty-state">
+          <div class="empty-icon">📜</div>
+          <p>Cargando memoria...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast Notifications -->
+<div class="toast-container" id="toasts"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════════ -->
+<script src="arquetipos.js"></script>
+<script src="matriz_ui.js"></script>
+<script src="station.js"></script>
+
+</body>
+</html>

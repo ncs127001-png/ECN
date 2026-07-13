@@ -1,0 +1,910 @@
+[2026-06-30 04:00:45] 🔍 Escaneados 54 scripts .sh en el workspace
+[2026-06-30 04:00:45] 
+============================================================
+[2026-06-30 04:00:45] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 04:00:45]    Comando: echo test
+[2026-06-30 04:00:45]    Total archivos: 54
+[2026-06-30 04:00:45]    Delay: 1s
+[2026-06-30 04:00:45]    Modo: DRY-RUN
+[2026-06-30 04:00:45] ============================================================
+
+[2026-06-30 04:00:45] 
+[1/54] Procesando: start_postman.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/start_postman.sh
+[2026-06-30 04:00:45] 
+[2/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/automations/clean_compile_neurobit_v2.sh
+[2026-06-30 04:00:45] 
+[3/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/automations/fix_fragmentador.sh
+[2026-06-30 04:00:45] 
+[4/54] Procesando: init_workspace.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] init_workspace.sh: echo test /home/gus/ECN/automations/init_workspace.sh
+[2026-06-30 04:00:45] 
+[5/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/automations/start_tarea5_websocket.sh
+[2026-06-30 04:00:45] 
+[6/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/connectors/run_adapters_test.sh
+[2026-06-30 04:00:45] 
+[7/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 04:00:45] 
+[8/54] Procesando: P_culiar.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] P_culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 04:00:45] 
+[9/54] Procesando: P_Culiar.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 04:00:45] 
+[10/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 04:00:45] 
+[11/54] Procesando: P_Culiar.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 04:00:45] 
+[12/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/interface/interface/run_adapters_test.sh
+[2026-06-30 04:00:45] 
+[13/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_audit.sh
+[2026-06-30 04:00:45] 
+[14/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_import_batch.sh
+[2026-06-30 04:00:45] 
+[15/54] Procesando: validate_schema.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/modules/chat_tools/validate_schema.sh
+[2026-06-30 04:00:45] 
+[16/54] Procesando: run_explorer.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] run_explorer.sh: echo test /home/gus/ECN/modules/neurobit_file_explorer/run_explorer.sh
+[2026-06-30 04:00:45] 
+[17/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/modules/neurobit_fix.sh
+[2026-06-30 04:00:45] 
+[18/54] Procesando: start_keylogger.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/modules/start_keylogger.sh
+[2026-06-30 04:00:45] 
+[19/54] Procesando: clasificador_contexto_neurobit.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] clasificador_contexto_neurobit.sh: echo test /home/gus/ECN/sh_archives/clasificador_contexto_neurobit.sh
+[2026-06-30 04:00:45] 
+[20/54] Procesando: clean_compile_neurobit_v4.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] clean_compile_neurobit_v4.sh: echo test /home/gus/ECN/sh_archives/clean_compile_neurobit_v4.sh
+[2026-06-30 04:00:45] 
+[21/54] Procesando: compilador_recursivo_clasificacion.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] compilador_recursivo_clasificacion.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_clasificacion.sh
+[2026-06-30 04:00:45] 
+[22/54] Procesando: compilador_recursivo_v4.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] compilador_recursivo_v4.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_v4.sh
+[2026-06-30 04:00:45] 
+[23/54] Procesando: completion.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] completion.sh: echo test /home/gus/ECN/sh_archives/completion.sh
+[2026-06-30 04:00:45] 
+[24/54] Procesando: comprimir.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] comprimir.sh: echo test /home/gus/ECN/sh_archives/comprimir.sh
+[2026-06-30 04:00:45] 
+[25/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/sh_archives/fix_fragmentador.sh
+[2026-06-30 04:00:45] 
+[26/54] Procesando: iniciar.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] iniciar.sh: echo test /home/gus/ECN/sh_archives/iniciar.sh
+[2026-06-30 04:00:45] 
+[27/54] Procesando: init_salon.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/sh_archives/init_salon.sh
+[2026-06-30 04:00:45] 
+[28/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/sh_archives/neurobit_audit.sh
+[2026-06-30 04:00:45] 
+[29/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/sh_archives/neurobit_backup.sh
+[2026-06-30 04:00:45] 
+[30/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/sh_archives/neurobit_fix.sh
+[2026-06-30 04:00:45] 
+[31/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/sh_archives/neurobit_import_batch.sh
+[2026-06-30 04:00:45] 
+[32/54] Procesando: quick_status.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/sh_archives/quick_status.sh
+[2026-06-30 04:00:45] 
+[33/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/sh_archives/setup_neurobit.sh
+[2026-06-30 04:00:45] 
+[34/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/sh_archives/start_all_daemons.sh
+[2026-06-30 04:00:45] 
+[35/54] Procesando: start_keylogger.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/sh_archives/start_keylogger.sh
+[2026-06-30 04:00:45] 
+[36/54] Procesando: start_postman.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/sh_archives/start_postman.sh
+[2026-06-30 04:00:45] 
+[37/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/sh_archives/start_tarea5_websocket.sh
+[2026-06-30 04:00:45] 
+[38/54] Procesando: test_api_members.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/sh_archives/test_api_members.sh
+[2026-06-30 04:00:45] 
+[39/54] Procesando: validate_schema.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/sh_archives/validate_schema.sh
+[2026-06-30 04:00:45] 
+[40/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/sh_archives/validate_tarea4.sh
+[2026-06-30 04:00:45] 
+[41/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/sh_archives/validate_tarea5.sh
+[2026-06-30 04:00:45] 
+[42/54] Procesando: verify_all.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/sh_archives/verify_all.sh
+[2026-06-30 04:00:45] 
+[43/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/tests/clean_compile_neurobit_v2.sh
+[2026-06-30 04:00:45] 
+[44/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/tests/fix_fragmentador.sh
+[2026-06-30 04:00:45] 
+[45/54] Procesando: init_salon.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/tests/init_salon.sh
+[2026-06-30 04:00:45] 
+[46/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/tests/neurobit_backup.sh
+[2026-06-30 04:00:45] 
+[47/54] Procesando: quick_status.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/tests/quick_status.sh
+[2026-06-30 04:00:45] 
+[48/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/tests/setup_neurobit.sh
+[2026-06-30 04:00:45] 
+[49/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/tests/start_all_daemons.sh
+[2026-06-30 04:00:45] 
+[50/54] Procesando: test_api_members.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/tests/test_api_members.sh
+[2026-06-30 04:00:45] 
+[51/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/tests/validate_tarea4.sh
+[2026-06-30 04:00:45] 
+[52/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/tests/validate_tarea5.sh
+[2026-06-30 04:00:45] 
+[53/54] Procesando: verify_all.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/tests/verify_all.sh
+[2026-06-30 04:00:45] 
+[54/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:00:45] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/tools/SETUP/neurobit_fix.sh
+[2026-06-30 04:00:45] 
+============================================================
+[2026-06-30 04:00:45] ✅ BATCH COMPLETADO
+[2026-06-30 04:00:45]    Tiempo total: 0.01s
+[2026-06-30 04:00:45]    Exitosos: 0
+[2026-06-30 04:00:45]    Errores: 0
+[2026-06-30 04:00:45]    Timeouts: 0
+[2026-06-30 04:00:45] ============================================================
+
+[2026-06-30 04:00:45] 📊 Reporte generado: /home/gus/ECN/data/batch_executor_report.json
+[2026-06-30 04:01:32] 🔍 Escaneados 54 scripts .sh en el workspace
+[2026-06-30 04:01:32] 
+============================================================
+[2026-06-30 04:01:32] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 04:01:32]    Comando: echo test
+[2026-06-30 04:01:32]    Total archivos: 54
+[2026-06-30 04:01:32]    Delay: 1s
+[2026-06-30 04:01:32]    Modo: DRY-RUN
+[2026-06-30 04:01:32] ============================================================
+
+[2026-06-30 04:01:32] 
+[1/54] Procesando: start_postman.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/start_postman.sh
+[2026-06-30 04:01:32] 
+[2/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/automations/clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 
+[3/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/automations/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[4/54] Procesando: init_workspace.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_workspace.sh: echo test /home/gus/ECN/automations/init_workspace.sh
+[2026-06-30 04:01:32] 
+[5/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/automations/start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 
+[6/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/connectors/run_adapters_test.sh
+[2026-06-30 04:01:32] 
+[7/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 
+[8/54] Procesando: P_culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 04:01:32] 
+[9/54] Procesando: P_Culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 04:01:32] 
+[10/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 
+[11/54] Procesando: P_Culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 04:01:32] 
+[12/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/interface/interface/run_adapters_test.sh
+[2026-06-30 04:01:32] 
+[13/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_audit.sh
+[2026-06-30 04:01:32] 
+[14/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_import_batch.sh
+[2026-06-30 04:01:32] 
+[15/54] Procesando: validate_schema.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/modules/chat_tools/validate_schema.sh
+[2026-06-30 04:01:32] 
+[16/54] Procesando: run_explorer.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_explorer.sh: echo test /home/gus/ECN/modules/neurobit_file_explorer/run_explorer.sh
+[2026-06-30 04:01:32] 
+[17/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/modules/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+[18/54] Procesando: start_keylogger.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/modules/start_keylogger.sh
+[2026-06-30 04:01:32] 
+[19/54] Procesando: clasificador_contexto_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clasificador_contexto_neurobit.sh: echo test /home/gus/ECN/sh_archives/clasificador_contexto_neurobit.sh
+[2026-06-30 04:01:32] 
+[20/54] Procesando: clean_compile_neurobit_v4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v4.sh: echo test /home/gus/ECN/sh_archives/clean_compile_neurobit_v4.sh
+[2026-06-30 04:01:32] 
+[21/54] Procesando: compilador_recursivo_clasificacion.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] compilador_recursivo_clasificacion.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_clasificacion.sh
+[2026-06-30 04:01:32] 
+[22/54] Procesando: compilador_recursivo_v4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] compilador_recursivo_v4.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_v4.sh
+[2026-06-30 04:01:32] 
+[23/54] Procesando: completion.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] completion.sh: echo test /home/gus/ECN/sh_archives/completion.sh
+[2026-06-30 04:01:32] 
+[24/54] Procesando: comprimir.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] comprimir.sh: echo test /home/gus/ECN/sh_archives/comprimir.sh
+[2026-06-30 04:01:32] 
+[25/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/sh_archives/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[26/54] Procesando: iniciar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] iniciar.sh: echo test /home/gus/ECN/sh_archives/iniciar.sh
+[2026-06-30 04:01:32] 
+[27/54] Procesando: init_salon.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/sh_archives/init_salon.sh
+[2026-06-30 04:01:32] 
+[28/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/sh_archives/neurobit_audit.sh
+[2026-06-30 04:01:32] 
+[29/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/sh_archives/neurobit_backup.sh
+[2026-06-30 04:01:32] 
+[30/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/sh_archives/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+[31/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/sh_archives/neurobit_import_batch.sh
+[2026-06-30 04:01:32] 
+[32/54] Procesando: quick_status.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/sh_archives/quick_status.sh
+[2026-06-30 04:01:32] 
+[33/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/sh_archives/setup_neurobit.sh
+[2026-06-30 04:01:32] 
+[34/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/sh_archives/start_all_daemons.sh
+[2026-06-30 04:01:32] 
+[35/54] Procesando: start_keylogger.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/sh_archives/start_keylogger.sh
+[2026-06-30 04:01:32] 
+[36/54] Procesando: start_postman.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/sh_archives/start_postman.sh
+[2026-06-30 04:01:32] 
+[37/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/sh_archives/start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 
+[38/54] Procesando: test_api_members.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/sh_archives/test_api_members.sh
+[2026-06-30 04:01:32] 
+[39/54] Procesando: validate_schema.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/sh_archives/validate_schema.sh
+[2026-06-30 04:01:32] 
+[40/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/sh_archives/validate_tarea4.sh
+[2026-06-30 04:01:32] 
+[41/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/sh_archives/validate_tarea5.sh
+[2026-06-30 04:01:32] 
+[42/54] Procesando: verify_all.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/sh_archives/verify_all.sh
+[2026-06-30 04:01:32] 
+[43/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/tests/clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 
+[44/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/tests/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[45/54] Procesando: init_salon.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/tests/init_salon.sh
+[2026-06-30 04:01:32] 
+[46/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/tests/neurobit_backup.sh
+[2026-06-30 04:01:32] 
+[47/54] Procesando: quick_status.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/tests/quick_status.sh
+[2026-06-30 04:01:32] 
+[48/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/tests/setup_neurobit.sh
+[2026-06-30 04:01:32] 
+[49/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/tests/start_all_daemons.sh
+[2026-06-30 04:01:32] 
+[50/54] Procesando: test_api_members.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/tests/test_api_members.sh
+[2026-06-30 04:01:32] 
+[51/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/tests/validate_tarea4.sh
+[2026-06-30 04:01:32] 
+[52/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/tests/validate_tarea5.sh
+[2026-06-30 04:01:32] 
+[53/54] Procesando: verify_all.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/tests/verify_all.sh
+[2026-06-30 04:01:32] 
+[54/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/tools/SETUP/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+============================================================
+[2026-06-30 04:01:32] ✅ BATCH COMPLETADO
+[2026-06-30 04:01:32]    Tiempo total: 0.01s
+[2026-06-30 04:01:32]    Exitosos: 0
+[2026-06-30 04:01:32]    Errores: 0
+[2026-06-30 04:01:32]    Timeouts: 0
+[2026-06-30 04:01:32] ============================================================
+
+[2026-06-30 04:01:32] 📊 Reporte generado: /home/gus/ECN/data/batch_executor_report.json
+[2026-06-30 04:01:32] 🔍 Escaneados 54 scripts .sh en el workspace
+[2026-06-30 04:01:32] 
+============================================================
+[2026-06-30 04:01:32] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 04:01:32]    Comando: echo test
+[2026-06-30 04:01:32]    Total archivos: 54
+[2026-06-30 04:01:32]    Delay: 1s
+[2026-06-30 04:01:32]    Modo: DRY-RUN
+[2026-06-30 04:01:32] ============================================================
+
+[2026-06-30 04:01:32] 
+[1/54] Procesando: start_postman.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/start_postman.sh
+[2026-06-30 04:01:32] 
+[2/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/automations/clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 
+[3/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/automations/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[4/54] Procesando: init_workspace.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_workspace.sh: echo test /home/gus/ECN/automations/init_workspace.sh
+[2026-06-30 04:01:32] 
+[5/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/automations/start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 
+[6/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/connectors/run_adapters_test.sh
+[2026-06-30 04:01:32] 
+[7/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 
+[8/54] Procesando: P_culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 04:01:32] 
+[9/54] Procesando: P_Culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 04:01:32] 
+[10/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 04:01:32] 
+[11/54] Procesando: P_Culiar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 04:01:32] 
+[12/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/interface/interface/run_adapters_test.sh
+[2026-06-30 04:01:32] 
+[13/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_audit.sh
+[2026-06-30 04:01:32] 
+[14/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_import_batch.sh
+[2026-06-30 04:01:32] 
+[15/54] Procesando: validate_schema.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/modules/chat_tools/validate_schema.sh
+[2026-06-30 04:01:32] 
+[16/54] Procesando: run_explorer.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] run_explorer.sh: echo test /home/gus/ECN/modules/neurobit_file_explorer/run_explorer.sh
+[2026-06-30 04:01:32] 
+[17/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/modules/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+[18/54] Procesando: start_keylogger.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/modules/start_keylogger.sh
+[2026-06-30 04:01:32] 
+[19/54] Procesando: clasificador_contexto_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clasificador_contexto_neurobit.sh: echo test /home/gus/ECN/sh_archives/clasificador_contexto_neurobit.sh
+[2026-06-30 04:01:32] 
+[20/54] Procesando: clean_compile_neurobit_v4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v4.sh: echo test /home/gus/ECN/sh_archives/clean_compile_neurobit_v4.sh
+[2026-06-30 04:01:32] 
+[21/54] Procesando: compilador_recursivo_clasificacion.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] compilador_recursivo_clasificacion.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_clasificacion.sh
+[2026-06-30 04:01:32] 
+[22/54] Procesando: compilador_recursivo_v4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] compilador_recursivo_v4.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_v4.sh
+[2026-06-30 04:01:32] 
+[23/54] Procesando: completion.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] completion.sh: echo test /home/gus/ECN/sh_archives/completion.sh
+[2026-06-30 04:01:32] 
+[24/54] Procesando: comprimir.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] comprimir.sh: echo test /home/gus/ECN/sh_archives/comprimir.sh
+[2026-06-30 04:01:32] 
+[25/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/sh_archives/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[26/54] Procesando: iniciar.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] iniciar.sh: echo test /home/gus/ECN/sh_archives/iniciar.sh
+[2026-06-30 04:01:32] 
+[27/54] Procesando: init_salon.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/sh_archives/init_salon.sh
+[2026-06-30 04:01:32] 
+[28/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/sh_archives/neurobit_audit.sh
+[2026-06-30 04:01:32] 
+[29/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/sh_archives/neurobit_backup.sh
+[2026-06-30 04:01:32] 
+[30/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/sh_archives/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+[31/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/sh_archives/neurobit_import_batch.sh
+[2026-06-30 04:01:32] 
+[32/54] Procesando: quick_status.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/sh_archives/quick_status.sh
+[2026-06-30 04:01:32] 
+[33/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/sh_archives/setup_neurobit.sh
+[2026-06-30 04:01:32] 
+[34/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/sh_archives/start_all_daemons.sh
+[2026-06-30 04:01:32] 
+[35/54] Procesando: start_keylogger.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/sh_archives/start_keylogger.sh
+[2026-06-30 04:01:32] 
+[36/54] Procesando: start_postman.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/sh_archives/start_postman.sh
+[2026-06-30 04:01:32] 
+[37/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/sh_archives/start_tarea5_websocket.sh
+[2026-06-30 04:01:32] 
+[38/54] Procesando: test_api_members.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/sh_archives/test_api_members.sh
+[2026-06-30 04:01:32] 
+[39/54] Procesando: validate_schema.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/sh_archives/validate_schema.sh
+[2026-06-30 04:01:32] 
+[40/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/sh_archives/validate_tarea4.sh
+[2026-06-30 04:01:32] 
+[41/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/sh_archives/validate_tarea5.sh
+[2026-06-30 04:01:32] 
+[42/54] Procesando: verify_all.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/sh_archives/verify_all.sh
+[2026-06-30 04:01:32] 
+[43/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/tests/clean_compile_neurobit_v2.sh
+[2026-06-30 04:01:32] 
+[44/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/tests/fix_fragmentador.sh
+[2026-06-30 04:01:32] 
+[45/54] Procesando: init_salon.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/tests/init_salon.sh
+[2026-06-30 04:01:32] 
+[46/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/tests/neurobit_backup.sh
+[2026-06-30 04:01:32] 
+[47/54] Procesando: quick_status.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/tests/quick_status.sh
+[2026-06-30 04:01:32] 
+[48/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/tests/setup_neurobit.sh
+[2026-06-30 04:01:32] 
+[49/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/tests/start_all_daemons.sh
+[2026-06-30 04:01:32] 
+[50/54] Procesando: test_api_members.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/tests/test_api_members.sh
+[2026-06-30 04:01:32] 
+[51/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/tests/validate_tarea4.sh
+[2026-06-30 04:01:32] 
+[52/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/tests/validate_tarea5.sh
+[2026-06-30 04:01:32] 
+[53/54] Procesando: verify_all.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/tests/verify_all.sh
+[2026-06-30 04:01:32] 
+[54/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:01:32] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/tools/SETUP/neurobit_fix.sh
+[2026-06-30 04:01:32] 
+============================================================
+[2026-06-30 04:01:32] ✅ BATCH COMPLETADO
+[2026-06-30 04:01:32]    Tiempo total: 0.01s
+[2026-06-30 04:01:32]    Exitosos: 0
+[2026-06-30 04:01:32]    Errores: 0
+[2026-06-30 04:01:32]    Timeouts: 0
+[2026-06-30 04:01:32] ============================================================
+
+[2026-06-30 04:01:32] 📊 Reporte generado: /home/gus/ECN/data/batch_executor_report.json
+[2026-06-30 04:11:59] 🔍 Escaneados 54 scripts .sh en el workspace
+[2026-06-30 04:11:59] 
+============================================================
+[2026-06-30 04:11:59] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 04:11:59]    Comando: echo test
+[2026-06-30 04:11:59]    Total archivos: 54
+[2026-06-30 04:11:59]    Delay: 1s
+[2026-06-30 04:11:59]    Modo: DRY-RUN
+[2026-06-30 04:11:59] ============================================================
+
+[2026-06-30 04:11:59] 
+[1/54] Procesando: start_postman.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/start_postman.sh
+[2026-06-30 04:11:59] 
+[2/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/automations/clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 
+[3/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/automations/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[4/54] Procesando: init_workspace.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_workspace.sh: echo test /home/gus/ECN/automations/init_workspace.sh
+[2026-06-30 04:11:59] 
+[5/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/automations/start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 
+[6/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/connectors/run_adapters_test.sh
+[2026-06-30 04:11:59] 
+[7/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 
+[8/54] Procesando: P_culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 04:11:59] 
+[9/54] Procesando: P_Culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 04:11:59] 
+[10/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 
+[11/54] Procesando: P_Culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 04:11:59] 
+[12/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/interface/interface/run_adapters_test.sh
+[2026-06-30 04:11:59] 
+[13/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_audit.sh
+[2026-06-30 04:11:59] 
+[14/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_import_batch.sh
+[2026-06-30 04:11:59] 
+[15/54] Procesando: validate_schema.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/modules/chat_tools/validate_schema.sh
+[2026-06-30 04:11:59] 
+[16/54] Procesando: run_explorer.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_explorer.sh: echo test /home/gus/ECN/modules/neurobit_file_explorer/run_explorer.sh
+[2026-06-30 04:11:59] 
+[17/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/modules/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+[18/54] Procesando: start_keylogger.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/modules/start_keylogger.sh
+[2026-06-30 04:11:59] 
+[19/54] Procesando: clasificador_contexto_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clasificador_contexto_neurobit.sh: echo test /home/gus/ECN/sh_archives/clasificador_contexto_neurobit.sh
+[2026-06-30 04:11:59] 
+[20/54] Procesando: clean_compile_neurobit_v4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v4.sh: echo test /home/gus/ECN/sh_archives/clean_compile_neurobit_v4.sh
+[2026-06-30 04:11:59] 
+[21/54] Procesando: compilador_recursivo_clasificacion.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] compilador_recursivo_clasificacion.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_clasificacion.sh
+[2026-06-30 04:11:59] 
+[22/54] Procesando: compilador_recursivo_v4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] compilador_recursivo_v4.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_v4.sh
+[2026-06-30 04:11:59] 
+[23/54] Procesando: completion.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] completion.sh: echo test /home/gus/ECN/sh_archives/completion.sh
+[2026-06-30 04:11:59] 
+[24/54] Procesando: comprimir.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] comprimir.sh: echo test /home/gus/ECN/sh_archives/comprimir.sh
+[2026-06-30 04:11:59] 
+[25/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/sh_archives/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[26/54] Procesando: iniciar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] iniciar.sh: echo test /home/gus/ECN/sh_archives/iniciar.sh
+[2026-06-30 04:11:59] 
+[27/54] Procesando: init_salon.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/sh_archives/init_salon.sh
+[2026-06-30 04:11:59] 
+[28/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/sh_archives/neurobit_audit.sh
+[2026-06-30 04:11:59] 
+[29/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/sh_archives/neurobit_backup.sh
+[2026-06-30 04:11:59] 
+[30/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/sh_archives/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+[31/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/sh_archives/neurobit_import_batch.sh
+[2026-06-30 04:11:59] 
+[32/54] Procesando: quick_status.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/sh_archives/quick_status.sh
+[2026-06-30 04:11:59] 
+[33/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/sh_archives/setup_neurobit.sh
+[2026-06-30 04:11:59] 
+[34/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/sh_archives/start_all_daemons.sh
+[2026-06-30 04:11:59] 
+[35/54] Procesando: start_keylogger.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/sh_archives/start_keylogger.sh
+[2026-06-30 04:11:59] 
+[36/54] Procesando: start_postman.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/sh_archives/start_postman.sh
+[2026-06-30 04:11:59] 
+[37/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/sh_archives/start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 
+[38/54] Procesando: test_api_members.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/sh_archives/test_api_members.sh
+[2026-06-30 04:11:59] 
+[39/54] Procesando: validate_schema.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/sh_archives/validate_schema.sh
+[2026-06-30 04:11:59] 
+[40/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/sh_archives/validate_tarea4.sh
+[2026-06-30 04:11:59] 
+[41/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/sh_archives/validate_tarea5.sh
+[2026-06-30 04:11:59] 
+[42/54] Procesando: verify_all.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/sh_archives/verify_all.sh
+[2026-06-30 04:11:59] 
+[43/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/tests/clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 
+[44/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/tests/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[45/54] Procesando: init_salon.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/tests/init_salon.sh
+[2026-06-30 04:11:59] 
+[46/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/tests/neurobit_backup.sh
+[2026-06-30 04:11:59] 
+[47/54] Procesando: quick_status.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/tests/quick_status.sh
+[2026-06-30 04:11:59] 
+[48/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/tests/setup_neurobit.sh
+[2026-06-30 04:11:59] 
+[49/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/tests/start_all_daemons.sh
+[2026-06-30 04:11:59] 
+[50/54] Procesando: test_api_members.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/tests/test_api_members.sh
+[2026-06-30 04:11:59] 
+[51/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/tests/validate_tarea4.sh
+[2026-06-30 04:11:59] 
+[52/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/tests/validate_tarea5.sh
+[2026-06-30 04:11:59] 
+[53/54] Procesando: verify_all.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/tests/verify_all.sh
+[2026-06-30 04:11:59] 
+[54/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/tools/SETUP/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+============================================================
+[2026-06-30 04:11:59] ✅ BATCH COMPLETADO
+[2026-06-30 04:11:59]    Tiempo total: 0.01s
+[2026-06-30 04:11:59]    Exitosos: 0
+[2026-06-30 04:11:59]    Errores: 0
+[2026-06-30 04:11:59]    Timeouts: 0
+[2026-06-30 04:11:59] ============================================================
+
+[2026-06-30 04:11:59] 📊 Reporte generado: /home/gus/ECN/data/batch_executor_report.json
+[2026-06-30 04:11:59] 🔍 Escaneados 54 scripts .sh en el workspace
+[2026-06-30 04:11:59] 
+============================================================
+[2026-06-30 04:11:59] 🚀 INICIANDO BATCH EXECUTOR
+[2026-06-30 04:11:59]    Comando: echo test
+[2026-06-30 04:11:59]    Total archivos: 54
+[2026-06-30 04:11:59]    Delay: 1s
+[2026-06-30 04:11:59]    Modo: DRY-RUN
+[2026-06-30 04:11:59] ============================================================
+
+[2026-06-30 04:11:59] 
+[1/54] Procesando: start_postman.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/start_postman.sh
+[2026-06-30 04:11:59] 
+[2/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/automations/clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 
+[3/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/automations/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[4/54] Procesando: init_workspace.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_workspace.sh: echo test /home/gus/ECN/automations/init_workspace.sh
+[2026-06-30 04:11:59] 
+[5/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/automations/start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 
+[6/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/connectors/run_adapters_test.sh
+[2026-06-30 04:11:59] 
+[7/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 
+[8/54] Procesando: P_culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.1/P_culiar.sh
+[2026-06-30 04:11:59] 
+[9/54] Procesando: P_Culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.2/P_Culiar.sh
+[2026-06-30 04:11:59] 
+[10/54] Procesando: Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] Not_SPQ-Late.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/Not_SPQ-Late.sh
+[2026-06-30 04:11:59] 
+[11/54] Procesando: P_Culiar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] P_Culiar.sh: echo test /home/gus/ECN/core/P_Culiar/v.3/P_Culiar.sh
+[2026-06-30 04:11:59] 
+[12/54] Procesando: run_adapters_test.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_adapters_test.sh: echo test /home/gus/ECN/interface/interface/run_adapters_test.sh
+[2026-06-30 04:11:59] 
+[13/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_audit.sh
+[2026-06-30 04:11:59] 
+[14/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/modules/chat_tools/neurobit_import_batch.sh
+[2026-06-30 04:11:59] 
+[15/54] Procesando: validate_schema.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/modules/chat_tools/validate_schema.sh
+[2026-06-30 04:11:59] 
+[16/54] Procesando: run_explorer.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] run_explorer.sh: echo test /home/gus/ECN/modules/neurobit_file_explorer/run_explorer.sh
+[2026-06-30 04:11:59] 
+[17/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/modules/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+[18/54] Procesando: start_keylogger.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/modules/start_keylogger.sh
+[2026-06-30 04:11:59] 
+[19/54] Procesando: clasificador_contexto_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clasificador_contexto_neurobit.sh: echo test /home/gus/ECN/sh_archives/clasificador_contexto_neurobit.sh
+[2026-06-30 04:11:59] 
+[20/54] Procesando: clean_compile_neurobit_v4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v4.sh: echo test /home/gus/ECN/sh_archives/clean_compile_neurobit_v4.sh
+[2026-06-30 04:11:59] 
+[21/54] Procesando: compilador_recursivo_clasificacion.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] compilador_recursivo_clasificacion.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_clasificacion.sh
+[2026-06-30 04:11:59] 
+[22/54] Procesando: compilador_recursivo_v4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] compilador_recursivo_v4.sh: echo test /home/gus/ECN/sh_archives/compilador_recursivo_v4.sh
+[2026-06-30 04:11:59] 
+[23/54] Procesando: completion.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] completion.sh: echo test /home/gus/ECN/sh_archives/completion.sh
+[2026-06-30 04:11:59] 
+[24/54] Procesando: comprimir.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] comprimir.sh: echo test /home/gus/ECN/sh_archives/comprimir.sh
+[2026-06-30 04:11:59] 
+[25/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/sh_archives/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[26/54] Procesando: iniciar.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] iniciar.sh: echo test /home/gus/ECN/sh_archives/iniciar.sh
+[2026-06-30 04:11:59] 
+[27/54] Procesando: init_salon.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/sh_archives/init_salon.sh
+[2026-06-30 04:11:59] 
+[28/54] Procesando: neurobit_audit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_audit.sh: echo test /home/gus/ECN/sh_archives/neurobit_audit.sh
+[2026-06-30 04:11:59] 
+[29/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/sh_archives/neurobit_backup.sh
+[2026-06-30 04:11:59] 
+[30/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/sh_archives/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+[31/54] Procesando: neurobit_import_batch.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_import_batch.sh: echo test /home/gus/ECN/sh_archives/neurobit_import_batch.sh
+[2026-06-30 04:11:59] 
+[32/54] Procesando: quick_status.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/sh_archives/quick_status.sh
+[2026-06-30 04:11:59] 
+[33/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/sh_archives/setup_neurobit.sh
+[2026-06-30 04:11:59] 
+[34/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/sh_archives/start_all_daemons.sh
+[2026-06-30 04:11:59] 
+[35/54] Procesando: start_keylogger.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_keylogger.sh: echo test /home/gus/ECN/sh_archives/start_keylogger.sh
+[2026-06-30 04:11:59] 
+[36/54] Procesando: start_postman.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_postman.sh: echo test /home/gus/ECN/sh_archives/start_postman.sh
+[2026-06-30 04:11:59] 
+[37/54] Procesando: start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_tarea5_websocket.sh: echo test /home/gus/ECN/sh_archives/start_tarea5_websocket.sh
+[2026-06-30 04:11:59] 
+[38/54] Procesando: test_api_members.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/sh_archives/test_api_members.sh
+[2026-06-30 04:11:59] 
+[39/54] Procesando: validate_schema.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_schema.sh: echo test /home/gus/ECN/sh_archives/validate_schema.sh
+[2026-06-30 04:11:59] 
+[40/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/sh_archives/validate_tarea4.sh
+[2026-06-30 04:11:59] 
+[41/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/sh_archives/validate_tarea5.sh
+[2026-06-30 04:11:59] 
+[42/54] Procesando: verify_all.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/sh_archives/verify_all.sh
+[2026-06-30 04:11:59] 
+[43/54] Procesando: clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] clean_compile_neurobit_v2.sh: echo test /home/gus/ECN/tests/clean_compile_neurobit_v2.sh
+[2026-06-30 04:11:59] 
+[44/54] Procesando: fix_fragmentador.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] fix_fragmentador.sh: echo test /home/gus/ECN/tests/fix_fragmentador.sh
+[2026-06-30 04:11:59] 
+[45/54] Procesando: init_salon.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] init_salon.sh: echo test /home/gus/ECN/tests/init_salon.sh
+[2026-06-30 04:11:59] 
+[46/54] Procesando: neurobit_backup.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_backup.sh: echo test /home/gus/ECN/tests/neurobit_backup.sh
+[2026-06-30 04:11:59] 
+[47/54] Procesando: quick_status.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] quick_status.sh: echo test /home/gus/ECN/tests/quick_status.sh
+[2026-06-30 04:11:59] 
+[48/54] Procesando: setup_neurobit.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] setup_neurobit.sh: echo test /home/gus/ECN/tests/setup_neurobit.sh
+[2026-06-30 04:11:59] 
+[49/54] Procesando: start_all_daemons.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] start_all_daemons.sh: echo test /home/gus/ECN/tests/start_all_daemons.sh
+[2026-06-30 04:11:59] 
+[50/54] Procesando: test_api_members.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] test_api_members.sh: echo test /home/gus/ECN/tests/test_api_members.sh
+[2026-06-30 04:11:59] 
+[51/54] Procesando: validate_tarea4.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea4.sh: echo test /home/gus/ECN/tests/validate_tarea4.sh
+[2026-06-30 04:11:59] 
+[52/54] Procesando: validate_tarea5.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] validate_tarea5.sh: echo test /home/gus/ECN/tests/validate_tarea5.sh
+[2026-06-30 04:11:59] 
+[53/54] Procesando: verify_all.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] verify_all.sh: echo test /home/gus/ECN/tests/verify_all.sh
+[2026-06-30 04:11:59] 
+[54/54] Procesando: neurobit_fix.sh
+[2026-06-30 04:11:59] 🔍 [DRY-RUN] neurobit_fix.sh: echo test /home/gus/ECN/tools/SETUP/neurobit_fix.sh
+[2026-06-30 04:11:59] 
+============================================================
+[2026-06-30 04:11:59] ✅ BATCH COMPLETADO
+[2026-06-30 04:11:59]    Tiempo total: 0.01s
+[2026-06-30 04:11:59]    Exitosos: 0
+[2026-06-30 04:11:59]    Errores: 0
+[2026-06-30 04:11:59]    Timeouts: 0
+[2026-06-30 04:11:59] ============================================================
+
+[2026-06-30 04:11:59] 📊 Reporte generado: /home/gus/ECN/data/batch_executor_report.json

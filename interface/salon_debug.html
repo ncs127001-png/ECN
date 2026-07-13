@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Diagnóstico NEUROBIT</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Diagnóstico Socket.IO</h1>
+  <pre id="output"></pre>
+  <script>
+    const out = document.getElementById('output');
+    out.textContent += "1. typeof io: " + typeof io + "\n";
+    out.textContent += "2. io exists: " + !!window.io + "\n";
+    
+    if (typeof io === 'function') {
+      try {
+        const testSocket = io('http://127.0.0.1:5001', { timeout: 2000 });
+        out.textContent += "3. Socket created: OK\n";
+        testSocket.on('connect', () => {
+          out.textContent += "4. Connected: OK\n";
+          testSocket.disconnect();
+        });
+        testSocket.on('connect_error', (err) => {
+          out.textContent += "4. Connect error: " + err.message + "\n";
+        });
+      } catch (e) {
+        out.textContent += "3. Socket creation error: " + e.message + "\n";
+      }
+    }
+  </script>
+</body>
+</html>

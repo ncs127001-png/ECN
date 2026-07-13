@@ -1,0 +1,30 @@
+# MFN_LOCATION: docs/specs/
+# MFN_LEVEL: 1
+# mfn_radial_core.openspec.yaml
+
+module_id: nb.core.mfn_radial
+version: 2.0
+mfn_location: core/
+mfn_level: 1
+
+purpose: |
+  Evolucionar la MFN de matriz estática a topología radial de compartimentos
+  con direccionamiento indirecto y herencia.
+
+capabilities:
+  - name: get_compartiment
+    description: Obtiene el estado de un compartimento específico
+    parameters:
+      - name: anillo
+        type: int
+        description: Número de anillo (1-6)
+      - name: index
+        type: int
+        description: Índice dentro del anillo
+    returns:
+      type: dict
+      description: Estado del compartimento con punteros de herencia
+
+constraints:
+  - "Los anillos deben seguir la progresión: 8, 16, 24, 32, 40, 48"
+  - "El centro G7 es unívoco y no tiene herencia"

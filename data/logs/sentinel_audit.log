@@ -1,0 +1,245 @@
+[2026-06-30 07:28:51] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 07:28:51] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 07:28:51] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 07:30:48] 📄 DETECTADO: CREATE → neurobit_pulse_gui.py
+[2026-06-30 07:30:48] 🔍 AUDIT: CREATE en /home/gus/ECN/inbox/neurobit_pulse_gui.py
+[2026-06-30 07:30:49] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: neurobit_pulse_gui.py
+[2026-06-30 07:30:49] 📄 DETECTADO: MODIFY → neurobit_pulse_gui.py
+[2026-06-30 07:30:49] 🔍 AUDIT: MODIFY en /home/gus/ECN/inbox/neurobit_pulse_gui.py
+[2026-06-30 07:30:50] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: neurobit_pulse_gui.py
+[2026-06-30 07:30:50] 📄 DETECTADO: MOVED_TO → neurobit_pulse_gui.py
+[2026-06-30 07:30:50] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/quarantine/neurobit_pulse_gui.py
+[2026-06-30 07:30:51] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: neurobit_pulse_gui.py
+[2026-06-30 20:30:16] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 20:30:16] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 20:30:16] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 20:30:59] 📄 DETECTADO: CREATE → cosecha_pi_fractal.py
+[2026-06-30 20:30:59] 🔍 AUDIT: CREATE en /home/gus/ECN/inbox/cosecha_pi_fractal.py
+[2026-06-30 20:31:00] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: cosecha_pi_fractal.py
+[2026-06-30 20:31:00] 📄 DETECTADO: MODIFY → cosecha_pi_fractal.py
+[2026-06-30 20:31:00] 🔍 AUDIT: MODIFY en /home/gus/ECN/inbox/cosecha_pi_fractal.py
+[2026-06-30 20:31:01] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: cosecha_pi_fractal.py
+[2026-06-30 20:31:01] 📄 DETECTADO: MOVED_TO → cosecha_pi_fractal.py
+[2026-06-30 20:31:01] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/quarantine/cosecha_pi_fractal.py
+[2026-06-30 20:31:02] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: cosecha_pi_fractal.py
+[2026-06-30 20:38:43] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 20:38:43] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 20:38:43] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 20:38:52] 📄 DETECTADO: MOVED_TO → cosecha_pi_fractal.py
+[2026-06-30 20:38:52] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/cosecha_pi_fractal.py
+[2026-06-30 20:38:53] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: cosecha_pi_fractal.py
+[2026-06-30 20:38:53] 📄 DETECTADO: MOVED_TO → neurobit_pulse_gui.py
+[2026-06-30 20:38:53] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/neurobit_pulse_gui.py
+[2026-06-30 20:38:54] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: neurobit_pulse_gui.py
+[2026-06-30 20:38:54] 📄 DETECTADO: MOVED_TO → cosecha_pi_fractal.py
+[2026-06-30 20:38:54] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/quarantine/cosecha_pi_fractal.py
+[2026-06-30 20:38:55] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: cosecha_pi_fractal.py
+[2026-06-30 20:38:55] 📄 DETECTADO: MOVED_TO → neurobit_pulse_gui.py
+[2026-06-30 20:38:55] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/quarantine/neurobit_pulse_gui.py
+[2026-06-30 20:38:56] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: neurobit_pulse_gui.py
+[2026-06-30 20:47:36] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 20:47:36] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 20:47:36] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 20:48:11] 📄 DETECTADO: CREATE → test_sin_mfn.py
+[2026-06-30 20:48:11] 🔍 AUDIT: CREATE en /home/gus/ECN/inbox/test_sin_mfn.py
+[2026-06-30 20:48:12] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: test_sin_mfn.py
+[2026-06-30 20:48:12] 📄 DETECTADO: MODIFY → test_sin_mfn.py
+[2026-06-30 20:48:12] 🔍 AUDIT: MODIFY en /home/gus/ECN/inbox/test_sin_mfn.py
+[2026-06-30 20:48:13] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: test_sin_mfn.py
+[2026-06-30 20:48:13] 📄 DETECTADO: CREATE → test_con_mfn.py
+[2026-06-30 20:48:13] 🔍 AUDIT: CREATE en /home/gus/ECN/inbox/test_con_mfn.py
+[2026-06-30 20:48:14] ✅ ENRUTADO: test_con_mfn.py → modules/test/
+[2026-06-30 20:48:14] 📄 DETECTADO: MODIFY → test_con_mfn.py
+[2026-06-30 20:48:14] 🔍 AUDIT: MODIFY en /home/gus/ECN/inbox/test_con_mfn.py
+[2026-06-30 20:48:15] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: test_con_mfn.py
+[2026-06-30 20:48:15] 📄 DETECTADO: MOVED_TO → test_sin_mfn.py
+[2026-06-30 20:48:15] 🔍 AUDIT: MOVED_TO en /home/gus/ECN/inbox/quarantine/test_sin_mfn.py
+[2026-06-30 20:48:16] ⚠️  SIN MFN_LOCATION: Moviendo a cuarentena: test_sin_mfn.py
+[2026-06-30 20:58:05] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 20:58:05] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 20:58:05] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 20:59:34] 📄 DETECTADO: CREATE → record_sound_output.sh
+[2026-06-30 20:59:34] 📄 DETECTADO: MODIFY → record_sound_output.sh
+[2026-06-30 22:41:23] 👁️  WORKSPACE SENTINEL INICIADO
+[2026-06-30 22:41:23] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 22:41:23] 🔔 Eventos: create, modify, moved_to
+[2026-06-30 22:41:34] 📄 DETECTADO: MOVED_TO → sos_workspace_sentinel.sh
+[2026-06-30 23:16:29] 👁️  WORKSPACE SENTINEL v1.3 INICIADO
+[2026-06-30 23:16:29] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 23:16:29]  Solo CREATE | Ignorando: MODIFY, MOVED_TO, quarantine/
+[2026-06-30 23:16:50] 📄 DETECTADO: CREATE → test_con_mfn.py
+[2026-06-30 23:16:50] ✅ ENRUTADO: test_con_mfn.py → modules/test/
+[2026-06-30 23:18:40] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-06-30 23:18:40] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.py → cuarentena
+[2026-06-30 23:20:24] 📄 DETECTADO: CREATE → module_conector.py
+[2026-06-30 23:20:24] ⚠️  SIN MFN_LOCATION: module_conector.py → cuarentena
+[2026-06-30 23:21:19] 📄 DETECTADO: CREATE → adapter_hid.py
+[2026-06-30 23:21:19] ⚠️  SIN MFN_LOCATION: adapter_hid.py → cuarentena
+[2026-06-30 23:22:49] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-06-30 23:22:49] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.spec.yaml → cuarentena
+[2026-06-30 23:23:54] 📄 DETECTADO: CREATE → test_mfn_radial_core.py
+[2026-06-30 23:23:54] ⚠️  SIN MFN_LOCATION: test_mfn_radial_core.py → cuarentena
+[2026-06-30 23:24:57] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:24:58] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:28:40] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-06-30 23:28:41] ✅ ENRUTADO: api_endpoint_manager.py → core//
+[2026-06-30 23:28:41] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-06-30 23:28:41] ✅ ENRUTADO: api_endpoint_manager.py → core//
+[2026-06-30 23:30:25] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-06-30 23:30:26] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.spec.yaml → cuarentena
+[2026-06-30 23:35:37] 📄 DETECTADO: CREATE → adapter.hid.py
+[2026-06-30 23:35:38] ⚠️  SIN MFN_LOCATION: adapter.hid.py → cuarentena
+[2026-06-30 23:47:08] 📄 DETECTADO: CREATE → adapter.hid.py
+[2026-06-30 23:47:09] ✅ ENRUTADO: adapter.hid.py → core/adapters//
+[2026-06-30 23:47:34] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:47:35] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:48:23] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:48:24] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:49:22] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:49:23] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:49:58] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-06-30 23:49:59] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.spec.yaml → cuarentena
+[2026-06-30 23:50:20] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-06-30 23:50:20] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.spec.yaml → cuarentena
+[2026-06-30 23:51:00] 👁️  WORKSPACE SENTINEL v1.3 INICIADO
+[2026-06-30 23:51:00] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-06-30 23:51:00]  Solo CREATE | Ignorando: MODIFY, MOVED_TO, quarantine/
+[2026-06-30 23:51:06] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-06-30 23:51:07] ⚠️  SIN MFN_LOCATION: api_endpoint_manager.spec.yaml → cuarentena
+[2026-06-30 23:51:18] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:51:19] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:52:06] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:52:06] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:52:18] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:52:19] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:52:30] 📄 DETECTADO: CREATE → adapter.hid.py
+[2026-06-30 23:52:31] ✅ ENRUTADO: adapter.hid.py → core/adapters//
+[2026-06-30 23:52:53] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-06-30 23:52:53] ⚠️  SIN MFN_LOCATION: mfn_radial_core.openspec.yaml → cuarentena
+[2026-06-30 23:53:06] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-06-30 23:53:07] ✅ ENRUTADO: api_endpoint_manager.py → core//
+[2026-07-01 00:18:14] 👁️  WORKSPACE SENTINEL v1.4 INICIADO
+[2026-07-01 00:18:14] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 00:18:14] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 00:18:14] 📋 Detecta MFN_LOCATION en .py y .yaml (con o sin #)
+[2026-07-01 00:19:54] 📄 DETECTADO: CREATE → prueba.yaml
+[2026-07-01 00:26:13] 👁️  WORKSPACE SENTINEL v1.4 INICIADO
+[2026-07-01 00:26:13] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 00:26:13] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 00:26:13] 📋 Detecta MFN_LOCATION en .py y .yaml (con o sin #)
+[2026-07-01 00:32:52] 👁️  WORKSPACE SENTINEL v1.4 INICIADO
+[2026-07-01 00:32:52] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 00:32:52] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 00:32:52] 📋 Detecta MFN_LOCATION en .py y .yaml (con o sin #)
+[2026-07-01 00:33:18] 📄 DETECTADO: CREATE → prueba.yaml
+[2026-07-01 00:34:53] 👁️  WORKSPACE SENTINEL v1.4 INICIADO
+[2026-07-01 00:34:53] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 00:34:53] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 00:34:53] 📋 Detecta MFN_LOCATION en .py y .yaml (con o sin #)
+[2026-07-01 00:36:43] 📄 DETECTADO: CREATE → prueba.yaml
+[2026-07-01 00:37:02] ❌ CANCELADO: Carpeta no creada. Archivo en cuarentena.
+[2026-07-01 00:37:37] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-07-01 00:37:37] ✅ ENRUTADO: mfn_radial_core.openspec.yaml → docs/specs/
+[2026-07-01 00:40:39] 📄 DETECTADO: CREATE → prueba.yaml
+[2026-07-01 00:40:40] ✅ ENRUTADO: prueba.yaml → docs/specs/
+[2026-07-01 00:41:20] 📄 DETECTADO: CREATE → prueba.yaml
+[2026-07-01 00:41:20] ✅ ENRUTADO: prueba.yaml → docs/specs/
+[2026-07-01 00:42:47] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-07-01 00:42:48] ✅ ENRUTADO: api_endpoint_manager.spec.yaml → docs/specs/
+[2026-07-01 00:44:15] 📄 DETECTADO: CREATE → pruebas.py
+[2026-07-01 00:44:15] ✅ ENRUTADO: pruebas.py → docs/specs/
+[2026-07-01 00:49:06] 👁️  WORKSPACE SENTINEL v1.4 INICIADO
+[2026-07-01 00:49:06] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 00:49:06] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 00:49:06] 📋 Detecta MFN_LOCATION en .py y .yaml (con o sin #)
+[2026-07-01 00:55:19] 📄 DETECTADO: CREATE → mfn_header_template.py
+[2026-07-01 00:55:29] ❌ CANCELADO: Carpeta no creada. Archivo en cuarentena.
+[2026-07-01 01:12:31] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 01:12:31] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 01:12:31] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 01:12:31] 📋 Soporta: .py, .yaml, .yml, .sh, .c (con #, // o /* */)
+[2026-07-01 01:13:49] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 01:13:49] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 01:13:49] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 01:13:49] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 01:26:39] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 01:26:39] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 01:26:39] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 01:26:39] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 01:27:09] 📄 DETECTADO: CREATE → headers_MFN.md
+[2026-07-01 01:27:17] 📁 CREADA POR CONFIRMACIÓN: /home/gus/ECN/docs/md
+[2026-07-01 01:27:17] ✅ ENRUTADO: headers_MFN.md → docs/md/
+[2026-07-01 02:49:03] 📄 DETECTADO: CREATE → headers_MFN.md
+[2026-07-01 02:49:03] ✅ ENRUTADO: headers_MFN.md → docs/md/
+[2026-07-01 02:51:39] 📄 DETECTADO: CREATE → adapter.hid.py
+[2026-07-01 02:51:40] ✅ ENRUTADO: adapter.hid.py → core/adapters/
+[2026-07-01 02:53:00] 📄 DETECTADO: CREATE → mfn_radial_core.openspec.yaml
+[2026-07-01 02:53:00] ✅ ENRUTADO: mfn_radial_core.openspec.yaml → docs/specs/
+[2026-07-01 02:54:35] 📄 DETECTADO: CREATE → api_endpoint_manager.spec.yaml
+[2026-07-01 02:54:35] ✅ ENRUTADO: api_endpoint_manager.spec.yaml → docs/specs/
+[2026-07-01 03:22:38] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 03:22:39] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 03:25:16] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 03:25:17] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 03:55:16] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 03:55:17] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 03:55:44] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 03:55:44] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 03:55:44] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 03:55:44] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 03:56:36] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 03:56:36] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 04:22:53] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 04:22:53] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 04:22:53] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 04:22:53] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 04:23:21] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 04:23:21] 💾 BACKUP: api_endpoint_manager.py → .backups/
+[2026-07-01 04:23:21] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 04:31:44] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 04:31:44] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 04:31:44] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 04:31:44] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 04:31:53] 📄 DETECTADO: CREATE → api_endpoint_manager.py
+[2026-07-01 04:31:54] 💾 BACKUP: api_endpoint_manager.py → .backups/api_endpoint_manager_1782891114.py
+[2026-07-01 04:31:54] ✅ ENRUTADO: api_endpoint_manager.py → core/
+[2026-07-01 05:59:10] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 05:59:11] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 05:59:43] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 05:59:43] 💾 BACKUP: WS-SENTINEL_info.md → .backups/WS-SENTINEL_info_1782896383.md
+[2026-07-01 05:59:43] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 05:59:53] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 05:59:54] 💾 BACKUP: WS-SENTINEL_info.md → .backups/WS-SENTINEL_info_1782896394.md
+[2026-07-01 05:59:54] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 06:07:34] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 06:07:34] 💾 BACKUP: WS-SENTINEL_info.md → .backups/WS-SENTINEL_info_1782896854.md
+[2026-07-01 06:07:34] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 06:08:29] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 06:08:30] 💾 BACKUP: WS-SENTINEL_info.md → .backups/WS-SENTINEL_info_1782896910.md
+[2026-07-01 06:08:30] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 06:09:24] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 06:09:24] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 06:09:24] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 06:09:24] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 06:10:30] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 06:10:30] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 06:10:30] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 06:10:30] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 06:10:35] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 06:10:35] ✅ ENRUTADO: WS-SENTINEL_info.md → core/
+[2026-07-01 07:27:14] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-01 07:27:14] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-01 07:27:14] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-01 07:27:14] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-01 07:28:17] 📄 DETECTADO: CREATE → WS-SENTINEL_info.md
+[2026-07-01 07:28:17] ✅ ENRUTADO: WS-SENTINEL_info.md → docs/md/
+[2026-07-02 02:54:26] 📄 DETECTADO: CREATE → api_endpoint_manager_SPEC.md
+[2026-07-02 02:54:27] ✅ ENRUTADO: api_endpoint_manager_SPEC.md → docs/specs/
+[2026-07-03 00:54:04] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-03 00:54:04] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-03 00:54:04] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-03 00:54:04] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-12 02:04:39] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-12 02:04:39] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-12 02:04:39] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-12 02:04:39] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)

@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Neurobit Message Builder — v0.5</title>
+<style>
+:root{--bg:#fff;--muted:#666;--primary:#0b74de;--card:#f7f7f7}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-
+width:1100px;margin:18px auto;padding:16px;color:#111}
+header{display:flex;align-items:center;gap:12px;justify-content:space-between}
+h1{font-size:1.25rem;margin:0}
+.small{font-size:0.86rem;color:var(--muted)}
+label{display:block;margin-top:8px;font-weight:600}input,textarea,select,button{font:inherit}
+input,textarea,select{width:100%;padding:8px;margin-top:6px;border:1px solid
+#ddd;border-radius:6px}
+textarea{min-height:120px;font-family:monospace;white-space:pre-wrap}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+button{padding:8px 12px;border-radius:8px;border:0;background:var(--
+primary);color:white;cursor:pointer}
+button.secondary{background:#666}
+pre{background:var(--card);padding:12px;border-radius:8px;overflow:auto;white-
+space:pre-wrap}
+.history{margin-top:18px}
+.msg{border-top:1px solid #eee;padding:10px 0}
+.msg.altered{background: #fff0f0}
+.meta{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.side{width:320px;min-width:260px}
+.layout{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.badge{background:#efefef;padding:4px 8px;border-radius:6px;font-size:0.8rem}
+.danger{color:#b30000;font-weight:700}
+footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
+.tag{background:#e8f1ff;padding:3px 6px;border-radius:6px;margin-
+right:6px;font-size:0.8rem}
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>Neurobit Message Builder · v0.5</h1>
+<div class="small">SEQ_ID · HASH · Verificación · Cierre de jornada ·
+Export .txt / .json</div>
+</div>
+<div class="small">TRON · NODE_SEMILLA</div>
+</header>
+<main class="layout">
+<section>
+<form id="builder" onsubmit="return false;">
+<div class="row">
+<div>
+<label>MESSAGE_ID (ej. A1)</label>
+<input id="messageId" placeholder="A1" />
+</div>
+<div>
+<label>PERSPECTIVA</label>
+<select id="persp">
+<option value="S_PERSPECTIVA">S_PERSPECTIVA</option>
+<option value="D_PERSPECTIVA">D_PERSPECTIVA</option>
+</select>
+</div>
+</div>
+<div class="row">
+<div>
+<label>ORIGEN</label>
+<input id="origen" placeholder="JUAN_DOMINGO" />
+</div>
+<div>
+<label>DESTINO</label>
+<input id="destino" placeholder="NEUROBIT_D" /></div>
+</div>
+<label>CONTEXT</label>
+<input id="context" placeholder="PROTOCOLO_MENSAJES" />
+<div class="row">
+<div>
+<label>TAGS (separados por coma)</label>
+<input id="tags" placeholder="PROTOCOLO,INICIO" />
+</div>
+<div>
+<label>VERSION</label>
+<input id="version" placeholder="v0.1" />
+</div>
+</div>
+<label>COMPILADOR_ASISTENTE (opcional)</label>
+<input id="compiler" placeholder="VS_CODE_AI" />
+<div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+<input type="checkbox" id="useLocalTime" />
+<label style="margin:0;font-weight:600">USE_LOCAL_TIME (mostrar offset
+local)</label>
+</div>
+<label>PREV_TIMESTAMP (opcional: timestamp del mensaje al que
+respondes)</label>
+<input id="prevTimestamp" placeholder="2025-10-25T08:00:22Z" />
+<label>CUERPO - usa la sintaxis dentro de { ... } ;</label>
+<textarea id="body" placeholder='HEADER_NOTE: "Texto corto" ;\nOBJETIVO:
+"..." ;\nACCIONES: [ (AN1) DESCRIPCION: "..." ; ] ;'></textarea>
+<label>RESPUESTA_AL_ULTIMO (pega aquí el texto de la respuesta recibida
+para vincular)</label>
+<textarea id="responseToLast" placeholder='Pegar respuesta del asistente
+para vinculada al PREV_TIMESTAMP'></textarea>
+<div class="controls">
+<button id="generate" type="button">Generar Vista</button>
+<button id="save" type="button" class="secondary">Guardar en historial
+(save)</button>
+<button id="export" type="button" class="secondary">Exportar
+.txt</button>
+<button id="exportJson" type="button" class="secondary">Exportar
+.json</button>
+<button id="verifyAll" type="button" class="secondary">Verificar
+historial</button>
+<button id="closeDay" type="button">Cerrar jornada (Daily
+Report)</button>
+<button id="clear" type="button" class="secondary">Limpiar</button>
+</div>
+</form>
+<section style="margin-top:14px">
+<h3>Vista previa</h3>
+<pre id="preview">(aún no generado)</pre>
+</section><section class="history" style="margin-top:12px">
+<h3>Historial guardado (local)</h3>
+<div id="histList"></div>
+</section>
+</section>
+<aside class="side">
+<div style="background:#fff;padding:10px;border-radius:8px;box-shadow:0 0 0
+1px #f1f1f1 inset">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<strong>Panel rápido</strong>
+<span class="small">v0.5</span>
+</div>
+<div style="margin-top:8px">
+<div class="small">SEQ_ID actual: <span id="seqCurrent">-</span></div>
+<div class="small" style="margin-top:6px">Último HASH: <span
+id="lastHash">-</span></div>
+</div>
+<hr style="margin:10px 0" />
+<div>
+<label style="margin:0">Glosario rápido</label>
+<div class="small" id="glossary">
+TYPE: Unidad semántica. <br/>
+HASH: SHA-256 del texto. <br/>
+SEQ_ID: contador lógico.
+</div>
+<button id="exportAllJson" class="secondary" style="margin-
+top:8px;width:100%">Exportar historial (.json)</button>
+</div>
+</div>
+<div style="margin-top:12px;background:#fff;padding:10px;border-radius:8px">
+<strong>Instrucciones rápidas</strong>
+<ol class="small">
+<li>Rellená encabezado y cuerpo.</li>
+<li>Generá vista, Guardá (save) — SEQ_ID incrementa y se calcula
+HASH.</li>
+<li>Usá "Verificar historial" para recalcular hashes y detectar
+alteraciones.</li>
+<li>Cerrar jornada descarga el informe del día.</li>
+</ol>
+</div>
+</aside>
+</main>
+<footer>
+<div class="small">Los mensajes se guardan en localStorage del navegador. Para
+máxima trazabilidad migra a backend (Apache/MySQL) y registra IP/host.</div>
+</footer>
+<script>
+// ---------- utilidades crypto / fecha ----------
+const $ = id => document.getElementById(id);
+function buf2hex(buffer) {
+const bytes = new Uint8Array(buffer);
+return Array.from(bytes).map(b => b.toString(16).padStart(2,'0')).join('');
+}async function sha256Hex(str) {
+const enc = new TextEncoder();
+const data = enc.encode(str);
+const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+return buf2hex(hashBuffer);
+}
+function isoNow(useLocal=false){
+const d = new Date();
+if(!useLocal){
+return d.toISOString().replace(/\.\d{3}Z$/,'Z');
+} else {
+// construir ISO con offset: YYYY-MM-DDTHH:mm:ss±HH:MM
+const tzOffsetMin = -d.getTimezoneOffset();
+const sign = tzOffsetMin >= 0 ? '+' : '-';
+const absMin = Math.abs(tzOffsetMin);
+const hh = String(Math.floor(absMin/60)).padStart(2,'0');
+const mm = String(absMin%60).padStart(2,'0');
+const base = new Date(d.getTime() -
+d.getTimezoneOffset()*60000).toISOString().replace(/\.\d{3}Z$/,'');
+return `${base}${sign}${hh}:${mm}`;
+}
+}
+// ---------- SEQ_ID ----------
+function getSeq() {
+const s = Number(localStorage.getItem('neurobit_seq') || '0');
+return s;
+}
+function bumpSeq() {
+const next = getSeq() + 1;
+localStorage.setItem('neurobit_seq', String(next));
+updateSeqUI();
+return next;
+}
+function updateSeqUI(){
+$('seqCurrent').textContent = getSeq() || '-';
+}
+// ---------- builder core ----------
+async function buildMessageObject(forSave=false){
+const useLocal = $('useLocalTime').checked;
+const timezone = (() => {
+if (useLocal) {
+const d = new Date();
+const tzOffsetMin = -d.getTimezoneOffset();
+const sign = tzOffsetMin >= 0 ? '+' : '-';
+const absMin = Math.abs(tzOffsetMin);
+return `${sign}${String(Math.floor(absMin/60)).padStart(2,'0')}:$
+{String(absMin%60).padStart(2,'0')}`;
+}
+return 'Z';
+})();
+const header = {
+MESSAGE_ID: $('messageId').value || 'A1',
+TIMESTAMP: isoNow(useLocal),
+TIMEZONE: timezone,ORIGEN: $('origen').value || '',
+DESTINO: $('destino').value || '',
+PERSPECTIVA: $('persp').value,
+CONTEXT: $('context').value || '',
+TAGS: ($('tags').value || '').split(',').map(t=>t.trim()).filter(Boolean),
+VERSION: $('version').value || 'v0.1',
+COMPILADOR_ASISTENTE: $('compiler').value || ''
+};
+// attach PREV_TIMESTAMP if provided
+const prevT = $('prevTimestamp').value.trim();
+if(prevT) header.PREV_TIMESTAMP = prevT;
+// if forSave -> assign SEQ_ID (bump) here, otherwise show current
+if(forSave){
+header.SEQ_ID = bumpSeq();
+} else {
+header.SEQ_ID = getSeq() || 0;
+}
+const bodyText = $('body').value || '';
+// build visible fullText in the legacy header+body format (for human export &
+hashing)
+const headerLines = [];
+for(const [k,v] of Object.entries(header)){
+if(Array.isArray(v)) headerLines.push(`${k}: ${v.join(',')}`);
+else headerLines.push(`${k}: ${v}`);
+}
+const fullText = headerLines.join('\n') + '\n\n' + '{\n' +
+bodyText.split('\n').map(line=>' '+line).join('\n') + '\n}';
+// if there's responseToLast, include it as separate block appended for
+hashing/trace
+const resp = $('responseToLast').value.trim();
+const augmentedFullText = resp ? fullText + '\n\n/* RESPONSE_LINKED */\n' +
+resp : fullText;
+const hash = await sha256Hex(augmentedFullText);
+// add HASH
+header.HASH = hash;
+}
+return { header, bodyText, fullText: augmentedFullText, humanText: fullText };
+async function refreshPreview(){
+const { header, humanText, fullText } = await buildMessageObject(false);
+$('preview').textContent = fullText;
+$('lastHash').textContent = header.HASH ? header.HASH.slice(0,16) + '...' :
+'-';
+}
+function saveToHistoryObject(obj){
+const h = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+h.push(obj);
+localStorage.setItem('neurobit_history', JSON.stringify(h));
+}
+async function saveMessage(){const { header, bodyText, fullText, humanText } = await
+buildMessageObject(true);
+const msgObj = {
+MESSAGE_ID: header.MESSAGE_ID,
+TIMESTAMP: header.TIMESTAMP,
+TIMEZONE: header.TIMEZONE,
+SEQ_ID: header.SEQ_ID,
+HASH: header.HASH,
+COMPILADOR_ASISTENTE: header.COMPILADOR_ASISTENTE,
+text: fullText,
+// hashed text (augmented)
+humanText: humanText, // pure header+body for human export
+body: bodyText,
+savedAt: new Date().toISOString()
+};
+saveToHistoryObject(msgObj);
+loadHistory();
+// copy to clipboard with tiny delay for reliability
+setTimeout(()=> navigator.clipboard.writeText(humanText).catch(()=>{}), 250);
+alert('Guardado con HASH: ' + header.HASH.slice(0,16) + '... · SEQ_ID: ' +
+header.SEQ_ID);
+}
+async function exportTxt(){
+const { header, humanText } = await buildMessageObject(false);
+const blob = new Blob([humanText],{type:'text/plain;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = (header.MESSAGE_ID || 'A1') + '.txt';
+a.click();
+}
+async function exportJson(){
+const { header, bodyText } = await buildMessageObject(false);
+const json = { ...header, BODY_RAW: bodyText };
+const blob = new Blob([JSON.stringify(json,null,2)],
+{type:'application/json;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = (header.MESSAGE_ID || 'A1') + '.json';
+a.click();
+}
+// ---------- history UI & verification ----------
+async function loadHistory(){
+const h = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const container = $('histList');
+container.innerHTML = '';
+if(!h.length) { container.innerHTML = '<div class="small">(vacío)</div>';
+return; }
+// mostrar en orden inverso
+h.slice().reverse().forEach((item,idxRev)=>{
+// idxRev is reversed index; compute real index
+const idx = h.length - 1 - idxRev;
+const el = document.createElement('div');
+el.className = 'msg';
+el.innerHTML = `<div class="meta"><div><strong>${item.MESSAGE_ID}</strong>
+<span class="small">SEQ:${item.SEQ_ID||'-'}</span> <span class="small"> $
+{item.TIMESTAMP} ${item.TIMEZONE||''}</span></div><div><span class="small">Saved: $
+{item.savedAt || '-'}</span></div></div><pre style="margin:8px 0;white-space:pre-wrap">${item.humanText ||
+item.text}</pre>
+<div style="display:flex;gap:8px;align-items:center">
+<button data-idx='${idx}' class='btn-export'>Export</button>
+<button data-idx='${idx}' class='btn-copy'>Copiar</button>
+<button data-idx='${idx}' class='btn-check'>Verificar</button>
+<button data-idx='${idx}' class='btn-json'>Export JSON</button>
+</div>
+<div class="small">HASH: <span id="h_${idx}">${item.HASH}</span></div>
+<div id="alert_${idx}" class="small" style="color:#b30000;margin-
+top:6px;display:none">ALERTA: Texto modificado desde que se guardó (HASH no
+coincide)</div>
+`;
+container.appendChild(el);
+});
+// bind events
+container.querySelectorAll('.btn-
+copy').forEach(btn=>btn.addEventListener('click',async ev=>{
+const idx = Number(ev.currentTarget.dataset.idx);
+const harr = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const item = harr[idx];
+await navigator.clipboard.writeText(item.humanText || item.text);
+alert('Copiado al portapapeles');
+}));
+container.querySelectorAll('.btn-
+export').forEach(btn=>btn.addEventListener('click',ev=>{
+const idx = Number(ev.currentTarget.dataset.idx);
+const harr = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const item = harr[idx];
+const blob = new Blob([item.humanText || item.text],
+{type:'text/plain;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = item.MESSAGE_ID + '.txt';
+a.click();
+}));
+container.querySelectorAll('.btn-
+json').forEach(btn=>btn.addEventListener('click',ev=>{
+const idx = Number(ev.currentTarget.dataset.idx);
+const harr = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const item = harr[idx];
+const blob = new Blob([JSON.stringify(item,null,2)],
+{type:'application/json;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = item.MESSAGE_ID + '.json';
+a.click();
+}));
+container.querySelectorAll('.btn-
+check').forEach(btn=>btn.addEventListener('click',async ev=>{
+const idx = Number(ev.currentTarget.dataset.idx);
+const hav = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const item = hav[idx];
+const recomputed = await sha256Hex(item.text);
+const alertEl = document.getElementById('alert_' + idx);if(recomputed === item.HASH){
+alert('VERIFICACIÓN OK — hash coincide');
+if(alertEl) alertEl.style.display = 'none';
+} else {
+alert('ALERTA — el texto ha sido modificado desde que se guardó. HASH no
+coincide.\nGuardado: '+item.HASH+'\nRecalc: '+recomputed);
+if(alertEl) { alertEl.style.display = 'block'; alertEl.textContent =
+'ALERTA: Texto modificado desde que se guardó (HASH no coincide)'; }
+}
+}));
+}
+// auto verify all on load to flag modifications
+await autoVerifyAll();
+async function autoVerifyAll(){
+const h = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+for(let i=0;i<h.length;i++){
+const item = h[i];
+const recomputed = await sha256Hex(item.text);
+const alertEl = document.getElementById('alert_' + i);
+if(recomputed !== item.HASH){
+// mark visual by setting a wrapper class (search for the corresponding
+.msg by scanning)
+// simpler: set alert element visible if exists, else continue
+if(alertEl){ alertEl.style.display = 'block'; alertEl.textContent =
+'ALERTA: Texto modificado desde que se guardó (HASH no coincide)'; }
+} else {
+if(alertEl) alertEl.style.display = 'none';
+}
+}
+}
+// ---------- close of day report ----------
+async function closeDayReport(){
+const h = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+if(!h.length){ alert('Historial vacío'); return; }
+// decide day boundary in local date (YYYY-MM-DD) using savedAt local
+representation
+const today = new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
+const lines = [];
+lines.push('Daily Report · ' + today);
+lines.push('Generated: ' + new Date().toISOString());
+lines.push('----------------------------------------\n');
+let count=0;
+for(const item of h){
+const savedLocal = new Date(item.savedAt);
+const savedDate = savedLocal.toLocaleDateString('en-CA');
+if(savedDate === today){
+count++;
+const recomputed = await sha256Hex(item.text);
+const ok = recomputed === item.HASH;
+lines.push(`MESSAGE_ID: ${item.MESSAGE_ID} · SEQ_ID: ${item.SEQ_ID || '-'}
+· TIMESTAMP: ${item.TIMESTAMP} ${item.TIMEZONE || ''}`);
+lines.push(`HASH: ${item.HASH} · verify: ${ok ? 'OK' : 'MISMATCH'}`);
+lines.push('---');
+lines.push(item.humanText || item.text);
+lines.push('\n');
+}}
+if(count===0){
+alert('No se encontraron mensajes guardados en la fecha local de hoy: ' +
+today);
+return;
+}
+const blob = new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = `Daily_Report_${today}.txt`;
+a.click();
+}
+// ---------- export full history json ----------
+function exportAllHistoryJson(){
+const h = JSON.parse(localStorage.getItem('neurobit_history')||'[]');
+const blob = new Blob([JSON.stringify(h,null,2)],
+{type:'application/json;charset=utf-8'});
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = `neurobit_history_${new Date().toISOString().slice(0,10)}.json`;
+a.click();
+}
+// ---------- wiring UI ----------
+document.addEventListener('DOMContentLoaded',()=>{
+updateSeqUI();
+$('generate').addEventListener('click',()=>refreshPreview());
+$('save').addEventListener('click',()=>saveMessage());
+$('export').addEventListener('click',()=>exportTxt());
+$('exportJson').addEventListener('click',()=>exportJson());
+$('verifyAll').addEventListener('click',()=>autoVerifyAll());
+$('closeDay').addEventListener('click',()=>closeDayReport());
+$('clear').addEventListener('click',()=>{
+$('messageId').value='';$('origen').value='';$('destino').value='';$
+('tags').value='';$('version').value='v0.1';
+$('body').value='';$('compiler').value='';$('prevTimestamp').value='';$
+('responseToLast').value='';
+refreshPreview();
+});
+$('exportAllJson').addEventListener('click',()=>exportAllHistoryJson());
+// defaults
+$('messageId').value='A1';
+$('version').value='v0.1';
+$('body').value = 'HEADER_NOTE: \"Inicio de mensaje\" ;\\nOBJETIVO: \"Probar
+builder v0.5\" ;\\nACCIONES: [ (AN1) DESCRIPCION: \"...\" ; ]
+;\\nRESULT_EXPECTED: \"ACK\" ;';
+refreshPreview();
+loadHistory();
+// live preview binds
+['messageId','origen','destino','persp','context','tags','version','body','useLocal
+Time','compiler','prevTimestamp','responseToLast'].forEach(id=>{
+if($(id)) $(id).addEventListener('input',refreshPreview);
+});
+});
+</script></body>
+</html>

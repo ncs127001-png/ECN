@@ -1,0 +1,50 @@
+# config/platforms/gemini.yaml
+window_name: "Gemini"
+url: "https://gemini.google.com"
+
+sequences:
+  copy_last_response:
+    - type: delay
+      ms: 500
+    - type: key
+      keycode: KEY_LEFTSHIFT
+    - type: key
+      keycode: KEY_TAB
+    - type: key
+      keycode: KEY_TAB
+    - type: key
+      keycode: KEY_LEFTSHIFT
+    - type: delay
+      ms: 200
+    - type: key
+      keycode: KEY_ENTER
+    - type: clipboard_read
+
+copy_navigation:
+  tabs: 2
+  shift: true
+
+---
+# config/platforms/chatgpt.yaml
+window_name: "ChatGPT"
+url: "https://chatgpt.com"
+
+sequences:
+  copy_last_response:
+    - type: delay
+      ms: 500
+    - type: key
+      keycode: KEY_TAB
+    - type: key
+      keycode: KEY_TAB
+    - type: key
+      keycode: KEY_TAB
+    - type: delay
+      ms: 200
+    - type: key
+      keycode: KEY_ENTER
+    - type: clipboard_read
+
+copy_navigation:
+  tabs: 3
+  shift: false

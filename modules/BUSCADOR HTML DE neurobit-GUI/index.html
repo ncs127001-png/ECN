@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 Neurobit GUI - Herramientas Soberanas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">🧠</div>
+                <div class="logo-text">NEUROBIT GUI</div>
+            </div>
+            <p class="subtitle">Plataforma local para procesamiento de conocimiento sin dependencia de la nube</p>
+            <div class="api-status" id="apiStatus">
+                <span class="status-indicator offline"></span>
+                <span class="status-text">Verificando conexión con API...</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="tool-card">
+                <div class="tool-title">
+                    <h2>🔍 Buscador Recursivo de Archivos</h2>
+                </div>
+                <p class="tool-description">
+                    Sube una lista .txt con nombres de archivos y recupéralos de cualquier carpeta de tu sistema.
+                    Ideal para recuperar archivos dispersos en diferentes directorios.
+                </p>
+                
+                <form id="searchForm">
+                    <div class="form-group">
+                        <label for="fileList">Lista de archivos a buscar (uno por línea)</label>
+                        <textarea id="fileList" placeholder="documento.pdf&#10;imagen.jpg&#10;reporte.txt"></textarea>
+                        <div class="button-group">
+                            <button type="button" class="btn secondary-btn" id="sampleListBtn">📝 Ejemplo de lista</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sourceDir">Directorio de búsqueda (ej: /home/usuario/documentos)</label>
+                        <input type="text" id="sourceDir" placeholder="/home/usuario">
+                        <div class="button-group">
+                            <button type="button" class="btn secondary-btn" id="defaultSourceBtn">🏠 Directorio personal</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destFolder">Nombre de la carpeta destino</label>
+                        <input type="text" id="destFolder" placeholder="archivos_recuperados_20251221">
+                    </div>
+                    
+                    <button type="submit" class="btn primary-btn pulse">
+                        ✨ EMPEZAR BÚSQUEDA RECURSIVA
+                    </button>
+                </form>
+                
+                <div class="result-container" id="searchResult">
+                    <!-- Los resultados se mostrarán aquí dinámicamente -->
+                </div>
+            </section>
+            
+            <section class="tool-card">
+                <div class="tool-title">
+                    <h2>📚 Generador de Compendios Inteligentes</h2>
+                </div>
+                <p class="tool-description">
+                    Procesa PDFs, TXTs y JSONs en un solo documento con OCR para escaneados.
+                    Extrae texto e imágenes manteniendo estructura y metadatos.
+                </p>
+                
+                <form id="compendiumForm">
+                    <div class="form-group">
+                        <label for="compendiumSource">Directorio de documentos (ej: /home/usuario/neurobit-inputs)</label>
+                        <input type="text" id="compendiumSource" placeholder="/home/usuario/documentos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="compendiumName">Nombre del compendio</label>
+                        <input type="text" id="compendiumName" placeholder="compendio_neurobit">
+                    </div>
+                    
+                    <button type="submit" class="btn primary-btn" disabled>
+                        💫 GENERAR COMPENDIO (próximamente)
+                    </button>
+                </form>
+                
+                <div class="result-container" id="compendiumResult">
+                    <p class="tip">Esta función estará disponible en la próxima versión. Por ahora, usa el script directamente desde la terminal.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>NEUROBIT GUI v1.0 • Herramienta soberana para procesamiento de conocimiento • Apache2 + Flask + Python</p>
+            <p>Servicio API: neurobit-api.service • Estado: <span id="serviceStatus">Verificando...</span></p>
+        </footer>
+    </div>
+
+    <script src="js/file-search.js"></script>
+    <script>
+        // Verificar estado del servicio al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/service-status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('serviceStatus').textContent = 
+                        data.active ? 'Activo ✅' : 'Inactivo ❌';
+                })
+                .catch(() => {
+                    document.getElementById('serviceStatus').textContent = 'Error al verificar';
+                });
+        });
+    </script>
+</body>
+</html>

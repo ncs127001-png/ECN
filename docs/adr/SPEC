@@ -1,0 +1,31 @@
+📜 ESPECIFICACIÓN TÉCNICA Y ONTOLÓGICA (SPEC) - ECN
+1. IDENTIDAD MFN (Auto-organización)
+
+    Módulo: [Nombre del archivo, ej: neurobit_api.py]
+    MFN_LOCATION: [Carpeta destino, ej: core/]
+    MFN_LEVEL: [1=Core, 2=Módulos, 3=Herramientas]
+    Versión: [ej: 2.0]
+
+2. PROPÓSITO (El Verbo)
+
+    Función Ontológica: [¿Qué rol cumple en la Estación Central? ej: Orquestar la comunicación entre el NODO_SEMILLA y los daemons]
+    Principio de Operación: [ej: Localhost first, Append-only, Zero-dependencies]
+
+3. ARQUITECTURA DE FLUJO
+
+    Entradas (Semillas): [¿Qué recibe? ej: Peticiones HTTP, eventos de inotify, señales de teclado]
+    Salidas (Frutos): [¿Qué genera? ej: Respuestas JSON, logs en memoria_eva.jsonl, comandos HID]
+    Endpoints / Interfaz: [Lista de rutas o métodos públicos, ej: GET /health, POST /analyze]
+
+4. ECOSISTEMA Y ADAPTACIÓN
+
+    Dependencias Críticas: [Librerías o módulos internos que necesita]
+    Adaptador Universal: [¿Requiere un adaptador para conectarse a la API? ej: Sí, expone funciones main() o process()]
+    Módulos Vinculados: [Con qué otros módulos habla directamente]
+
+5. MEMORIA Y PERSISTENCIA (El Arca)
+
+    Tipo de Registro: [Append-only (JSONL), Volátil (RAM), Config (YAML)]
+    Archivos que gestiona: [Rutas relativas de los archivos que lee/escribe]
+
+

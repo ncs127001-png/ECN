@@ -1,0 +1,606 @@
+{
+  "api_imports": [
+    "__future__",
+    "json",
+    "threading",
+    "subprocess",
+    "os",
+    "re",
+    "sys",
+    "datetime",
+    "uuid",
+    "pathlib",
+    "core.coherence_filter",
+    "core",
+    "core",
+    "core.agents.simon",
+    "core.matrix_13x13",
+    "core.llm.client",
+    "core.event_dispatcher",
+    "importlib",
+    "core.agents_registry",
+    "core.members_registry",
+    "atexit",
+    "flask",
+    "flask_socketio",
+    "jsonschema",
+    "yaml",
+    "flask_cors",
+    "os"
+  ],
+  "modules_status": [
+    {
+      "module": "core.message_validator",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/message_validator.py"
+    },
+    {
+      "module": "core.sos_path_fixer",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sos_path_fixer.py"
+    },
+    {
+      "module": "core.neurobit_declarator",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/neurobit_declarator.py"
+    },
+    {
+      "module": "core.transmutador_iching",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/transmutador_iching.py"
+    },
+    {
+      "module": "core.sos_module_linker_tester",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sos_module_linker_tester.py"
+    },
+    {
+      "module": "core.agents_registry",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/agents_registry.py"
+    },
+    {
+      "module": "core.Port_matrix_13x13",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/Port_matrix_13x13.py"
+    },
+    {
+      "module": "core.matrix_scheduler",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/matrix_scheduler.py"
+    },
+    {
+      "module": "core.neurobit_declarator_REVISAR",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/neurobit_declarator_REVISAR.py"
+    },
+    {
+      "module": "core.relieve_bridge",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/relieve_bridge.py"
+    },
+    {
+      "module": "core.sala_tag_parser",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sala_tag_parser.py"
+    },
+    {
+      "module": "core.path_resolver",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/path_resolver.py"
+    },
+    {
+      "module": "core.charset_renderer",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/charset_renderer.py"
+    },
+    {
+      "module": "core.pcf_codec",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/pcf_codec.py"
+    },
+    {
+      "module": "core.session_context",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/session_context.py"
+    },
+    {
+      "module": "core.sala_ronda_manager",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sala_ronda_manager.py"
+    },
+    {
+      "module": "core.sos_dynamic_tester",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sos_dynamic_tester.py"
+    },
+    {
+      "module": "core.members_registry",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/members_registry.py"
+    },
+    {
+      "module": "core.gate_matrix",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/gate_matrix.py"
+    },
+    {
+      "module": "core.sala_ronda_minimal",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/sala_ronda_minimal.py"
+    },
+    {
+      "module": "core.matrix_13x13",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/matrix_13x13.py"
+    },
+    {
+      "module": "core.llm.coherence_watchdog",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/llm/coherence_watchdog.py"
+    },
+    {
+      "module": "core.llm.ollama_bridge",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/llm/ollama_bridge.py"
+    },
+    {
+      "module": "core.llm.human_anchored_prompt",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "core/llm/human_anchored_prompt.py"
+    },
+    {
+      "module": "modules.rebuild_from_spec",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/rebuild_from_spec.py"
+    },
+    {
+      "module": "modules.procesador_inverso_neurobit",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/procesador_inverso_neurobit.py"
+    },
+    {
+      "module": "modules.neurobit_gnome_widget",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/neurobit_gnome_widget.py"
+    },
+    {
+      "module": "modules.compendio_inteligente_v23",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/compendio_inteligente_v23.py"
+    },
+    {
+      "module": "modules.centinela_monitor",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/centinela_monitor.py"
+    },
+    {
+      "module": "modules.reconstruir_proyecto_desde_compendio",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/reconstruir_proyecto_desde_compendio.py"
+    },
+    {
+      "module": "modules.numerador_mensajes",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/numerador_mensajes.py"
+    },
+    {
+      "module": "modules.buscador_eva",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/buscador_eva.py"
+    },
+    {
+      "module": "modules.fragmentar",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/fragmentar.py"
+    },
+    {
+      "module": "modules.msg_sequencer_from_neurobit_central.msg_sequencer",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/msg_sequencer_from_neurobit_central/msg_sequencer.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.kcs_iching_bridge",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/kcs_iching_bridge.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_torsion",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_torsion.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_binarizer",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_binarizer.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.mfn3",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/mfn3.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_iching_bridge",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_iching_bridge.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_pipeline",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_pipeline.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_recursive",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_recursive.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.mfn2",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/mfn2.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_unificador",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_unificador.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.mfn",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/mfn.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.neurobit_chroma",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/neurobit_chroma.py"
+    },
+    {
+      "module": "modules.neurobit_file_explorer.concatenator",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/neurobit_file_explorer/concatenator.py"
+    },
+    {
+      "module": "modules.neurobit_file_explorer.renombrador",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/neurobit_file_explorer/renombrador.py"
+    },
+    {
+      "module": "modules.neurobit_file_explorer.sorter",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/neurobit_file_explorer/sorter.py"
+    },
+    {
+      "module": "modules.neurobit_file_explorer.renamer",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/neurobit_file_explorer/renamer.py"
+    },
+    {
+      "module": "modules.neurobit_file_explorer.explorer",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/neurobit_file_explorer/explorer.py"
+    },
+    {
+      "module": "modules.chat_tools.neurobit_splitter_v2",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/chat_tools/neurobit_splitter_v2.py"
+    },
+    {
+      "module": "modules.chat_tools.neurobit_import_transformer_v3",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/chat_tools/neurobit_import_transformer_v3.py"
+    },
+    {
+      "module": "modules.sala_app_from_neurobit_vm.sala_app",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/sala_app_from_neurobit_vm/sala_app.py"
+    },
+    {
+      "module": "modules.modulo_integrador_from_neurobit_central.modulo_integrador",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/modulo_integrador_from_neurobit_central/modulo_integrador.py"
+    },
+    {
+      "module": "modules.modulo_integrador_from_neurobit_central.modulo_integrador_RECURSIVO",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/modulo_integrador_from_neurobit_central/modulo_integrador_RECURSIVO.py"
+    },
+    {
+      "module": "modules.msg_builder_from_neurobit_central.msg_builder",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/msg_builder_from_neurobit_central/msg_builder.py"
+    },
+    {
+      "module": "modules.simon_validator_from_neurobit_central.simon_validator",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/simon_validator_from_neurobit_central/simon_validator.py"
+    },
+    {
+      "module": "modules.modulos_a_integrar.contadorbinariopulseneurobitronico.neurobit_pulse_gui",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "modules/modulos_a_integrar/contadorbinariopulseneurobitronico/neurobit_pulse_gui.py"
+    },
+    {
+      "module": "modules.BUSCADOR HTML DE neurobit-GUI.backend.file_search",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/BUSCADOR HTML DE neurobit-GUI/backend/file_search.py"
+    },
+    {
+      "module": "modules.BUSCADOR HTML DE neurobit-GUI.backend.api",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/BUSCADOR HTML DE neurobit-GUI/backend/api.py"
+    },
+    {
+      "module": "modules.BUSCADOR HTML DE neurobit-GUI.backend.compendium_v22",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "modules/BUSCADOR HTML DE neurobit-GUI/backend/compendium_v22.py"
+    },
+    {
+      "module": "tools.extractor_por_categoria",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/extractor_por_categoria.py"
+    },
+    {
+      "module": "tools.clean_failed_agents",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/clean_failed_agents.py"
+    },
+    {
+      "module": "tools.ingest_compendium",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/ingest_compendium.py"
+    },
+    {
+      "module": "tools.session_hash",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/session_hash.py"
+    },
+    {
+      "module": "tools.generate_path_map",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/generate_path_map.py"
+    },
+    {
+      "module": "tools.neurobit_central_station_gui",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/neurobit_central_station_gui.py"
+    },
+    {
+      "module": "tools.compile_selector",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/compile_selector.py"
+    },
+    {
+      "module": "tools.fragment_state_server",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/fragment_state_server.py"
+    },
+    {
+      "module": "tools.SETUP.seed_memoria",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/SETUP/seed_memoria.py"
+    },
+    {
+      "module": "tools.REVIEW.reconstruir_desde_especificacion",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "tools/REVIEW/reconstruir_desde_especificacion.py"
+    },
+    {
+      "module": "tools.HELPERS.add_yaml_meta",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "tools/HELPERS/add_yaml_meta.py"
+    },
+    {
+      "module": "tools.HELPERS.merge_parts",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/HELPERS/merge_parts.py"
+    },
+    {
+      "module": "tools.EXTRACTION.extract_mhtml_conversation",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/EXTRACTION/extract_mhtml_conversation.py"
+    },
+    {
+      "module": "tools.EXTRACTION.extract_code_blocks",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/EXTRACTION/extract_code_blocks.py"
+    },
+    {
+      "module": "tools.EXTRACTION.extract_code_blocks_with_speakers",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/EXTRACTION/extract_code_blocks_with_speakers.py"
+    },
+    {
+      "module": "tools.LEGACY.GENERADOR_AUDIO_RESUMEN",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/LEGACY/GENERADOR_AUDIO_RESUMEN.py"
+    },
+    {
+      "module": "tools.DEV_TOOLS.1_descubrimiento",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/DEV_TOOLS/1_descubrimiento.py"
+    },
+    {
+      "module": "tools.DEV_TOOLS.2b_filtro_automatico",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/DEV_TOOLS/2b_filtro_automatico.py"
+    },
+    {
+      "module": "tools.DEV_TOOLS.2_comparador",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/DEV_TOOLS/2_comparador.py"
+    },
+    {
+      "module": "tools.DEV_TOOLS.3_integrador",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/DEV_TOOLS/3_integrador.py"
+    },
+    {
+      "module": "tools.DEV_TOOLS.descompilador_extension",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/DEV_TOOLS/descompilador_extension.py"
+    },
+    {
+      "module": "tools.SERVERS.fragment_server",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/SERVERS/fragment_server.py"
+    },
+    {
+      "module": "tools.UTILITIES.constructor_workspace",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/UTILITIES/constructor_workspace.py"
+    },
+    {
+      "module": "tools.UTILITIES.migrador_neurobit",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/UTILITIES/migrador_neurobit.py"
+    },
+    {
+      "module": "tools.UTILITIES.neurobit_pdf_splitter",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/UTILITIES/neurobit_pdf_splitter.py"
+    },
+    {
+      "module": "tools.UTILITIES.project_integrator",
+      "linked_to_api": false,
+      "syntax_ok": true,
+      "path": "tools/UTILITIES/project_integrator.py"
+    },
+    {
+      "module": "tools.UTILITIES.inyector_esqueletos",
+      "linked_to_api": true,
+      "syntax_ok": true,
+      "path": "tools/UTILITIES/inyector_esqueletos.py"
+    }
+  ],
+  "orphans": [
+    "modules.procesador_inverso_neurobit",
+    "modules.neurobit_gnome_widget",
+    "modules.compendio_inteligente_v23",
+    "modules.centinela_monitor",
+    "modules.numerador_mensajes",
+    "modules.buscador_eva",
+    "modules.fragmentar",
+    "modules.msg_sequencer_from_neurobit_central.msg_sequencer",
+    "modules.chat_tools.neurobit_splitter_v2",
+    "modules.chat_tools.neurobit_import_transformer_v3",
+    "modules.sala_app_from_neurobit_vm.sala_app",
+    "modules.modulo_integrador_from_neurobit_central.modulo_integrador",
+    "modules.modulo_integrador_from_neurobit_central.modulo_integrador_RECURSIVO",
+    "modules.msg_builder_from_neurobit_central.msg_builder",
+    "modules.simon_validator_from_neurobit_central.simon_validator",
+    "modules.BUSCADOR HTML DE neurobit-GUI.backend.file_search",
+    "modules.BUSCADOR HTML DE neurobit-GUI.backend.api",
+    "modules.BUSCADOR HTML DE neurobit-GUI.backend.compendium_v22",
+    "tools.extractor_por_categoria",
+    "tools.clean_failed_agents",
+    "tools.ingest_compendium",
+    "tools.session_hash",
+    "tools.generate_path_map",
+    "tools.neurobit_central_station_gui",
+    "tools.compile_selector",
+    "tools.fragment_state_server",
+    "tools.SETUP.seed_memoria",
+    "tools.HELPERS.merge_parts",
+    "tools.EXTRACTION.extract_mhtml_conversation",
+    "tools.EXTRACTION.extract_code_blocks",
+    "tools.EXTRACTION.extract_code_blocks_with_speakers",
+    "tools.LEGACY.GENERADOR_AUDIO_RESUMEN",
+    "tools.DEV_TOOLS.1_descubrimiento",
+    "tools.DEV_TOOLS.2b_filtro_automatico",
+    "tools.DEV_TOOLS.2_comparador",
+    "tools.DEV_TOOLS.3_integrador",
+    "tools.DEV_TOOLS.descompilador_extension",
+    "tools.SERVERS.fragment_server",
+    "tools.UTILITIES.constructor_workspace",
+    "tools.UTILITIES.migrador_neurobit",
+    "tools.UTILITIES.neurobit_pdf_splitter",
+    "tools.UTILITIES.project_integrator"
+  ],
+  "syntax_errors": []
+}

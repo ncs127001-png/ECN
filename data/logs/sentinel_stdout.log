@@ -1,0 +1,11 @@
+[2026-06-30 22:41:19] 👁️  WORKSPACE SENTINEL v1.3 INICIADO
+[2026-06-30 22:41:19] 📂 Vigilando: /home/gus/inbox
+[2026-06-30 22:41:19]  Solo CREATE | Ignorando: MODIFY, MOVED_TO, quarantine/
+[2026-07-03 00:54:04] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-03 00:54:04] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-03 00:54:04] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-03 00:54:04] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-12 02:04:39] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-12 02:04:39] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-12 02:04:39] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-12 02:04:39] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)

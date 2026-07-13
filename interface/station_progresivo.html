@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📡 Estación Central – Neurobit Progresivo</title>
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       TEMA OSCURO COHERENTE CON NEUROBIT
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --color-bg-primary: #0b0f14;
+      --color-bg-secondary: #0e1418;
+      --color-text-primary: #eef2f7;
+      --color-text-muted: #9aa4b2;
+      --color-accent-primary: #3a6df0;
+      --color-accent-secondary: #22c55e;
+      --color-warn: #f59e0b;
+      --color-error: #ef4444;
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--color-bg-primary);
+      color: var(--color-text-primary);
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER / ENCABEZADO
+       ═══════════════════════════════════════════════════════════ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-title {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .header-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--color-accent-secondary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.2); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       CONTENEDOR PRINCIPAL
+       ═══════════════════════════════════════════════════════════ */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--color-accent-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       FORM / ENTRADA DE MENSAJE
+       ═══════════════════════════════════════════════════════════ */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--border-radius);
+      color: var(--color-text-primary);
+      font-family: inherit;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--color-accent-primary);
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 0 3px rgba(58, 109, 240, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       VALIDACIÓN EN VIVO
+       ═══════════════════════════════════════════════════════════ */
+    .validation-info {
+      display: none;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: var(--border-radius);
+      padding: 12px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .validation-info.active {
+      display: block;
+    }
+
+    .validation-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .validation-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .validation-icon {
+      width: 16px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .validation-icon.ok {
+      color: var(--color-accent-secondary);
+    }
+
+    .validation-icon.warn {
+      color: var(--color-warn);
+    }
+
+    .validation-icon.error {
+      color: var(--color-error);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       BOTONES
+       ═══════════════════════════════════════════════════════════ */
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-accent-primary), #2563eb);
+      color: white;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(58, 109, 240, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-accent-primary);
+      border: 1px solid rgba(58, 109, 240, 0.3);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: rgba(58, 109, 240, 0.1);
+      border-color: var(--color-accent-primary);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       INDICADOR DE ESTADO
+       ═══════════════════════════════════════════════════════════ */
+    .status-message {
+      display: none;
+      padding: 12px 16px;
+      border-radius: var(--border-radius);
+      font-size: 13px;
+      margin-top: 15px;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .status-message.active {
+      display: block;
+    }
+
+    .status-message.success {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: var(--color-accent-secondary);
+    }
+
+    .status-message.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: var(--color-error);
+    }
+
+    .status-message.warning {
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--color-warn);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HISTORIAL
+       ═══════════════════════════════════════════════════════════ */
+    .historial-container {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .historial-entry {
+      background: rgba(0, 0, 0, 0.2);
+      border-left: 3px solid var(--color-accent-primary);
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .historial-entry:hover {
+      background: rgba(0, 0, 0, 0.3);
+      transform: translateX(4px);
+    }
+
+    .historial-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    .historial-entry-number {
+      font-weight: 600;
+      color: var(--color-accent-primary);
+    }
+
+    .historial-entry-time {
+      color: var(--color-text-muted);
+      font-size: 11px;
+    }
+
+    .historial-entry-content {
+      color: var(--color-text-muted);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .historial-entry-preview {
+      max-height: 60px;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SCROLLBAR PERSONALIZADO
+       ═══════════════════════════════════════════════════════════ */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(58, 109, 240, 0.4);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(58, 109, 240, 0.6);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      body {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      button {
+        font-size: 12px;
+        padding: 10px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ENCABEZADO
+     ═══════════════════════════════════════════════════════════ -->
+<div class="header">
+  <div class="header-title">
+    📡 Estación Central
+  </div>
+  <div class="header-status">
+    <div class="status-dot"></div>
+    <span id="statusText">Conectando...</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTENEDOR PRINCIPAL
+     ═══════════════════════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- CARD: NUEVO MENSAJE -->
+  <div class="card">
+    <div class="card-title">
+      ✍️ Nuevo Mensaje
+    </div>
+
+    <form id="messageForm">
+      <!-- Campo: Tu Nombre / Identidad -->
+      <div class="form-group">
+        <label for="senderName">Tu Nombre o Identidad:</label>
+        <input 
+          type="text" 
+          id="senderName" 
+          placeholder="Ej: Deb, TRON, EVA"
+          maxlength="50"
+        >
+      </div>
+
+      <!-- Campo: Sesión -->
+      <div class="form-group">
+        <label for="sessionId">Sesión:</label>
+        <input 
+          type="text" 
+          id="sessionId" 
+          placeholder="Ej: SALA_001"
+          value="SALA_001"
+          maxlength="50"
+        >
+      </div>
+
+      <!-- Campo: Mensaje Principal -->
+      <div class="form-group">
+        <label for="messageContent">Mensaje:</label>
+        <textarea 
+          id="messageContent" 
+          placeholder="Escribe tu mensaje aquí. Será validado automáticamente por SIMON."
+        ></textarea>
+      </div>
+
+      <!-- Validación en Vivo -->
+      <div class="validation-info" id="validationInfo">
+        <div class="validation-item">
+          <span class="validation-icon ok">✓</span>
+          <span>Protocolo: NEUROBIT v2.1</span>
+        </div>
+        <div class="validation-item">
+          <span class="validation-icon ok" id="hashIcon">✓</span>
+          <span>Hash SIMON: <code id="hashValue">-</code></span>
+        </div>
+        <div class="validation-item">
+          <span class="validation-icon ok" id="lengthIcon">✓</span>
+          <span>Longitud: <span id="lengthValue">0</span>/25000 caracteres</span>
+        </div>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="button-group">
+        <button type="submit" class="btn-primary" id="btnSend">
+          🚀 Enviar Mensaje
+        </button>
+        <button type="button" class="btn-secondary" id="btnClear">
+          🗑️ Limpiar
+        </button>
+      </div>
+
+      <!-- Mensaje de Estado -->
+      <div class="status-message" id="statusMessage"></div>
+    </form>
+  </div>
+
+  <!-- CARD: HISTORIAL -->
+  <div class="card">
+    <div class="card-title">
+      📜 Historial de Mensajes
+      <span id="historialCount" style="font-size: 12px; color: var(--color-text-muted); margin-left: auto;">0 registros</span>
+    </div>
+    <div class="historial-container" id="historialContainer">
+      <div style="text-align: center; color: var(--color-text-muted); padding: 30px;">
+        Sin mensajes aún. ¡Envía el primero!
+      </div>
+    </div>
+    <div class="button-group" style="margin-top: 15px;">
+      <button type="button" class="btn-secondary" id="btnExport" style="flex: 1;">
+        💾 Exportar Historial
+      </button>
+      <button type="button" class="btn-secondary" id="btnClearHistory" style="flex: 1;">
+        🧹 Limpiar Historial
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCRIPTS: ARQUETIPOS + MATRIZ UI + AGENTES + LÓGICA PRINCIPAL
+     ═══════════════════════════════════════════════════════════ -->
+<script src="arquetipos.js"></script>
+<script src="matriz_ui.js"></script>
+<script src="agents_management.js"></script>
+<script src="station_progresivo.js"></script>
+
+</body>
+</html>

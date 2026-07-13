@@ -1,0 +1,20 @@
+{
+  "65": {
+    "char": "A",
+    "code": 65,
+    "matrix": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "metadata": {
+      "test": true
+    },
+    "timestamp": null
+  }
+}

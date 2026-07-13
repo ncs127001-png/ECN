@@ -1,0 +1,32 @@
+# ## ESTACIÓN CENTRAL NEUROBITRÓNICA - MAPA NEMOTÉCNICO v0.3 ##
+estacion_central:
+  nodo_raiz: "AG-001 (NODO_SEMILLA)"
+  pivote_g7: 5                  # Quintaesencia - Centro Inamovible
+  clausura: "127.0.0.1"          # Clausura inmunológica absoluta
+  coordenada_eje: [7, 7]        # Estricto Base 1 (Sin Cero)
+
+modulos_heredados:
+  mu_mcp_server:
+    meridiano: "mu"
+    coordenada_mfn: [7, 7]
+    opcode_gate: "GATE_EAND"     # Osar / Expansión No Lineal
+    funcion_interna: "mcp_server/neurobit_mcp_server.py"
+    nemotecnico: "BASTION_MCP"
+    path: "mcp_server/neurobit_mcp_server.py"
+ 
+  alpha_pic_interface:
+    meridiano: "alpha"
+    coordenada_mfn: [1, 7]       # Equivalente a la primera fila exterior
+    opcode_gate: "GATE_NAND"     # Callar / Inmunidad
+    funcion_interna: "core/neurobit_pic_com.py"
+    nemotecnico: "OPTO_GALVANICO"
+    path: "core/neurobit_pic_com.py"
+
+  mimesis_hid:
+    meridiano: "alpha"
+    coordenada_mfn: [2, 7]
+    opcode_gate: "GATE_XOR"      # Saber / Máscara Simétrica Axial
+    funcion_interna: "daemons/neurobit_hid_daemon.py"
+    nemotecnico: "MIMESIS_HID"
+    path: "daemons/neurobit_hid_daemon.py"
+

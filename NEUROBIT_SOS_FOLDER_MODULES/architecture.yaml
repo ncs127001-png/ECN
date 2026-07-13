@@ -1,0 +1,23 @@
+# SOS Core - Control de Arquitectura Neurobitrónica v0.3 Beta
+sos_project:
+  name: "Sovereign Order Sentinels"
+  version: "0.3b"
+  root_anchor: "SOS_ROOT"
+
+modules:
+  - id: "SOS_NF-HID"
+    path: "NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-HID"
+    description: "Captura de eventos de hardware e inyección soberana"
+    
+  - id: "SOS_NF-KEYLOGGER"
+    path: "NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-KEYLOGGER"
+    description: "Reconstructor e integrador de flujo de teclado"
+    
+  - id: "SOS_NF-DISPATCHER"
+    path: "NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER"
+    description: "Distribuidor y buffer de eventos persistente (Postman)"
+
+  - id: "SOS_NF-ADAPTERS"
+    path: "NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS"
+    description: "Adaptadores de integración y mensajería del ecosistema"
+

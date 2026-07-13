@@ -1,0 +1,10 @@
+name: NEUROBIT MCP server
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: NEUROBIT MCP server
+    command: npx
+    args:
+      - -y
+      - ~/mcp_server/neurobit_mcp_server.py
+    env: {}
