@@ -1,0 +1,639 @@
+Compendio de Archivos del proyecto: 'neurobit_interceptor_folder';
+Analisis_Date: ('2026-06-16 01:22:54')
+N_Archivos_Actuales: (8)
+----------------------------------------------------------------------------
+Arbol de directorios:
+neurobit_interceptor_folder/
+    main.py
+    process_manager.py
+    charset_navigator.py
+    text_navigator.py
+    matrix_editor_gui.py
+    bitmap_extractor.py
+    matrix_mapper.py
+    state_persistence.py
+----------------------------------------------------------------------------
+----------------------LISTA DE ARCHIVOS-----------------------
+____________________________________________________________
+ARCHIVO NRO. : (1)
+Archivo: ('bitmap_extractor.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+from PIL import Image, ImageDraw, ImageFont
+
+class BitmapExtractor:
+    def __init__(self, font_path=None, font_size=24):
+        self.font_size = font_size
+        try:
+            self.font = ImageFont.truetype(font_path, font_size) if font_path else ImageFont.load_default()
+        except IOError:
+            self.font = ImageFont.load_default()
+    
+    def get_char_bitmap_adaptive(self, char, target_resolution=(16, 16)):
+        """
+        Extrae bitmap adaptándose a diferentes resoluciones (8x8, 16x16, etc.)
+        """
+        # Renderizar en tamaño solicitado
+        img = Image.new('L', target_resolution, color=0)
+        draw = ImageDraw.Draw(img)
+        draw.text((0, 0), char, font=self.font, fill=255)
+        
+        # Convertir a matriz binaria
+        width, height = target_resolution
+        bitmap = []
+        for y in range(height):
+            row = []
+            for x in range(width):
+                pixel = img.getpixel((x, y))
+                row.append(1 if pixel > 128 else 0)
+            bitmap.append(row)
+        
+        return bitmap, width, height
+    
+    def get_unicode_bitmap(self, char_code):
+        """
+        Para caracteres UNICODE que pueden ocupar hasta 4 bytes
+        """
+        # Determinar tamaño según rango Unicode
+        if char_code < 0x80:
+            resolution = (8, 8)
+        elif char_code < 0x800:
+            resolution = (16, 16)
+        else:
+            resolution = (16, 16)
+        
+        return self.get_char_bitmap_adaptive(chr(char_code), resolution)
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (2)
+Archivo: ('charset_navigator.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+import tkinter as tk
+
+class CharsetNavigator:
+    def __init__(self, root, extractor, mapper, editor, persistence=None):
+        self.root = root
+        self.extractor = extractor
+        self.mapper = mapper
+        self.editor = editor
+        self.persistence = persistence
+        
+        self.charset_range = range(32, 127)  # ASCII imprimible
+        self.current_index = 0
+        
+        self.root.title("Neurobit Charset Navigator")
+        self.root.geometry("900x150")
+        self.root.configure(bg="#111111")
+        
+        # Frame superior: navegación
+        self.nav_frame = tk.Frame(self.root, bg="#111111")
+        self.nav_frame.pack(fill=tk.X, pady=10)
+        
+        self.prev_btn = tk.Button(self.nav_frame, text="◀ ANT", 
+                                   command=lambda: self.move(-1),
+                                   bg="#333", fg="#00ffcc", font=("Consolas", 12))
+        self.prev_btn.pack(side=tk.LEFT, padx=20)
+        
+        self.char_label = tk.Label(self.nav_frame, text="", 
+                                    font=("Consolas", 24), fg="white", bg="#111111")
+        self.char_label.pack(side=tk.LEFT, expand=True)
+        
+        self.next_btn = tk.Button(self.nav_frame, text="SIG ▶", 
+                                   command=lambda: self.move(1),
+                                   bg="#333", fg="#00ffcc", font=("Consolas", 12))
+        self.next_btn.pack(side=tk.RIGHT, padx=20)
+        
+        # Frame inferior: info
+        self.info_frame = tk.Frame(self.root, bg="#111111")
+        self.info_frame.pack(fill=tk.X)
+        
+        self.code_label = tk.Label(self.info_frame, text="", 
+                                    font=("Consolas", 10), fg="#888", bg="#111111")
+        self.code_label.pack()
+        
+        self.update_display()
+        
+        # Bindings
+        self.root.bind("<Left>", lambda e: self.move(-1))
+        self.root.bind("<Right>", lambda e: self.move(1))
+        self.root.bind("<space>", lambda e: self.save_current_state())
+        
+    def move(self, step):
+        self.current_index += step
+        if self.current_index < 0:
+            self.current_index = len(self.charset_range) - 1
+        elif self.current_index >= len(self.charset_range):
+            self.current_index = 0
+        self.update_display()
+        
+    def update_display(self):
+        char_code = self.charset_range[self.current_index]
+        char = chr(char_code)
+        
+        self.char_label.config(text=f"[{char}]  (Code: {char_code})")
+        self.code_label.config(text=f"ASCII: {char_code} | Bin: {bin(char_code)[2:].zfill(8)} | Presiona ESPACIO para guardar")
+        
+        # Extraer y mapear
+        bitmap, w, h = self.extractor.get_char_bitmap(char)
+        matrix = self.mapper.remap_to_matrix(bitmap, w, h, center=True)
+        self.editor.update_matrix(matrix, char)
+        
+    def save_current_state(self):
+        """Guarda el estado actual de la matriz"""
+        if self.persistence is None:
+            print("⚠️  Persistence no disponible")
+            return
+            
+        char_code = self.charset_range[self.current_index]
+        char = chr(char_code)
+        
+        # Obtener la matriz actual del editor (puede haber sido editada)
+        current_matrix = self.editor.matrix_data
+        
+        # Guardar
+        self.persistence.save_state(char_code, current_matrix)
+        print(f"💾 Estado de '{char}' guardado exitosamente")
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (3)
+Archivo: ('main.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+import tkinter as tk
+from bitmap_extractor import BitmapExtractor
+from matrix_mapper import MatrixMapper
+from matrix_editor_gui import MatrixEditorGUI
+from charset_navigator import CharsetNavigator
+from state_persistence import StatePersistence
+
+class NeurobitApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Neurobit System")
+        self.root.geometry("450x300")
+        self.root.configure(bg="#111111")
+        
+        # Módulos core (font_size inicial)
+        self.current_font_size = 24
+        self.extractor = BitmapExtractor(font_size=self.current_font_size)
+        self.mapper = MatrixMapper(target_size=13)
+        self.persistence = StatePersistence()
+        
+        # Editor GUI (ventana separada)
+        self.editor_root = tk.Toplevel(root)
+        self.editor = MatrixEditorGUI(self.editor_root, 13)
+        
+        # Selector de modo
+        self.mode_frame = tk.Frame(self.root, bg="#111111")
+        self.mode_frame.pack(pady=20)
+        
+        tk.Button(self.mode_frame, text="📝 Navegar Texto", 
+                  command=self.start_text_mode,
+                  bg="#004444", fg="#00ffcc", font=("Consolas", 14),
+                  width=20).pack(pady=5)
+        
+        tk.Button(self.mode_frame, text="🔤 Navegar Charset", 
+                  command=self.start_charset_mode,
+                  bg="#004444", fg="#00ffcc", font=("Consolas", 14),
+                  width=20).pack(pady=5)
+        
+        tk.Button(self.mode_frame, text="💾 Ver Estados Guardados", 
+                  command=self.show_saved_states,
+                  bg="#004444", fg="#00ffcc", font=("Consolas", 14),
+                  width=20).pack(pady=5)
+        
+        # Control de Font Size (NUEVO)
+        self.font_frame = tk.Frame(self.root, bg="#111111")
+        self.font_frame.pack(pady=10)
+        
+        tk.Label(self.font_frame, text="Font Size:", 
+                font=("Consolas", 12), fg="#00ffcc", bg="#111111").pack(side=tk.LEFT, padx=10)
+        
+        self.font_var = tk.IntVar(value=self.current_font_size)
+        self.font_slider = tk.Scale(self.font_frame, from_=8, to=128, 
+                                    orient=tk.HORIZONTAL, 
+                                    variable=self.font_var,
+                                    command=self.update_font_size,
+                                    bg="#111111", fg="#00ffcc",
+                                    troughcolor="#222222",
+                                    highlightthickness=0)
+        self.font_slider.pack(side=tk.LEFT, padx=10)
+        
+        self.font_label = tk.Label(self.font_frame, text=f"{self.current_font_size}px", 
+                                   font=("Consolas", 12), fg="white", bg="#111111")
+        self.font_label.pack(side=tk.LEFT, padx=10)
+        # Bindings para control de Font Size por teclado
+        self.root.bind("<Up>", lambda e: self.adjust_font_size(1))
+        self.root.bind("<Down>", lambda e: self.adjust_font_size(-1))
+        self.root.bind("<Shift-Up>", lambda e: self.adjust_font_size(5))
+        self.root.bind("<Shift-Down>", lambda e: self.adjust_font_size(-5))
+
+        # Variable para el paso de ajuste
+        self.font_step = 1
+    
+    def adjust_font_size(self, delta):
+        """Ajusta el font_size con delta (positivo o negativo)"""
+        new_size = self.current_font_size + delta
+        
+        # Limitar entre 8 y 128
+        if new_size < 8:
+            new_size = 8
+        elif new_size > 128:
+            new_size = 128
+        
+        self.current_font_size = new_size
+        self.extractor.font_size = self.current_font_size
+        self.font_var.set(self.current_font_size)
+        self.font_label.config(text=f"{self.current_font_size}px")
+        
+        print(f"🔤 Font size ajustado a: {self.current_font_size}px (delta: {delta:+d})")
+        
+        # Actualizar la visualización si hay un carácter activo
+        if hasattr(self, 'charset_nav_root') and self.charset_nav_root.winfo_exists():
+            # Forzar actualización del carácter actual
+            self.editor.update_matrix(
+                self.mapper.remap_to_matrix(
+                    *self.extractor.get_char_bitmap(chr(self.charset_range[self.charset_nav_root.current_index])),
+                    center=True
+                ),
+                chr(self.charset_range[self.charset_nav_root.current_index])
+            )
+    
+    def update_font_size(self, value):
+        """Actualiza el font_size del extractor en tiempo real"""
+        self.current_font_size = int(value)
+        self.extractor.font_size = self.current_font_size
+        self.font_label.config(text=f"{self.current_font_size}px")
+        print(f"🔤 Font size actualizado a: {self.current_font_size}px")
+        
+    def start_text_mode(self):
+        try:
+            from text_navigator import TextNavigator
+            self.text_nav_root = tk.Toplevel(self.root)
+            TextNavigator(self.text_nav_root, self.extractor, self.mapper, self.editor, self.persistence)
+        except ImportError:
+            print("⚠️  text_navigator.py no existe aún. Crear el archivo mínimo.")
+            
+    def start_charset_mode(self):
+        self.charset_nav_root = tk.Toplevel(self.root)
+        CharsetNavigator(self.charset_nav_root, self.extractor, self.mapper, self.editor, self.persistence)
+        
+    def show_saved_states(self):
+        states = self.persistence.get_all_states()
+        print(f"\n📊 Estados guardados: {len(states)}")
+        for code, data in states.items():
+            active_bits = sum(sum(row) for row in data['matrix'])
+            print(f"  '{data['char']}' (Code {data['code']}): {active_bits} bits activos")
+        print()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = NeurobitApp(root)
+    root.mainloop()
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (4)
+Archivo: ('matrix_editor_gui.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+import tkinter as tk
+
+class MatrixEditorGUI:
+    def __init__(self, root, matrix_size=13):
+        self.root = root
+        self.matrix_size = matrix_size
+        self.matrix_data = [[0]*matrix_size for _ in range(matrix_size)]
+        self.cell_size = 40
+        self.padding = 20
+        
+        self.root.title("Neurobit Matrix Editor (13x13)")
+        self.root.geometry("600x650")
+        self.root.configure(bg="#1a1a1a")
+        
+        self.canvas = tk.Canvas(self.root, width=600, height=600, bg="#0a0a0a", highlightthickness=0)
+        self.canvas.pack(pady=20)
+        
+        self.info_label = tk.Label(self.root, text="Carácter: -", font=("Consolas", 14), fg="#00ffcc", bg="#1a1a1a")
+        self.info_label.pack()
+
+        # Dibujar la cuadrícula inicial
+        self.draw_grid()
+
+        # Protocolo de cierre limpio (CORREGIDO: fuera del __init__)
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def on_close(self):
+        """Manejar cierre limpio de ventana"""
+        self.root.destroy()
+
+    def draw_grid(self):
+        self.canvas.delete("all")
+        offset = self.padding
+        
+        for row in range(self.matrix_size):
+            for col in range(self.matrix_size):
+                x1 = offset + col * self.cell_size
+                y1 = offset + row * self.cell_size
+                x2 = x1 + self.cell_size
+                y2 = y1 + self.cell_size
+                
+                color = "#00ffcc" if self.matrix_data[row][col] == 1 else "#222222"
+                
+                # Dibujar compartimento
+                self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline="#444444", width=1)
+                
+                # Bind para editar al hacer clic
+                self.canvas.bind("<Button-1>", lambda e, r=row, c=col: self.toggle_cell(r, c))
+
+    def toggle_cell(self, row, col):
+        """Permite trabajar en la matriz: cambia 0 por 1 y viceversa"""
+        self.matrix_data[row][col] = 1 - self.matrix_data[row][col]
+        self.draw_grid()
+
+    def update_matrix(self, new_matrix, char_display):
+        """Carga una nueva matriz desde el extractor"""
+        self.matrix_data = new_matrix
+        self.info_label.config(text=f"Carácter: '{char_display}' | Matriz {self.matrix_size}x{self.matrix_size}")
+        self.draw_grid()
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (5)
+Archivo: ('matrix_mapper.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+class MatrixMapper:
+    def __init__(self, target_size=13):
+        self.target_size = target_size
+        # Umbral base para correspondencia 1:1
+        self.base_threshold = 0.3
+        
+    def center_glyph_in_matrix(self, bitmap, orig_w, orig_h, target_size=13):
+        """
+        Centra el glifo en la matriz 13x13 independientemente del font_size
+        """
+        # Calcular escala manteniendo aspect ratio
+        scale_x = (target_size - 2) / orig_w  # -2 para dejar margen
+        scale_y = (target_size - 2) / orig_h
+        scale = min(scale_x, scale_y)
+        
+        # Nuevo tamaño escalado
+        new_h = int(orig_h * scale)
+        new_w = int(orig_w * scale)
+        
+        return offset_x, offset_y, new_w, new_h
+        
+    def remap_to_matrix_centered(self, bitmap, orig_w, orig_h):
+        """Muestreo con centrado perfecto"""
+        target_matrix = [[0 for _ in range(13)] for _ in range(13)]
+        
+        offset_x, offset_y, new_w, new_h = self.center_glyph_in_matrix(
+            bitmap, orig_w, orig_h, 13
+        )
+        
+        block_w = orig_w / new_w if new_w > 0 else 1
+        block_h = orig_h / new_h if new_h > 0 else 1
+
+        for ty in range(13):
+            for tx in range(13):
+                # Ajustar por offset de centrado
+                src_tx = tx - offset_x
+                src_ty = ty - offset_y
+                
+                if 0 <= src_tx < new_w and 0 <= src_ty < new_h:
+                    x_start = int(src_tx * block_w)
+                    y_start = int(src_ty * block_h)
+                    x_end = int((src_tx + 1) * block_w)
+                    y_end = int((src_ty + 1) * block_h)
+                    
+                    active_pixels = 0
+                    total_pixels = 0
+                    
+                    for y in range(y_start, min(y_end, orig_h)):
+                        for x in range(x_start, min(x_end, orig_w)):
+                            if 0 <= y < len(bitmap) and 0 <= x < len(bitmap[0]):
+                                active_pixels += bitmap[y][x]
+                                total_pixels += 1
+                    
+                    if total_pixels > 0:
+                        coverage = active_pixels / total_pixels
+                        if coverage >= 0.4:  # 40% threshold
+                            target_matrix[ty][tx] = 1
+        
+        return target_matrix
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (6)
+Archivo: ('process_manager.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+#!/usr/bin/env python3
+import subprocess
+import os
+import signal
+import time
+
+def kill_processes():
+    """Mata todos los procesos python3 relacionados con neurobit_interceptor"""
+    print("🔍 Buscando procesos de neurobit_interceptor...")
+    
+    # Método 1: Usar pkill
+    try:
+        result = subprocess.run(
+            ['pkill', '-f', 'python3.*main.py'],
+            capture_output=True,
+            text=True
+        )
+        if result.returncode == 0:
+            print("✅ Procesos terminados con pkill")
+        else:
+            print("⚠️  No se encontraron procesos activos")
+    except Exception as e:
+        print(f"❌ Error con pkill: {e}")
+    
+    # Método 2: Buscar y matar manualmente
+    time.sleep(1)
+    try:
+        result = subprocess.run(
+            ['pgrep', '-f', 'python3.*main.py'],
+            capture_output=True,
+            text=True
+        )
+        if result.stdout.strip():
+            pids = result.stdout.strip().split('\n')
+            for pid in pids:
+                try:
+                    os.kill(int(pid), signal.SIGTERM)
+                    print(f"✅ Proceso {pid} terminado")
+                except ProcessLookupError:
+                    print(f"⚠️  Proceso {pid} ya no existe")
+        else:
+            print("✅ No hay procesos activos")
+    except Exception as e:
+        print(f"❌ Error: {e}")
+
+if __name__ == "__main__":
+    kill_processes()
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (7)
+Archivo: ('state_persistence.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+import json
+from pathlib import Path
+import os
+
+class StatePersistence:
+    def __init__(self, storage_path=None):
+        # Usar ruta ABSOLUTA relativa al directorio del script principal
+        if storage_path is None:
+            # Obtener el directorio donde está main.py
+            base_dir = Path(__file__).parent
+            storage_path = base_dir / "data" / "charset_states.json"
+        
+        self.storage_path = Path(storage_path).resolve()  # Ruta absoluta
+        self.states = {}
+        
+        # Crear directorio si no existe
+        self.storage_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Cargar estados existentes
+        self._load_states()
+        
+        print(f"💾 Persistence initialized:")
+        print(f"   📂 Path: {self.storage_path}")
+        print(f"   📁 Dir exists: {self.storage_path.parent.exists()}")
+        print(f"   📄 File exists: {self.storage_path.exists()}")
+        
+    def _load_states(self):
+        """Carga los estados desde el archivo JSON"""
+        if self.storage_path.exists():
+            try:
+                with open(self.storage_path, 'r', encoding='utf-8') as f:
+                    self.states = json.load(f)
+                print(f"✅ Loaded {len(self.states)} states from disk")
+            except json.JSONDecodeError:
+                print("⚠️  File corrupted, starting fresh")
+                self.states = {}
+            except Exception as e:
+                print(f"⚠️  Error loading: {e}")
+                self.states = {}
+        else:
+            print("🆕 Creating new storage file")
+            self.states = {}
+        
+    def save_state(self, char_code, matrix_13x13, metadata=None):
+        """Guarda el estado de un carácter"""
+        key = str(char_code)
+        
+        self.states[key] = {
+            "char": chr(char_code),
+            "code": char_code,
+            "matrix": matrix_13x13,
+            "metadata": metadata or {},
+            "timestamp": Path(self.storage_path).stat().st_mtime if self.storage_path.exists() else None
+        }
+        
+        # Guardar inmediatamente en disco
+        self._persist()
+        
+        # Verificación explícita
+        print(f"💾 Saved '{chr(char_code)}' (Code {char_code}) → {self.storage_path}")
+        
+    def _persist(self):
+        """Persiste los estados en el archivo JSON"""
+        try:
+            # Asegurar que el directorio existe
+            self.storage_path.parent.mkdir(parents=True, exist_ok=True)
+            
+            # Escribir archivo
+            with open(self.storage_path, 'w', encoding='utf-8') as f:
+                json.dump(self.states, f, indent=2, ensure_ascii=False)
+            
+            # Verificar que se creó
+            if self.storage_path.exists():
+                size = self.storage_path.stat().st_size
+                print(f"   ✅ File written ({size} bytes)")
+            else:
+                print(f"   ❌ File NOT created!")
+                
+        except Exception as e:
+            print(f"   ❌ Error saving: {e}")
+            import traceback
+            traceback.print_exc()
+            
+    def get_all_states(self):
+        """Retorna todos los estados"""
+        return self.states
+    
+    def get_stats(self):
+        """Retorna estadísticas"""
+        return {
+            "total_states": len(self.states),
+            "storage_path": str(self.storage_path),
+            "file_exists": self.storage_path.exists(),
+            "file_size": self.storage_path.stat().st_size if self.storage_path.exists() else 0
+        }
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (8)
+Archivo: ('text_navigator.py');
+Carpeta de ubicación: ('~/neurobit_interceptor_folder/.');
+función: ('Archivo de propósito general - requiere revisión manual')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+import tkinter as tk
+
+class TextNavigator:
+    def __init__(self, root, extractor, mapper, editor, persistence):
+        self.root = root
+        self.root.title("Neurobit Text Navigator")
+        self.root.geometry("800x100")
+        
+        label = tk.Label(root, text=" Text Navigator - En desarrollo", 
+                        font=("Consolas", 14), fg="#00ffcc", bg="#111111")
+        label.pack(pady=30)
+        
+        btn = tk.Button(root, text="Volver", command=root.destroy,
+                       bg="#004444", fg="#00ffcc", font=("Consolas", 12))
+        btn.pack(pady=10)
+
+
+FINAL---------------------------------------------------------------

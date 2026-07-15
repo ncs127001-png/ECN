@@ -9,3 +9,18 @@
 [2026-07-12 02:04:39] 📂 Vigilando: /home/gus/ECN/inbox
 [2026-07-12 02:04:39] 🔔 Solo CREATE | Modo: INTERACTIVO
 [2026-07-12 02:04:39] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-14 00:28:59] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-14 00:28:59] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-14 00:28:59] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-14 00:28:59] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-14 00:41:11] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-14 00:41:11] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-14 00:41:11] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-14 00:41:11] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
+[2026-07-14 00:44:24] 📄 DETECTADO: CREATE → test_modulo.py
+[2026-07-14 00:44:24] ✅ ENRUTADO: test_modulo.py → tools/
+✅ Mapa generado: 259 archivos indexados
+[2026-07-14 17:54:59] 👁️  WORKSPACE SENTINEL v1.5 INICIADO
+[2026-07-14 17:54:59] 📂 Vigilando: /home/gus/ECN/inbox
+[2026-07-14 17:54:59] 🔔 Solo CREATE | Modo: INTERACTIVO
+[2026-07-14 17:54:59] 📋 Soporta: .py, .yaml, .yml, .sh, .md, .c (con #, // o /* */)
