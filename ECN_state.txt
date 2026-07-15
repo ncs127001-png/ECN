@@ -1,0 +1,623 @@
+================================================================================
+                    ESTACIÓN CENTRAL NEUROBITRÓNICA (ECN)
+                           SISTEMA DE ESTADO GLOBAL
+                           v0.1-SOBERANO-LOCAL
+================================================================================
+
+TIMESTAMP_INIT: 2026-07-14T21:43:34
+HOSTNAME: localhost
+SOBERANIA_OPERATIVA: ACTIVADA
+
+================================================================================
+COMPONENTES DE SISTEMA
+================================================================================
+
+1. ENTORNO (.venv)
+   Estado: [PENDIENTE]
+   Ruta: /home/gus/ECN/.venv
+   Función: Aislamiento de dependencias Python
+   Criticidad: CRÍTICA
+   Dependencias: [NINGUNA - BASE]
+
+2. SERVIDOR FLASK (GUI_SERVER)
+   Estado: [PARADO]
+   Puerto: 5001
+   Función: Servidor HTTP para interfaz web
+   Criticidad: CRÍTICA
+   Dependencias: [.venv, Módulo_integrador]
+
+3. MÓDULO_INTEGRADOR (_recursivo)
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/adapters.py
+   Función: Búsqueda recursiva y validación de integridad de archivos
+   Criticidad: ALTA
+   Dependencias: [.venv]
+
+4. SALON_DEBUG.HTML
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/interface/salon_debug.html
+   Función: Panel de diagnóstico web en tiempo real
+   Criticidad: MEDIA
+   Dependencias: [Servidor Flask]
+
+5. AWAKE_CEREMONY
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/awake/
+   Función: Inicialización de sistema y activación de módulos
+   Criticidad: CRÍTICA
+   Dependencias: [.venv, Módulo_integrador]
+
+6. DRAWILLE_MASTER
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/drawille-master/
+   Función: Motor de renderizado de gráficos ASCII/Unicode
+   Criticidad: MEDIA
+   Dependencias: [.venv]
+
+7. BACKUP_SYSTEM
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/storage/
+   Función: Sistema de copias de seguridad y recuperación
+   Criticidad: ALTA
+   Dependencias: [Módulo_integrador]
+
+8. PROCESS_BASELINE
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/core/
+   Función: Registro basal de procesos y métricas del sistema
+   Criticidad: ALTA
+   Dependencias: [.venv]
+
+9. NEUROBIT_GNOME_WIDGET
+   Estado: [PARADO]
+   Ruta: /home/gus/ECN/interface/
+   Función: Widget de escritorio para GNOME
+   Criticidad: BAJA
+   Dependencias: [Servidor Flask, DRAWILLE_MASTER]
+
+10. IDE_AUDIT (DAEMON)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/ide_audit_daemon.py
+    Función: Monitoreo continuo de actividad IDE (VS Code)
+    Criticidad: MEDIA
+    Dependencias: [.venv, PROCESO_BASELINE]
+
+11. WS_SENTINEL (DAEMON)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-SENTINELS/
+    Función: Centinela de WebSocket - vigilancia de conexiones
+    Criticidad: ALTA
+    Dependencias: [.venv, Servidor Flask]
+
+12. NEUROBIT_POSTMAN (DAEMON)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/neurobit_postman_daemon.py
+    Función: Despachador de eventos entre módulos
+    Criticidad: ALTA
+    Dependencias: [.venv, Módulo_integrador]
+
+13. VERIFY_TIER2
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-SENTINELS/verify_tier2.py
+    Función: Validación en tiempo real del sistema (T2)
+    Criticidad: ALTA
+    Dependencias: [.venv, NEUROBIT_POSTMAN]
+
+14. CAPTURA_TAREA_CENTINELA
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-SENTINELS/captura_tareas_centinela.py
+    Función: Captura de tareas monitoreadas por centinelas
+    Criticidad: MEDIA
+    Dependencias: [.venv, VERIFY_TIER2]
+
+15. CENTINELA_MONITOR (DAEMON)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-SENTINELS/centinela.py
+    Función: Monitor continuo de procesos y seguridad
+    Criticidad: CRÍTICA
+    Dependencias: [.venv, PROCESO_BASELINE]
+
+16. RUN_ADAPTER_TEST
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/tests/test_run_adapters_smoke.py
+    Función: Suite de pruebas para adaptadores HID/Sentinelas
+    Criticidad: MEDIA
+    Dependencias: [.venv, HID_ADAPTER]
+
+17. HID_ADAPTER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-HID/
+    Función: Interfaz de captura de entrada (teclado, ratón)
+    Criticidad: ALTA
+    Dependencias: [.venv, PROCESS_BASELINE]
+
+18. NEUROBIT_KEYLOGGER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-KEYLOGGER/start_keylogger.sh
+    Función: Captura de eventos de teclado en tiempo real
+    Criticidad: ALTA
+    Dependencias: [.venv, HID_ADAPTER]
+
+19. NEUROBIT_MCP
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/connectors/extension_mcp_bridge.py
+    Función: Puente MCP para integración con servidores extendidos
+    Criticidad: MEDIA
+    Dependencias: [.venv, Servidor Flask]
+
+20. NEUROBIT_WEBSOCKET_SERVER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/mcp_server/
+    Función: Servidor WebSocket para comunicación en tiempo real
+    Criticidad: ALTA
+    Dependencias: [.venv, Servidor Flask]
+
+21. API_ENDPOINT_MANAGER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/api_endpoint_manager.py
+    Función: Gestión de puntos finales API REST
+    Criticidad: ALTA
+    Dependencias: [.venv, Servidor Flask]
+
+22. NEUROBIT_API
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/neurobit_api.py
+    Función: API central para acceso a todos los servicios
+    Criticidad: CRÍTICA
+    Dependencias: [.venv, API_ENDPOINT_MANAGER]
+
+23. OLLAMA_BRIDGE
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/connectors/ollama_bridge.py
+    Función: Integración con modelos locales Ollama
+    Criticidad: BAJA
+    Dependencias: [.venv, NEUROBIT_API]
+
+24. VM_BRIDGE
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-VM_BRIDGE/vm_bridge_gui.py
+    Función: Puente para integración con máquinas virtuales
+    Criticidad: BAJA
+    Dependencias: [.venv, NEUROBIT_API]
+
+25. VM_GUI_ENHANCED
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-VM_BRIDGE/vm_bridge_gui_enhanced.py
+    Función: Interfaz mejorada para VM
+    Criticidad: BAJA
+    Dependencias: [VM_BRIDGE]
+
+26. CAPTURE_BEFORE_SEND
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-HID/capture_before_send.py
+    Función: Captura y validación previa de envíos
+    Criticidad: MEDIA
+    Dependencias: [.venv, HID_ADAPTER]
+
+27. DISPATCHER (Dispatch_adapter.py)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-DISPATCHER/event_dispatcher.py
+    Función: Distribución de eventos entre componentes
+    Criticidad: ALTA
+    Dependencias: [.venv, NEUROBIT_POSTMAN]
+
+28. PATH_FIXER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/path_fixer.py
+    Función: Corrección automática de rutas de sistema
+    Criticidad: MEDIA
+    Dependencias: [.venv, MÓDULO_INTEGRADOR]
+
+29. SOS_DYNAMIC_TESTER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/sos_dynamic_tester.py
+    Función: Pruebas dinámicas del sistema SOS
+    Criticidad: MEDIA
+    Dependencias: [.venv, todos los adaptadores]
+
+30. TAG_PARSER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/tag_parser.py
+    Función: Análisis y parseo de metadatos y etiquetas
+    Criticidad: BAJA
+    Dependencias: [.venv]
+
+31. SOS_FILE_MANAGER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/sos_file_manager.py
+    Función: Gestión de archivos y directorios del sistema
+    Criticidad: ALTA
+    Dependencias: [.venv, MÓDULO_INTEGRADOR]
+
+32. SOS_MODULE_LINKER_TESTER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/sos_module_linker_tester.py
+    Función: Pruebas de enlazado entre módulos
+    Criticidad: MEDIA
+    Dependencias: [.venv, NEUROBIT_POSTMAN]
+
+33. NEUROBIT_DECLARATOR
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/neurobit_declarator.py
+    Función: Declaración y registro de tipos de datos
+    Criticidad: MEDIA
+    Dependencias: [.venv]
+
+34. PATH_RESOLVER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/path_resolver.py
+    Función: Resolución de rutas relativas y absolutas
+    Criticidad: ALTA
+    Dependencias: [.venv, PATH_FIXER]
+
+35. MFN_FILE_REGISTER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/mfn_file_register.py
+    Función: Registro MFN de archivos del proyecto
+    Criticidad: MEDIA
+    Dependencias: [.venv, SOS_FILE_MANAGER]
+
+36. NEUROBIT_FILE_EXPLORER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/neurobit_file_explorer.py
+    Función: Explorador de archivos con búsqueda avanzada
+    Criticidad: MEDIA
+    Dependencias: [.venv, MÓDULO_INTEGRADOR]
+
+37. NEUROBIT_INTERCEPTOR
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/modules/neurobit_interceptor/
+    Función: Interceptación y análisis de tráfico/eventos
+    Criticidad: ALTA
+    Dependencias: [.venv, HID_ADAPTER]
+
+38. INTERFAZ_GUI
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/interface/
+    Función: Interfaz gráfica principal del sistema
+    Criticidad: CRÍTICA
+    Dependencias: [.venv, Servidor Flask, SALON_DEBUG]
+
+39. SIMON_VALIDATOR
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/simon_validator.py
+    Función: Validación de integridad y consistencia
+    Criticidad: ALTA
+    Dependencias: [.venv, VERIFICAR_TIER2]
+
+40. PID_MONITOR
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/pid_monitor.py
+    Función: Monitoreo de procesos por ID
+    Criticidad: ALTA
+    Dependencias: [.venv, PROCESO_BASELINE]
+
+41. ADD_YAML_META
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/add_yaml_meta.py
+    Función: Adición de metadatos YAML a archivos
+    Criticidad: BAJA
+    Dependencias: [.venv]
+
+42. NEUROBIT_PULSE_GUI
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/interface/neurobit_central_station_gui.py
+    Función: GUI principal con panel de control de artefactos
+    Criticidad: CRÍTICA
+    Dependencias: [.venv, INTERFAZ_GUI]
+
+43. SESSION_CONTEXT
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/session_context.py
+    Función: Gestión de contexto de sesión de usuario
+    Criticidad: ALTA
+    Dependencias: [.venv, NEUROBIT_API]
+
+44. FRAGMENT_STATE_SERVER
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/fragment_state_server.py
+    Función: Servidor de estado para fragmentos de datos
+    Criticidad: MEDIA
+    Dependencias: [.venv, Servidor Flask]
+
+45. FRAGMENT_SENDER (supersend)
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/core/fragment_sender.py
+    Función: Envío optimizado de fragmentos de código/datos
+    Criticidad: MEDIA
+    Dependencias: [.venv, FRAGMENT_STATE_SERVER]
+
+46. BITÁCORA_EVA
+    Estado: [PARADO]
+    Ruta: /home/gus/ECN/data/bitacora_eva.jsonl
+    Función: Log central de eventos del sistema
+    Criticidad: ALTA
+    Dependencias: [.venv, NEUROBIT_API]
+
+================================================================================
+DIAGRAMA DE DEPENDENCIAS
+================================================================================
+
+NIVEL 0 (BASE - Sin dependencias):
+  └─ .venv
+
+NIVEL 1 (Servicios base):
+  ├─ Servidor Flask ← .venv
+  ├─ MÓDULO_INTEGRADOR ← .venv
+  ├─ PROCESS_BASELINE ← .venv
+  ├─ DRAWILLE_MASTER ← .venv
+  ├─ NEUROBIT_DECLARATOR ← .venv
+  ├─ TAG_PARSER ← .venv
+  └─ ADD_YAML_META ← .venv
+
+NIVEL 2 (Servicios intermedios):
+  ├─ NEUROBIT_API ← .venv + API_ENDPOINT_MANAGER
+  ├─ API_ENDPOINT_MANAGER ← .venv + Servidor Flask
+  ├─ WS_SENTINEL ← .venv + Servidor Flask
+  ├─ PATH_FIXER ← .venv + MÓDULO_INTEGRADOR
+  ├─ PATH_RESOLVER ← .venv + PATH_FIXER
+  ├─ SOS_FILE_MANAGER ← .venv + MÓDULO_INTEGRADOR
+  ├─ NEUROBIT_WEBSOCKET_SERVER ← .venv + Servidor Flask
+  ├─ HID_ADAPTER ← .venv + PROCESS_BASELINE
+  ├─ IDE_AUDIT ← .venv + PROCESS_BASELINE
+  ├─ PID_MONITOR ← .venv + PROCESS_BASELINE
+  └─ MFN_FILE_REGISTER ← .venv + SOS_FILE_MANAGER
+
+NIVEL 3 (Servicios compuestos):
+  ├─ NEUROBIT_POSTMAN ← .venv + MÓDULO_INTEGRADOR
+  ├─ DISPATCHER ← .venv + NEUROBIT_POSTMAN
+  ├─ VERIFY_TIER2 ← .venv + NEUROBIT_POSTMAN
+  ├─ NEUROBIT_INTERCEPTOR ← .venv + HID_ADAPTER
+  ├─ CAPTURE_BEFORE_SEND ← .venv + HID_ADAPTER
+  ├─ NEUROBIT_KEYLOGGER ← .venv + HID_ADAPTER
+  ├─ CENTINELA_MONITOR ← .venv + PROCESS_BASELINE
+  ├─ SESSION_CONTEXT ← .venv + NEUROBIT_API
+  ├─ OLLAMA_BRIDGE ← .venv + NEUROBIT_API
+  └─ NEUROBIT_MCP ← .venv + Servidor Flask
+
+NIVEL 4 (Servicios de validación):
+  ├─ CAPTURA_TAREA_CENTINELA ← .venv + VERIFY_TIER2
+  ├─ SIMON_VALIDATOR ← .venv + VERIFY_TIER2
+  ├─ NEUROBIT_FILE_EXPLORER ← .venv + MÓDULO_INTEGRADOR
+  ├─ SOS_MODULE_LINKER_TESTER ← .venv + NEUROBIT_POSTMAN
+  └─ RUN_ADAPTER_TEST ← .venv + HID_ADAPTER
+
+NIVEL 5 (Servicios avanzados):
+  ├─ SALON_DEBUG ← Servidor Flask
+  ├─ FRAGMENT_STATE_SERVER ← .venv + Servidor Flask
+  ├─ FRAGMENT_SENDER ← .venv + FRAGMENT_STATE_SERVER
+  ├─ VM_BRIDGE ← .venv + NEUROBIT_API
+  ├─ VM_GUI_ENHANCED ← VM_BRIDGE
+  ├─ SOS_DYNAMIC_TESTER ← .venv + todos los adaptadores
+  ├─ BACKUP_SYSTEM ← MÓDULO_INTEGRADOR
+  ├─ AWAKE_CEREMONY ← .venv + MÓDULO_INTEGRADOR
+  └─ BITÁCORA_EVA ← .venv + NEUROBIT_API
+
+NIVEL 6 (Interfaz):
+  ├─ NEUROBIT_GNOME_WIDGET ← Servidor Flask + DRAWILLE_MASTER
+  ├─ INTERFAZ_GUI ← .venv + Servidor Flask + SALON_DEBUG
+  └─ NEUROBIT_PULSE_GUI ← .venv + INTERFAZ_GUI
+
+================================================================================
+RELACIONES Y FLUJOS DE DATOS
+================================================================================
+
+1. FLUJO DE INICIALIZACIÓN:
+   AWAKE_CEREMONY
+     ├─ Activa: .venv
+     ├─ Activa: MÓDULO_INTEGRADOR
+     ├─ Activa: Servidor Flask
+     ├─ Activa: PROCESS_BASELINE
+     ├─ Activa: NEUROBIT_API
+     └─ Inicia cascada de dependientes
+
+2. FLUJO DE EVENTOS EN TIEMPO REAL:
+   HID_ADAPTER (captura)
+     → DISPATCHER (distribución)
+     → NEUROBIT_POSTMAN (entrega)
+     → WS_SENTINEL (vigilancia)
+     → CENTINELA_MONITOR (registro)
+     → BITÁCORA_EVA (persistencia)
+
+3. FLUJO DE VALIDACIÓN:
+   VERIFY_TIER2
+     → SIMON_VALIDATOR (chequeos)
+     → CAPTURA_TAREA_CENTINELA (registro)
+     → SALON_DEBUG (visualización)
+
+4. FLUJO DE INTEGRACIÓN:
+   MÓDULO_INTEGRADOR
+     → PATH_RESOLVER (resolución de rutas)
+     → SOS_FILE_MANAGER (gestión de archivos)
+     → MFN_FILE_REGISTER (registro)
+     → NEUROBIT_FILE_EXPLORER (visualización)
+
+5. FLUJO DE MONITOREO:
+   PROCESS_BASELINE
+     → IDE_AUDIT (auditoría IDE)
+     → PID_MONITOR (monitoreo de procesos)
+     → SESSION_CONTEXT (contexto de sesión)
+     → INTERFAZ_GUI (visualización)
+
+================================================================================
+INSTALACIÓN LOCAL - REQUISITOS Y PASOS
+================================================================================
+
+REQUISITOS PREVIOS:
+  • Python 3.8+
+  • pip (gestor de paquetes)
+  • Soberanía operativa local (sin dependencias externas)
+  • Linux/Unix (recomendado para máxima compatibilidad)
+
+PASOS DE INSTALACIÓN:
+
+1. PREPARACIÓN DEL ENTORNO:
+   $ cd /home/gus/ECN
+   $ python3 -m venv .venv
+   $ source .venv/bin/activate
+
+2. INSTALACIÓN DE DEPENDENCIAS:
+   $ pip install --upgrade pip
+   $ pip install flask
+   $ pip install python-socketio
+   $ pip install python-engineio
+   $ pip install pynput (para HID)
+   $ pip install pyyaml
+   $ [otras dependencias según necesidad]
+
+3. VALIDACIÓN DEL MÓDULO_INTEGRADOR:
+   $ python3 NEUROBIT_SOS_FOLDER_MODULES/adapters.py --test
+
+4. INICIALIZACIÓN DE ESTRUCTURA:
+   $ mkdir -p data/fragments
+   $ mkdir -p data/bitacora
+   $ mkdir -p storage/backups
+
+5. INICIAR AWAKE_CEREMONY:
+   $ python3 awake/awake_ceremony.py
+
+6. INICIAN SERVICIOS BASE:
+   • Servidor Flask en puerto 5001
+   • PROCESS_BASELINE comienza registro
+   • NEUROBIT_API disponible
+
+7. INICIAR GUI PRINCIPAL:
+   $ python3 interface/neurobit_central_station_gui.py
+
+8. MONITOR EN TIEMPO REAL:
+   Acceder a: http://localhost:5001/salon_debug.html
+
+================================================================================
+CARACTERÍSTICAS DE SOBERANÍA OPERATIVA LOCAL
+================================================================================
+
+✓ Ejecución completamente local
+✓ No requiere conexión a internet
+✓ Todas las dependencias en /home/gus/ECN/.venv
+✓ Control total de datos y procesos
+✓ Auditoría completa vía BITÁCORA_EVA
+✓ Rollback y recuperación en BACKUP_SYSTEM
+✓ Interfaz gráfica web responsiva
+✓ API REST completa para integración
+✓ Monitoreo en tiempo real de todos los componentes
+✓ Sistema de sentinelas para seguridad
+✓ Captura de entrada (HID) local
+✓ Análisis dinámico sin dependencias externas
+
+================================================================================
+ESTRUCTURA DE DIRECTORIOS
+================================================================================
+
+/home/gus/ECN/
+├── .venv/                          [Entorno virtual - AISLADO]
+├── NEUROBIT_SOS_FOLDER_MODULES/    [Módulos operativos]
+│   ├── SOS_NF-HID/                [Captura de entrada]
+│   ├── SOS_NF-SENTINELS/          [Validación y vigilancia]
+│   ├── SOS_NF-DISPATCHER/         [Distribución de eventos]
+│   ├── SOS_NF-KEYLOGGER/          [Captura de teclado]
+│   ├── SOS_NF-CURSOR_CONTROL/     [Control de cursor]
+│   ├── SOS_NF-VM_BRIDGE/          [Integración VM]
+│   └── adapters.py                [Módulo integrador]
+├── core/                           [Servicios centrales]
+│   ├── api_endpoint_manager.py
+│   ├── neurobit_api.py
+│   ├── process_baseline.py
+│   ├── path_resolver.py
+│   ├── sos_file_manager.py
+│   ├── session_context.py
+│   └── ... [otros servicios]
+├── interface/                      [Interfaz gráfica]
+│   ├── neurobit_central_station_gui.py
+│   ├── salon_debug.html
+│   ├── station.js
+│   ├── js/
+│   └── ... [otros archivos HTML/JS]
+├── connectors/                     [Conectores]
+│   ├── ollama_bridge.py
+│   ├── extension_mcp_bridge.py
+│   └── ...
+├── data/                           [Almacenamiento de datos]
+│   ├── fragments/                 [Fragmentos de código]
+│   ├── bitacora/                  [Logs del sistema]
+│   └── ...
+├── storage/                        [Sistema de respaldo]
+│   └── backups/
+├── awake/                          [Inicialización del sistema]
+│   └── awake_ceremony.py
+├── mcp_server/                     [Servidor MCP/WebSocket]
+│   └── ...
+├── modules/                        [Módulos de extensión]
+│   └── neurobit_interceptor/
+├── tests/                          [Suite de pruebas]
+│   ├── test_run_adapters_smoke.py
+│   ├── test_keylogger_integration.py
+│   └── ...
+└── docs/                           [Documentación]
+    ├── ARQUITECTURA.md
+    ├── API_REFERENCE.md
+    └── ...
+
+================================================================================
+COMANDOS RÁPIDOS PARA ADMINISTRACIÓN
+================================================================================
+
+Activar entorno:
+  $ source /home/gus/ECN/.venv/bin/activate
+
+Verificar dependencias instaladas:
+  $ pip list
+
+Instalar dependencia específica:
+  $ pip install <package_name>
+
+Ejecutar pruebas de módulos:
+  $ python3 -m pytest tests/ -v
+
+Iniciar servidor Flask:
+  $ python3 interface/neurobit_central_station_gui.py
+
+Ver estado de procesos:
+  $ ps aux | grep python
+
+Limpiar procesos huérfanos:
+  $ pkill -f "neurobit"
+
+Ver logs del sistema:
+  $ tail -f data/bitacora/bitacora_eva.jsonl
+
+Validar integridad:
+  $ python3 NEUROBIT_SOS_FOLDER_MODULES/adapters.py --validate
+
+Hacer respaldo:
+  $ python3 core/sos_file_manager.py --backup
+
+Restaurar desde respaldo:
+  $ python3 core/sos_file_manager.py --restore <backup_id>
+
+================================================================================
+PRÓXIMAS FASES
+================================================================================
+
+FASE 1 (Actual): 
+  ✓ Estructura base y GUI
+  ✓ Definición de componentes
+  ✓ Relaciones de dependencias
+
+FASE 2:
+  □ Integración completa de módulos
+  □ API REST funcional
+  □ Dashboard interactivo avanzado
+
+FASE 3:
+  □ Sistema de plugins
+  □ Extensión de capturas (vídeo, audio)
+  □ Machine Learning para análisis
+
+FASE 4:
+  □ Interfaz móvil
+  □ Sincronización multi-dispositivo
+  □ Análisis predictivo
+
+================================================================================
+FIN DE ECN_STATE.TXT
+================================================================================

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧠 ESTACIÓN CENTRAL NEUROBITRÓNICA - Dashboard de Control</title>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #00ff88;
+            --color-secondary: #ff0088;
+            --color-danger: #ff2222;
+            --color-warning: #ffaa00;
+            --color-success: #00ff88;
+            --color-info: #00aaff;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --border-color: #1a3a3a;
+            --text-primary: #00ff88;
+            --text-secondary: #00aaff;
+            --text-muted: #666666;
+            --transition: 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, #0a1a1a 100%);
+            color: var(--text-primary);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+            gap: 0;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, rgba(0,255,136,0.1) 0%, rgba(0,170,255,0.1) 100%);
+            border-bottom: 2px solid var(--color-primary);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,255,136,0.2);
+        }
+
+        header h1 {
+            font-size: 24px;
+            color: var(--color-primary);
+            text-shadow: 0 0 10px rgba(0,255,136,0.5);
+        }
+
+        .header-info {
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 3px;
+            background: rgba(0,170,255,0.2);
+            border: 1px solid var(--text-secondary);
+        }
+
+        .status-badge.online {
+            background: rgba(0,255,136,0.2);
+            border-color: var(--color-success);
+            color: var(--color-success);
+        }
+
+        .status-badge.offline {
+            background: rgba(255,34,34,0.2);
+            border-color: var(--color-danger);
+            color: var(--color-danger);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 10px;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR IZQUIERDA - CONTROL */
+        .sidebar-left {
+            background: rgba(10,10,10,0.8);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-section h3 {
+            color: var(--color-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .btn-control {
+            width: 100%;
+            padding: 8px 10px;
+            background: rgba(0,170,255,0.1);
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            border-radius: 3px;
+            transition: all var(--transition);
+            text-transform: uppercase;
+        }
+
+        .btn-control:hover {
+            background: rgba(0,170,255,0.3);
+            box-shadow: 0 0 10px rgba(0,170,255,0.3);
+            transform: translateX(2px);
+        }
+
+        .btn-control.btn-start {
+            border-color: var(--color-success);
+            color: var(--color-success);
+        }
+
+        .btn-control.btn-start:hover {
+            background: rgba(0,255,136,0.2);
+            box-shadow: 0 0 10px rgba(0,255,136,0.3);
+        }
+
+        .btn-control.btn-stop {
+            border-color: var(--color-danger);
+            color: var(--color-danger);
+        }
+
+        .btn-control.btn-stop:hover {
+            background: rgba(255,34,34,0.2);
+            box-shadow: 0 0 10px rgba(255,34,34,0.3);
+        }
+
+        /* CENTRO - MONITOR DE COMPONENTES */
+        .center-panel {
+            background: rgba(10,10,10,0.8);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .center-panel h2 {
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            flex: 1;
+        }
+
+        .component-card {
+            background: rgba(5,5,5,0.9);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            transition: all var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .component-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 15px rgba(0,255,136,0.2);
+            transform: scale(1.05);
+        }
+
+        .component-card.online {
+            border-color: var(--color-success);
+            background: rgba(0,255,136,0.05);
+        }
+
+        .component-card.offline {
+            border-color: var(--color-danger);
+            background: rgba(255,34,34,0.05);
+        }
+
+        .component-card.loading {
+            border-color: var(--color-warning);
+            background: rgba(255,170,0,0.05);
+        }
+
+        .component-name {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .component-status {
+            font-size: 9px;
+            padding: 3px 5px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .component-status.online {
+            background: rgba(0,255,136,0.3);
+            color: var(--color-success);
+        }
+
+        .component-status.offline {
+            background: rgba(255,34,34,0.3);
+            color: var(--color-danger);
+        }
+
+        .component-status.loading {
+            background: rgba(255,170,0,0.3);
+            color: var(--color-warning);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* SIDEBAR DERECHA - LOGS Y STATS */
+        .sidebar-right {
+            background: rgba(10,10,10,0.8);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            padding: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .info-panel {
+            flex: 1;
+            overflow-y: auto;
+            background: rgba(5,5,5,0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        .info-panel h4 {
+            color: var(--color-primary);
+            margin-bottom: 8px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .log-entry {
+            padding: 3px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 9px;
+        }
+
+        .log-entry.success {
+            color: var(--color-success);
+        }
+
+        .log-entry.error {
+            color: var(--color-danger);
+        }
+
+        .log-entry.warning {
+            color: var(--color-warning);
+        }
+
+        .log-entry.info {
+            color: var(--text-secondary);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 10px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        .stat-value {
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(10,10,10,0.8);
+            border-top: 2px solid var(--border-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        .footer-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer-btn {
+            padding: 5px 10px;
+            background: rgba(0,170,255,0.1);
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            transition: all var(--transition);
+        }
+
+        .footer-btn:hover {
+            background: rgba(0,170,255,0.3);
+            box-shadow: 0 0 10px rgba(0,170,255,0.3);
+        }
+
+        .footer-btn.critical {
+            border-color: var(--color-danger);
+            color: var(--color-danger);
+        }
+
+        .footer-btn.critical:hover {
+            background: rgba(255,34,34,0.2);
+        }
+
+        /* SCROLLBAR */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(10,10,10,0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-primary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-secondary);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1400px) {
+            .main-content {
+                grid-template-columns: 200px 1fr 250px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
+
+            .sidebar-left, .sidebar-right {
+                max-height: 200px;
+            }
+        }
+
+        /* ANIMACIÓN DE CARGA */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .component-card.loading {
+            animation: float 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>🧠 ESTACIÓN CENTRAL NEUROBITRÓNICA</h1>
+            <div class="header-info">
+                <div class="status-badge online" id="server-status">● SERVIDOR: EN LÍNEA</div>
+                <div class="status-badge" id="time-display">--:--:--</div>
+                <div class="status-badge" id="components-count">COMPONENTES: --</div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <!-- SIDEBAR IZQUIERDA -->
+            <div class="sidebar-left">
+                <div class="control-section">
+                    <h3>⚙️ Operaciones</h3>
+                    <button class="btn-control btn-start" onclick="startAllServices()">▶ Iniciar Todo</button>
+                    <button class="btn-control btn-stop" onclick="stopAllServices()">⏹ Detener Todo</button>
+                    <button class="btn-control" onclick="rebootSystem()">🔄 Reiniciar</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>🚀 Servicios Base</h3>
+                    <button class="btn-control btn-start" onclick="startService('venv')">Entorno .venv</button>
+                    <button class="btn-control btn-start" onclick="startService('flask')">Servidor Flask</button>
+                    <button class="btn-control btn-start" onclick="startService('integrador')">Módulo Int.</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>🛡️ Sentinelas</h3>
+                    <button class="btn-control" onclick="startService('centinela')">Centinela Monitor</button>
+                    <button class="btn-control" onclick="startService('postman')">Postman Daemon</button>
+                    <button class="btn-control" onclick="startService('verify')">Verify Tier2</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>🎮 Entrada/Salida</h3>
+                    <button class="btn-control" onclick="startService('hid')">HID Adapter</button>
+                    <button class="btn-control" onclick="startService('keylogger')">Keylogger</button>
+                    <button class="btn-control" onclick="startService('capture')">Capture HID</button>
+                </div>
+            </div>
+
+            <!-- PANEL CENTRAL -->
+            <div class="center-panel">
+                <h2>📊 MONITOR DE COMPONENTES EN TIEMPO REAL</h2>
+                <div class="components-grid" id="components-grid">
+                    <!-- Componentes se cargarán dinámicamente -->
+                </div>
+            </div>
+
+            <!-- SIDEBAR DERECHA -->
+            <div class="sidebar-right">
+                <div class="info-panel">
+                    <h4>📋 Logs del Sistema</h4>
+                    <div id="logs-container">
+                        <div class="log-entry info">[INIT] Estación iniciada</div>
+                        <div class="log-entry success">[OK] WebSocket conectado</div>
+                        <div class="log-entry warning">[WAIT] Cargando componentes...</div>
+                    </div>
+                </div>
+
+                <div class="info-panel">
+                    <h4>📈 Estadísticas</h4>
+                    <div class="stat-row">
+                        <span class="stat-label">Servicios Activos:</span>
+                        <span class="stat-value" id="stat-active">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Servicios Parados:</span>
+                        <span class="stat-value" id="stat-stopped">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Uptime:</span>
+                        <span class="stat-value" id="stat-uptime">00:00:00</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Memoria Usada:</span>
+                        <span class="stat-value" id="stat-memory">--</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">CPU:</span>
+                        <span class="stat-value" id="stat-cpu">--</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div>
+                <span id="footer-status">Conectado a ECN v0.1-SOBERANO-LOCAL</span>
+            </div>
+            <div class="footer-controls">
+                <button class="footer-btn" onclick="openDiagnostics()">🔍 Diagnósticos</button>
+                <button class="footer-btn" onclick="viewLogs()">📜 Logs Completos</button>
+                <button class="footer-btn" onclick="exportState()">💾 Exportar Estado</button>
+                <button class="footer-btn critical" onclick="emergencyStop()">🚨 PARADA EMERGENCIA</button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Lista de componentes a monitorear
+        const components = [
+            { name: '.venv', icon: '🐍', critical: true },
+            { name: 'Servidor Flask', icon: '🔧', critical: true },
+            { name: 'Módulo Integrador', icon: '⚙️', critical: true },
+            { name: 'Awake Ceremony', icon: '🌅', critical: true },
+            { name: 'PROCESS_BASELINE', icon: '📊', critical: true },
+            { name: 'API Endpoint Manager', icon: '🌐', critical: true },
+            { name: 'Neurobit API', icon: '📡', critical: true },
+            { name: 'IDE Audit', icon: '🎯', critical: false },
+            { name: 'WS Sentinel', icon: '🛡️', critical: true },
+            { name: 'Neurobit Postman', icon: '📮', critical: true },
+            { name: 'Verify Tier2', icon: '✅', critical: true },
+            { name: 'Centinela Monitor', icon: '👁️', critical: true },
+            { name: 'HID Adapter', icon: '⌨️', critical: true },
+            { name: 'Neurobit Keylogger', icon: '🔐', critical: false },
+            { name: 'Neurobit Interceptor', icon: '📡', critical: false },
+            { name: 'Fragment State Server', icon: '📦', critical: false },
+            { name: 'Fragment Sender', icon: '📤', critical: false },
+            { name: 'WebSocket Server', icon: '🔌', critical: true },
+            { name: 'Neurobit MCP', icon: '🔗', critical: false },
+            { name: 'Session Context', icon: '🎭', critical: false },
+            { name: 'SOS File Manager', icon: '🗂️', critical: false },
+            { name: 'Path Resolver', icon: '🛣️', critical: false },
+            { name: 'Simon Validator', icon: '🔍', critical: false },
+            { name: 'PID Monitor', icon: '📍', critical: false },
+            { name: 'Drawille Master', icon: '🎨', critical: false },
+            { name: 'VM Bridge', icon: '🖥️', critical: false },
+            { name: 'Backup System', icon: '💾', critical: false },
+            { name: 'Ollama Bridge', icon: '🤖', critical: false },
+            { name: 'Dispatcher', icon: '🚦', critical: true },
+            { name: 'Bitácora EVA', icon: '📖', critical: false }
+        ];
+
+        let componentStates = {};
+        let startTime = Date.now();
+
+        // Inicializar estados de componentes
+        components.forEach(comp => {
+            componentStates[comp.name] = 'offline';
+        });
+
+        // Renderizar grid de componentes
+        function renderComponents() {
+            const grid = document.getElementById('components-grid');
+            grid.innerHTML = '';
+
+            components.forEach(comp => {
+                const state = componentStates[comp.name] || 'offline';
+                const card = document.createElement('div');
+                card.className = `component-card ${state}`;
+                card.innerHTML = `
+                    <div class="component-name">${comp.icon} ${comp.name}</div>
+                    <div class="component-status ${state}">${state.toUpperCase()}</div>
+                `;
+                card.onclick = () => showComponentDetails(comp.name);
+                grid.appendChild(card);
+            });
+
+            updateStats();
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            const active = Object.values(componentStates).filter(s => s === 'online').length;
+            const stopped = Object.values(componentStates).filter(s => s === 'offline').length;
+            
+            document.getElementById('stat-active').textContent = active;
+            document.getElementById('stat-stopped').textContent = stopped;
+            document.getElementById('components-count').textContent = `COMPONENTES: ${active}/${components.length}`;
+        }
+
+        // Actualizar reloj
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('time-display').textContent = 
+                now.toLocaleTimeString('es-ES', { hour12: false });
+            
+            const uptime = Math.floor((Date.now() - startTime) / 1000);
+            const hours = Math.floor(uptime / 3600);
+            const minutes = Math.floor((uptime % 3600) / 60);
+            const seconds = uptime % 60;
+            document.getElementById('stat-uptime').textContent = 
+                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // Funciones de control
+        function startService(service) {
+            addLog(`[START] Iniciando ${service}...`, 'info');
+            // Simular activación
+            setTimeout(() => {
+                const comp = components.find(c => c.name.toLowerCase().includes(service.toLowerCase()));
+                if (comp) {
+                    componentStates[comp.name] = 'online';
+                    addLog(`[OK] ${comp.name} activado`, 'success');
+                    renderComponents();
+                }
+            }, 500);
+        }
+
+        function startAllServices() {
+            addLog('[INIT] Iniciando todos los servicios...', 'info');
+            components.forEach(comp => {
+                setTimeout(() => {
+                    componentStates[comp.name] = 'online';
+                }, Math.random() * 2000);
+            });
+            setTimeout(() => {
+                renderComponents();
+                addLog('[OK] Todos los servicios iniciados', 'success');
+            }, 2500);
+        }
+
+        function stopAllServices() {
+            addLog('[STOP] Deteniendo todos los servicios...', 'warning');
+            components.forEach(comp => {
+                componentStates[comp.name] = 'offline';
+            });
+            renderComponents();
+            addLog('[OK] Todos los servicios detenidos', 'success');
+        }
+
+        function rebootSystem() {
+            addLog('[REBOOT] Reiniciando sistema...', 'warning');
+            stopAllServices();
+            setTimeout(() => {
+                startAllServices();
+            }, 2000);
+        }
+
+        function addLog(message, type = 'info') {
+            const container = document.getElementById('logs-container');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = message;
+            container.insertBefore(entry, container.firstChild);
+            
+            // Mantener solo los últimos 20 logs
+            while (container.children.length > 20) {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        function showComponentDetails(componentName) {
+            alert(`Detalles de ${componentName}\n\nEstado: ${componentStates[componentName]}\n\nMás detalles en próximas versiones...`);
+        }
+
+        function openDiagnostics() {
+            addLog('[DIAG] Abriendo diagnósticos...', 'info');
+            alert('Ventana de diagnósticos\n\nComponentes registrados: ' + Object.keys(componentStates).length);
+        }
+
+        function viewLogs() {
+            alert('Abre logs completos en ventana separada...');
+        }
+
+        function exportState() {
+            const state = {
+                timestamp: new Date().toISOString(),
+                components: componentStates,
+                uptime: (Date.now() - startTime) / 1000
+            };
+            alert('Estado exportado:\n' + JSON.stringify(state, null, 2));
+        }
+
+        function emergencyStop() {
+            if (confirm('¿Ejecutar PARADA DE EMERGENCIA? Todos los servicios se detendrán inmediatamente.')) {
+                addLog('[EMERGENCY] PARADA INMEDIATA EJECUTADA', 'error');
+                stopAllServices();
+            }
+        }
+
+        // Inicialización
+        setInterval(updateClock, 1000);
+        updateClock();
+        renderComponents();
+
+        // Simular conexión WebSocket
+        addLog('[CONNECT] Conectando a ECN...', 'info');
+        setTimeout(() => {
+            addLog('[OK] Conexión establecida con éxito', 'success');
+            document.getElementById('server-status').classList.add('online');
+        }, 1000);
+    </script>
+</body>
+</html>
