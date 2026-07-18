@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Fragment Sender – ACK Controlado",
+  "version": "1.0",
+  "description": "Envío secuencial de fragmentos con validación explícita de ACK",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",  // ✅ Necesario para el historial
+    "clipboardRead",  // ✅ Necesario para operaciones de copiado
+    "clipboardWrite"  // ✅ Necesario para operaciones de copiado
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",  // ✅ Permitir todo en localhost:5000
+    "http://localhost:11434/*",  // ✅ Si usas Ollama
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  // ✅ IMPORTANTE: Permitir llamadas fetch desde el popup
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

@@ -1,0 +1,100 @@
+<!-- ARCHIVO poput.html>
+<!//---------------------------------->
+
+
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Popup Prototype — Bitácora & Envío</title>
+  <style>
+    :root{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+    body{margin:12px; color:#111; font-size:14px;}
+    h1{font-size:18px;margin:0 0 8px}
+    label{display:block;margin-top:8px;font-weight:600}
+    input[type=text], textarea, select{width:100%;box-sizing:border-box;padding:8px;border-radius:6px;border:1px solid #ccc}
+    textarea{min-height:220px;resize:vertical}
+    .row{display:flex;gap:8px}
+    .col{flex:1}
+    button{padding:8px 10px;border-radius:8px;border:0;background:#2b76d6;color:white;cursor:pointer}
+    button.secondary{background:#666}
+    .small{font-size:12px;color:#555}
+    .controls{display:flex;gap:8px;margin-top:8px}
+    .meta{background:#f6f8fb;padding:8px;border-radius:8px;margin-top:8px}
+    .log{margin-top:12px;max-height:200px;overflow:auto;padding:8px;border:1px solid #eee;background:#fff}
+    .tag{display:inline-block;padding:2px 6px;border-radius:6px;background:#eef;margin-right:6px;margin-bottom:6px;font-size:12px}
+    .fieldset{border:1px dashed #ddd;padding:8px;border-radius:8px;margin-top:8px}
+    .muted{color:#777;font-size:12px}
+  </style>
+</head>
+<body>
+  <h1>Bitácora / Envío — Prototipo</h1>
+
+  <label>Destinatario (fijo hasta cerrar)</label>
+  <input id="recipient" placeholder="Nombre del destinatario..."/>
+
+  <div style="display:flex;gap:8px;margin-top:8px">
+    <div style="flex:1">
+      <label>Autor / Remitente</label>
+      <input id="author" placeholder="Tu nombre..." />
+    </div>
+    <div style="width:120px">
+      <label class="small">Mensaje ID</label>
+      <div id="msgId" class="muted">1</div>
+    </div>
+  </div>
+
+  <div class="fieldset">
+    <label>Categorías (se guardan como códigos, ej. c4t/)</label>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+      <label><input type="checkbox" data-code="c4t"/> Informe (c4t/)</label>
+      <label><input type="checkbox" data-code="c5t"/> Idea (c5t/)</label>
+      <label><input type="checkbox" data-code="c6t"/> Ayuda (c6t/)</label>
+      <label><input type="checkbox" data-code="c7t"/> Importante (c7t/)</label>
+      <label><input type="checkbox" data-code="c8t"/> Inspiración (c8t/)</label>
+    </div>
+  </div>
+
+  <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+    <label style="margin:0;flex:1">Inputs adicionales (activar para incluir en el archivo)</label>
+    <label style="font-size:12px"><input id="toggleExtra" type="checkbox"/> Activar</label>
+  </div>
+  <div id="extraInputs" style="display:none;margin-top:8px">
+    <label>Campo extra 1</label>
+    <input id="extra1" placeholder="Meta / canal / proyecto" />
+    <label style="margin-top:6px">Campo extra 2</label>
+    <input id="extra2" placeholder="Etiqueta libre" />
+  </div>
+
+  <label style="margin-top:10px">Mensaje (hasta 20.000 caracteres). El primer carácter guarda la hora/fecha</label>
+  <textarea id="message" maxlength="20000" placeholder="Escribe aquí... (Enter funciona normalmente)"></textarea>
+  <div class="small muted">Caracteres: <span id="length">0</span> / 20000</div>
+
+  <div class="controls">
+    <button id="send">Compartir tu información singular</button>
+    <button id="repeat" class="secondary">Repetir último</button>
+    <button id="download" class="secondary">Descargar bitácora</button>
+    <button id="clear" class="secondary">Nueva Bitácora</button>
+  </div>
+
+  <div class="meta">
+    <div class="small">Estado: <span id="status">idle</span></div>
+    <div class="small">Observador del frontend (opcional, selector): <input id="observerSelector" placeholder="ej. div.text-base" style="width:240px"/></div>
+    <div class="small">Botón Inject (intenta colocar y enviar en la página actual)</div>
+    <div style="margin-top:8px"><button id="inject">Injectar e intentar enviar</button></div>
+  </div>
+
+  <div style="margin-top:10px">
+    <strong>Bitácora (últimos 15 registros)</strong>
+    <div id="log" class="log"></div>
+  </div>
+<script src="storage.js"></script>
+<script src="ui.js"></script>
+<script src="injector.js"></script>
+<script src="observer.js"></script>
+<script src="popup.js"></script>
+
+</body>
+</html>

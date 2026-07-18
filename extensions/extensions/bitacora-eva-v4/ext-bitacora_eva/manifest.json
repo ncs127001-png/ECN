@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Bitácora EVA - Neurobit Central",
+  "version": "3.0",
+  "description": "Protocolo de Soberanía y Cosecha Fractal - BITACORA 3.0",
+  "permissions": [
+    "storage",
+    "downloads",
+    "scripting",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "http://localhost:11434/*",
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Bitácora EVA - Capturador de Respuestas"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://chat.openai.com/*", "*://chatgpt.com/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

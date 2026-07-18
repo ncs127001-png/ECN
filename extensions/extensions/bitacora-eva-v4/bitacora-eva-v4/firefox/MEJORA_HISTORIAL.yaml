@@ -1,0 +1,14 @@
+# MEJORA_HISTORIAL.yaml
+componente: historial_expandible
+descripcion: "Sistema de historial con vista previa y expand/collapse"
+acciones:
+  - crear_archivo: "src/history.js"
+  - crear_archivo: "src/css/history.css"
+  - modificar: "popup.html (estructura contenedores)"
+  - integrar_en: "popup.js"
+prioridad: 2
+dependencias: ["FIX_CRITICO_FEEDBACK.yaml"]
+validacion:
+  - "Mensajes largos muestran preview de 5-7 líneas"
+  - "Botón ▼ expande contenido completo"
+  - "Múltiples items pueden estar expandidos simultáneamente"

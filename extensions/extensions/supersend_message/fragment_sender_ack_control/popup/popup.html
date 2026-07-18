@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fragment Sender</title>
+  <style>
+    body { font-family: sans-serif; width: 420px; padding: 16px; background: #f9f9f9; margin: 0; }
+    label { display: block; margin-top: 12px; font-weight: bold; font-size: 13px; }
+    input, select, button { width: 100%; padding: 6px; margin-top: 4px; box-sizing: border-box; }
+    .row { display: flex; gap: 8px; }
+    .row > * { flex: 1; }
+    .status { background: #eef; padding: 8px; border-radius: 4px; margin-top: 12px; font-size: 12px; min-height: 24px; }
+    .controls { display: flex; gap: 8px; margin-top: 12px; }
+    .controls button { flex: 1; }
+    .file-input { margin-top: 8px; }
+    
+    /* NUEVO: Estilos para la lista de fragmentos */
+    .fragment-list-container {
+      margin-top: 15px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+    .fragment-list {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 8px;
+      background: white;
+      margin-top: 8px;
+    }
+    .fragment-item {
+      padding: 4px 0;
+      display: flex;
+      align-items: center;
+      transition: opacity 0.3s;
+    }
+    .fragment-item.sent {
+      opacity: 0.7;
+    }
+    .fragment-item.sent span {
+      text-decoration: line-through;
+      color: #777;
+    }
+    .fragment-item input {
+      margin-right: 8px;
+    }
+    .fragment-header {
+      font-weight: bold;
+      color: #0b74de;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Fragment Sender – ACK Controlado</h3>
+
+  <label>Plataforma</label>
+  <select id="platform">
+    <option value="chatgpt">ChatGPT</option>
+    <option value="gemini">Gemini</option>
+  </select>
+
+  <!-- Ocultar selección de carpeta -->
+  <div id="folderSelection" style="display: none;">
+    <label>Carpeta de fragmentos</label>
+    <button id="selectFolder">Seleccionar carpeta</button>
+    <div id="folderPath" style="font-size:11px; color:#555; margin-top:4px;"></div>
+  </div>
+
+  <label>Delay (segundos)</label>
+  <input type="number" id="delay" value="5" min="1" max="60">
+
+  <label>
+    <input type="checkbox" id="hook"> Agregar "hook" al final
+  </label>
+
+  <label>Sonido de finalización (opcional)</label>
+  <input type="file" id="soundFile" accept="audio/*" class="file-input">
+
+  <div class="fragment-list-container">
+    <div class="fragment-header">Fragmentos disponibles:</div>
+    <div class="fragment-list" id="fragmentList">
+      <div style="text-align: center; color: #777; padding: 20px;">
+        Cargando lista de fragmentos...
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn">▶️ Iniciar</button>
+    <button id="stopBtn" disabled>⏹ Detener</button>
+  </div>
+
+  <div class="status" id="status">Estado: Conectando con NEUROBIT...</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

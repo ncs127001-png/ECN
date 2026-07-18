@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Fragment Sender - SIMPLE",
+  "version": "1.0",
+  "description": "Versión estable minimalista",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://gemini.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

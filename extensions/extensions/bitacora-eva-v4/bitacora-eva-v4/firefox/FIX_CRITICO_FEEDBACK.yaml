@@ -1,0 +1,14 @@
+# FIX_CRITICO_FEEDBACK.yaml
+componente: feedback_visual
+descripcion: "Implementar sistema de feedback visual para todas las acciones"
+acciones:
+  - crear_archivo: "src/feedback.js"
+  - crear_archivo: "src/css/feedback.css"
+  - integrar_en: "popup.js"
+  - actualizar: "manifest.json (permisos mínimos)"
+prioridad: 1
+dependencias: []
+validacion:
+  - "Al hacer clic en COPIAR, aparece ✓ con animación"
+  - "Feedback desaparece automáticamente en 2s"
+  - "Diferentes colores para éxito/error/información"

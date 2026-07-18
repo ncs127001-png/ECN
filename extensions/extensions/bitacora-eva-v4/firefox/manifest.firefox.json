@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Bitácora EVA — NEUROBIT (Firefox)",
+  "version": "3.0",
+  "description": "Protocolo de Soberanía y Cosecha Fractal — BITACORA 3.0 (Firefox Complemento)",
+  
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "bitacora-eva@neurobit.local",
+      "strict_min_version": "109.0"
+    }
+  },
+  
+  "permissions": [
+    "storage",
+    "tabs",
+    "downloads",
+    "scripting",
+    "activeTab",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "http://127.0.0.1:5000/*",
+    "http://127.0.0.1:5001/*"
+  ],
+  
+  "background": {
+    "scripts": ["background.firefox.js"],
+    "type": "module"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*", "https://gemini.google.com/*", "https://claude.ai/*"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "96": "icons/icon96.png"
+    }
+  },
+  
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  }
+}

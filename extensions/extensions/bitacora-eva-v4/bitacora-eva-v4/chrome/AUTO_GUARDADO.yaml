@@ -1,0 +1,15 @@
+# AUTO_GUARDADO.yaml
+componente: autoguardado_trazable
+descripcion: "Sistema de autoguardado cada N mensajes con contador visible"
+acciones:
+  - crear_archivo: "src/autosave.js"
+  - crear_archivo: "src/css/counter.css"
+  - modificar: "popup.js (integración completa)"
+  - agregar_config: "config.json (intervalo por defecto: 5)"
+prioridad: 3
+dependencias: ["MEJORA_HISTORIAL.yaml"]
+validacion:
+  - "Contador visible en UI (ej: '7 mensajes | 2 sin guardar')"
+  - "Guardado automático al alcanzar intervalo"
+  - "Indicador visual cuando hay mensajes sin guardar"
+  - "Estado persiste tras recargar navegador"
