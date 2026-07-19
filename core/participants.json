@@ -1,0 +1,8 @@
+{
+  "participants": [
+    { "entity_id": "NODO_SEMILLA", "display_name": "Nodo Semilla", "role": "initiator" },
+    { "entity_id": "DIRECTOR", "display_name": "Director", "role": "director" },
+    { "entity_id": "SIMON", "display_name": "Simon", "role": "member" },
+    { "entity_id": "TRON", "display_name": "Tron", "role": "system" }
+  ]
+}
