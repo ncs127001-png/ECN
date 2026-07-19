@@ -1,0 +1,3 @@
+# ECN System Dependencies - Herramientas de Sistema
+# Instalar con: sudo apt install <paquete>
+

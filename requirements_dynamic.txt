@@ -1,0 +1,3 @@
+# ECN Dynamic Requirements - Generado automáticamente
+# Basado en contratos module_*.yaml
+
