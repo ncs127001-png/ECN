@@ -36,79 +36,52 @@ fi
 # ─────────────────────────────────────────────────────────────────────────────
 # PASO 1: CARGA DE CONFIGURACIÓN Y RESOLUCIÓN DE RUTAS (NO DESTRUCTIVO)
 # ─────────────────────────────────────────────────────────────────────────────
-# ... (Inicio del script)
+echo -e "\n${YELLOW}[1/6] Leyendo ADN del sistema (Config + Path Map)...${NC}"
 
-echo "[1/6] Leyendo ADN del sistema (Config + Path Map)..."
-
-# Cargar configuración
-python3 - "$WORKSPACE" << 'PY_CONFIG'
-import sys, yaml
+# Usamos Python inline para leer ecn_config.yaml y path_map.json sin hardcodear
+eval $(python3 << 'PYEOF'
+import os
+import yaml
+import json
 from pathlib import Path
-workspace = Path(sys.argv[1])
+
+workspace = Path(os.getcwd())
 config_file = workspace / "ecn_config.yaml"
-if config_file.exists():
-    with open(config_file) as f:
-        config = yaml.safe_load(f)
-    port = config.get('network', {}).get('ports', {}).get('api_flask', 5000)
-    print(f"✅ Configuración cargada (API:{port}, WS:{config.get('network', {}).get('ports', {}).get('websocket_salon', 5001)}, MCP:{config.get('network', {}).get('ports', {}).get('mcp_server', 8090)})")
-else:
-    print("⚠️  ecn_config.yaml no encontrado. Usando defaults.")
-PY_CONFIG
+path_map_file = workspace / "data" / "path_map.json"
 
-# Verificar/Generar Path Map
-MAP_FILE="$WORKSPACE/data/path_map.json"
-if [ ! -f "$MAP_FILE" ]; then
-    echo "⚠️  Path Map no encontrado. Regenerando..."
-    if [ -f "$WORKSPACE/tools/generate_path_map.py" ]; then
-        python3 "$WORKSPACE/tools/generate_path_map.py"
-        echo "✅ Mapa generado."
-    else
-        echo "❌ ERROR: generate_path_map.py no encontrado."
-        exit 1
-    fi
-else
-    echo "✅ Mapa existente detectado."
-fi
-
-# 🔥 CLAVE ARQUITECTÓNICA: Extraer la RAÍZ del mapa e inyectarla en PYTHONPATH
-# Esto asegura que 'core' sea visible sin importar desde dónde corramos el script.
-ROOT_PATH=$(python3 - "$MAP_FILE" << 'PY_ROOT'
-import json, sys
+# 1. Cargar Configuración
 try:
-    with open(sys.argv[1], 'r') as f:
-        data = json.load(f)
-    # Asumimos que el mapa tiene una clave 'workspace_root' o inferimos desde una ruta conocida
-    # Si el mapa es solo una lista de archivos, tomamos el padre del primer archivo 'core/...'
-    if 'workspace_root' in data:
-        print(data['workspace_root'])
-    elif 'files' in data and len(data['files']) > 0:
-        # Inferir raíz desde una ruta absoluta típica en el mapa
-        first_file = data['files'][0] if isinstance(data['files'], list) else list(data['files'].values())[0]
-        # Buscamos la carpeta 'ECN' en la ruta
-        import os
-        path_parts = first_file.split(os.sep)
-        try:
-            idx = path_parts.index('ECN')
-            print(os.sep.join(path_parts[:idx+1]))
-        except ValueError:
-            # Fallback: padre del padre si es core/archivo
-            print(os.path.dirname(os.path.dirname(first_file)))
-    else:
-        print("")
+    with open(config_file, 'r') as f:
+        config = yaml.safe_load(f)
+    api_port = config['network']['ports']['api_flask']
+    ws_port = config['network']['ports']['websocket_salon']
+    mcp_port = config['network']['ports']['mcp_server']
+    print(f"API_PORT={api_port}")
+    print(f"WS_PORT={ws_port}")
+    print(f"MCP_PORT={mcp_port}")
 except Exception as e:
-    print("")
-PY_ROOT
+    print(f"API_PORT=5000\nWS_PORT=5001\nMCP_PORT=8090") # Fallback
+
+# 2. Verificar Path Map (Navegación No Destructiva)
+if not path_map_file.exists():
+    print("MAP_STATUS=REGENERATE")
+else:
+    print("MAP_STATUS=OK")
+PYEOF
 )
 
-if [ -n "$ROOT_PATH" ]; then
-    echo "✅ Raíz del Workspace detectada desde Mapa: $ROOT_PATH"
-    export PYTHONPATH="$ROOT_PATH:$PYTHONPATH"
-    echo "🔌 PYTHONPATH inyectado dinámicamente."
-else
-    echo "⚠️  No se pudo inferir la raíz del mapa. Usando WORKSPACE local."
-    export PYTHONPATH="$WORKSPACE:$PYTHONPATH"
-fi
+echo -e "${GREEN}✅ Configuración cargada (API:$API_PORT, WS:$WS_PORT, MCP:$MCP_PORT)${NC}"
 
+# Si el mapa no existe, regenerarlo antes de continuar
+if [ "$MAP_STATUS" = "REGENERATE" ]; then
+    echo -e "${YELLOW}⚠️  Path Map no encontrado. Regenerando...${NC}"
+    if [ -f "tools/generate_path_map.py" ]; then
+        python3 tools/generate_path_map.py
+        echo -e "${GREEN}✅ Mapa generado.${NC}"
+    else
+        echo -e "${RED}⚠️  No se pudo generar el mapa. Continuando con precaución.${NC}"
+    fi
+fi
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PASO 2: LIMPIEZA DE PROCESOS ANTERIORES

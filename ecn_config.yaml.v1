@@ -1,24 +1,25 @@
 # ==============================================================================
 # ECN CONFIGURATION DNA - v0.2 SOBERANO
 # Propósito: Plasticidad total del sistema. Edite aquí, no en el código.
-# Co-Creación: NODO_SEMILLA & NODO_REFLEJO
+# Co-Creación: NODO_SEMILLA & NODO_REFLEJO (Cumpleaños 2026)
 # ==============================================================================
 
 system:
   name: "Estación Central Neurobitrónica"
   version: "0.2-SOBERANO"
   workspace_root: "~/ECN"
-  log_level: "INFO"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
 
 # -----------------------------------------------------------------------------
-# TRIADA DE SERVICIOS LOCALES
+# TRIADA DE SERVICIOS LOCALES (Soberanía 127.0.0.1)
 # -----------------------------------------------------------------------------
 network:
   loopback: "127.0.0.1"
   ports:
-    api_flask: 5000
-    websocket_salon: 5001
-    mcp_server: 8090
+    api_flask: 5000       # Orquestador Central (Hub Dinámico)
+    websocket_salon: 5001 # Comunicación Real-Time (Salón)
+    mcp_server: 8090      # Puente de Contexto IA
+    
   cors_allowed:
     - "http://127.0.0.1:5000"
     - "http://localhost:5000"
@@ -32,9 +33,17 @@ persistence:
   tasks_file: "data/tareas_pendientes.jsonl"
   path_map: "data/path_map.json"
   mfn_location_map: "data/mfn_location_map.json"
+  
+  # Optimización Hardware: Buffer + Batch Write
   dispatcher:
-    batch_size: 20
-    flush_interval_sec: 30
+    batch_size: 20        # Escribir cada N eventos
+    flush_interval_sec: 30 # O cada N segundos (lo que ocurra primero)
+    
+  # Rotación de Logs (Fase 2: Daemon automático)
+  log_rotation:
+    enabled: true
+    max_size_mb: 50
+    backup_count: 5
 
 # -----------------------------------------------------------------------------
 # GOBERNANZA WORKSPACE SENTINEL
@@ -42,15 +51,33 @@ persistence:
 governance:
   inbox_folder: "inbox"
   quarantine_folder: "inbox/quarantine"
+  backup_folder_suffix: ".backups"
+  
+  # Headers MFN soportados
   supported_headers:
-    python: ["MFN_LOCATION", "MFN_LEVEL"]
+    python: ["MFN_LOCATION", "MFN_LEVEL", "MFN_COORD"]
     yaml: ["MFN_LOCATION", "MFN_LEVEL"]
     bash: ["MFN_LOCATION", "MFN_LEVEL"]
     c: ["MFN_LOCATION", "MFN_LEVEL"]
 
 # -----------------------------------------------------------------------------
+# INTERFAZ & RENDERIZADO
+# -----------------------------------------------------------------------------
+interface:
+  theme: "dark_neurobit"
+  matrix_size: 13
+  g7_center: [6, 6] # Base 0 index
+  
+  # Latencia Biomimética (Pendiente de integración)
+  typing_latency:
+    enabled: false
+    min_ms: 50
+    max_ms: 150
+
+# -----------------------------------------------------------------------------
 # SEGURIDAD & FILTRO SINCERO
 # -----------------------------------------------------------------------------
 security:
-  reject_null_payload: true
+  reject_null_payload: true # Principio SINCERO: 0x00 es vacío ontológico
   validate_mod9_checksum: true
+  allowed_extensions: [".py", ".yaml", ".json", ".sh", ".md", ".c", ".h"]
