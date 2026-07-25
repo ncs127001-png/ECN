@@ -12,17 +12,26 @@ Gestor dinámico de endpoints para NEUROBIT API
 from flask import Flask, jsonify, request
 from typing import Dict, Any, List
 import deal
+from core.path_resolver import PathResolver
 from core.module_connector import ModuleConnector
+from pathlib import Path
 
 class APIEndpointManager:
     def __init__(self, connector: ModuleConnector):
         self.connector = connector
         self.app = Flask(__name__)
+        self.path_resolver = PathResolver(
+            workspace_root=Path(__file__).resolve().parent.parent
+        )
         self._register_dynamic_endpoints()
     
     @deal.post(lambda result: isinstance(result, Flask))
     def _register_dynamic_endpoints(self) -> Flask:
         """Registra endpoints dinámicamente desde el Conector."""
+        # 1. Actualizar mapa de rutas
+        self.path_resolver.refresh()
+        
+        # 2. Registrar todos los adapters
         for module_id, adapter in self.connector.get_adapters().items():
             metadata = adapter.get_metadata()
             
@@ -31,7 +40,7 @@ class APIEndpointManager:
                 methods = endpoint.get('methods', ['GET'])
                 handler = endpoint['handler']
                 
-                # Crear endpoint dinámico
+                # 3. Crear endpoint dinámico
                 self._create_endpoint(path, methods, handler, adapter)
         
         return self.app
@@ -42,17 +51,17 @@ class APIEndpointManager:
         
         def dynamic_handler():
             try:
-                # Validar precondiciones
+                # 1. Validar precondiciones
                 if request.method == 'POST':
                     payload = request.json
                     # Validar schema según module.json
                     if hasattr(adapter, 'validate_input'):
                         adapter.validate_input(payload)
                 
-                # Ejecutar handler del adaptador
+                # 2. Ejecutar handler del adaptador
                 result = getattr(adapter, handler)()
                 
-                # Validar postcondiciones
+                # 3. Validar postcondiciones
                 if hasattr(adapter, 'validate_output'):
                     adapter.validate_output(result)
                 
@@ -70,4 +79,5 @@ class APIEndpointManager:
     
     def run(self, host: str = '127.0.0.1', port: int = 5000):
         """Inicia el servidor."""
-        self.app.run(host=host, port=port, debug=False)
+        print(f"🚀 [API] Iniciando API en http://{host}:{port}")
+        self.app.run(host=host, port=port, debug=False, use_reloader=False)

@@ -9,6 +9,7 @@ import os
 import sys
 from pathlib import Path
 
+
 # Asegurar que la raíz del workspace esté en el PATH
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(WORKSPACE_ROOT))
@@ -35,7 +36,7 @@ def iniciar_api():
         # Importamos directamente el app o la función de arranque
         from core.neurobit_api import app, init_server
         init_server()
-        
+           
         # Obtener puertos de variables de entorno (inyectadas por start_ecn.sh)
         host = os.environ.get("NEUROBIT_HOST", "127.0.0.1")
         port = int(os.environ.get("API_PORT", 5000))
@@ -45,6 +46,17 @@ def iniciar_api():
     except Exception as e:
         print(f"❌ [BOOTSTRAP] Fallo crítico al iniciar API: {e}")
         sys.exit(1)
+
+import atexit
+
+def cleanup():
+    print("\n🛑 [BOOTSTRAP] Iniciando apagado limpio...")
+    # Si el dispatcher fue instanciado globalmente o en la app, detenerlo aquí.
+    # (Esto se manejará mejor cuando api_endpoint_manager sea el único punto de entrada)
+    print("✅ [BOOTSTRAP] Apagado completado.")
+
+atexit.register(cleanup)
+
 
 if __name__ == "__main__":
     print("═" * 60)

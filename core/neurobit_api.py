@@ -27,6 +27,7 @@ except Exception:
 try:
     from flask_socketio import SocketIO, emit, join_room, leave_room  # type: ignore
 except Exception:
+
     SocketIO = None
     emit = None
     join_room = None
@@ -52,13 +53,23 @@ import uuid
 from pathlib import Path
 from core.coherence_filter import analyze as analyze_text
 from core import participants as participants_mod
-from core import coherence_filter, agents_registry, init_ceremony, centinela_monitor
-from core.agents.simon import SimonValidator
-from core.matrix_13x13 import default_matrix as matrix_13x13
-from core.llm.client import generate_text
+from core import coherence_filter, agents_registry
+
+# CORRECCIÓN DE RUTAS: Importación desde ubicaciones reales del workspace
+import awake.init_ceremony as init_ceremony
+import modules.centinela_monitor as centinela_monitor
+
+# from core.agents.simon import SimonValidator  # Descomentar si existe esta ruta
+# from core.matrix_13x13 import default_matrix as matrix_13x13  # Temporalmente comentado para desbloquear el arranque
+import core.matrix_13x13  # Importación segura del módulo completo
 from core.event_dispatcher import EventDispatcher
 import importlib
 
+# NOTA: La importación directa de core.llm.client fue migrada al sistema de adapters.
+# Se coloca un fallback seguro para que la API inicie sin romper el endpoint /agent/generate.
+# En la siguiente iteración, este endpoint se conectará a adapter_llama_dispatcher_connector.
+def generate_text(platform, api_key, model, prompt, system_prompt):
+    return f"[MODO SIMULACIÓN] LLM {platform} ({model}) procesando: {prompt[:50]}..."
 
 # Make storage/modules available on sys.path for dynamic module loading
 modules_path = Path(__file__).resolve().parents[0] / 'storage' / 'modules'
@@ -1834,7 +1845,24 @@ def _shutdown_dispatcher():
 
 atexit.register(_shutdown_dispatcher)
 
+def init_server():
+    """Inicia el servidor Flask/SocketIO. Función expuesta para ser llamada por bootstrap.py"""
+    import os
+    host = os.environ.get("NEUROBIT_HOST", "127.0.0.1")
+    port = int(os.environ.get("NEUROBIT_PORT", 5000))
+    debug_flag = os.environ.get("NEUROBIT_DEBUG", "0") in ("1", "true", "True")
+    
+    if WEBSOCKET_ENABLED and socketio is not None:
+        print(f"[Startup] Iniciando servidor con WebSocket (SocketIO)")
+        print(f"[Startup] HTTP API: http://{host}:{port}")
+        print(f"[Startup] WebSocket: ws://{host}:5001")
+        socketio.run(app, host=host, port=port, debug=debug_flag, use_reloader=False, allow_unsafe_werkzeug=True)
+    else:
+        print(f"[Startup] SocketIO no disponible, iniciando solo HTTP API")
+        app.run(host=host, port=port, debug=debug_flag, use_reloader=False)
+
 if __name__ == "__main__":
+    init_server()
     import os
     host = os.environ.get("NEUROBIT_HOST", "127.0.0.1")
     port = int(os.environ.get("NEUROBIT_PORT", 5000))

@@ -27,18 +27,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'neurobit_salon_secret_key'
 
 # CORS: Solo permitir localhost
-CORS(app, resources={
-    r"/*": {
-        "origins": ["http://127.0.0.1:5000", "http://localhost:5000"],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+# Busca esta sección y cámbiala por esta:
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # SocketIO con async mode threading
 socketio = SocketIO(
     app,
-    cors_allowed_origins=["http://127.0.0.1:5000", "http://localhost:5000"],
+    cors_allowed_origins="*",  # <--- ESTE CAMBIO ES CLAVE
     async_mode='threading',
     ping_interval=25,
     ping_timeout=60,

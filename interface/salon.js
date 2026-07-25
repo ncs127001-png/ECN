@@ -25,9 +25,11 @@ function initWebSocket() {
       reconnectionDelay: 1000,
       reconnectionDelayMax: 5000,
       reconnectionAttempts: 5,
-      transports: ['websocket', 'polling']
+      transports: ['websocket', 'polling'],
+      extraHeaders: {
+        'Access-Control-Allow-Origin': '*'
+      }
     });
-    
     // Evento: Conectado
     salonSocket.on('connect', () => {
       wsConnected = true;
@@ -94,7 +96,8 @@ function agregarMensajeAlHistorialDesdeWS(mensaje) {
 
 const Salon = (() => {
   // ─── CONFIG ───────────────────────────────────────────────
-  const API = '';  // relative (same origin: 127.0.0.1:5000)
+  // ESPECIFICAR EXPLÍCITAMENTE LA API
+  const API = 'http://127.0.0.1:5000';
   const POLL_INTERVAL = 5000;  // ms
   const MSG_LIMIT = 100;
 

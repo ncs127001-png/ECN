@@ -38,3 +38,5 @@ if __name__ == "__main__":
     if tensor.verificar_anclaje_g7():
         print("⚡ [KERNEL] Anclaje ético G7 verificado in-memory. SINCERO_OPERACIONAL.")
 
+default_matrix = NeurobitTensorM13()
+
