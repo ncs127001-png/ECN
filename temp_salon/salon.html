@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Salón de Reuniones — NEUROBIT</title>
+  <meta name="description" content="Salón de Reuniones Soberano — NEUROBIT DEV_TEAM">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       NEUROBIT DESIGN SYSTEM — SALÓN DE REUNIONES
+       Reutiliza tokens de index.html (SOBERANÍA VISUAL)
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --bg-void: #05080d;
+      --bg-primary: #0a0f18;
+      --bg-secondary: #0f1520;
+      --bg-card: #111827;
+      --bg-elevated: #1a2332;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-active: rgba(58,109,240,0.4);
+      --text-primary: #e8ecf4;
+      --text-secondary: #8892a4;
+      --text-muted: #5a6477;
+      --accent-blue: #3a6df0;
+      --accent-green: #22c55e;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-purple: #a855f7;
+      --accent-cyan: #06b6d4;
+      --glow-blue: rgba(58,109,240,0.15);
+      --glow-green: rgba(34,197,94,0.15);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--bg-void);
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(58,109,240,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.03) 0%, transparent 50%);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════════════════ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, rgba(10,15,24,0.95), rgba(10,15,24,0.8));
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 16px var(--glow-blue);
+    }
+
+    .header-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #e8ecf4, #8892a4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-subtitle {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--accent-green);
+    }
+
+    .status-pill.offline {
+      background: rgba(239,68,68,0.1);
+      border-color: rgba(239,68,68,0.2);
+      color: var(--accent-red);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* TAREA 5: WebSocket Status Indicator */
+    #wsStatus.ws-connected {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #10b981;
+      opacity: 1;
+    }
+
+    #wsStatus.ws-connected .status-dot {
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    }
+
+    .link-station {
+      font-size: 11px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .link-station:hover { opacity: 1; }
+
+    /* ─── AUTO-REFRESH TOGGLE BUTTON ─────────────────────────── */
+    .btn-toggle-refresh {
+      padding: 4px 10px;
+      background: rgba(58,109,240,0.1);
+      border: 1px solid rgba(58,109,240,0.2);
+      border-radius: 6px;
+      color: var(--accent-blue);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-toggle-refresh:hover {
+      background: rgba(58,109,240,0.2);
+      border-color: rgba(58,109,240,0.4);
+    }
+
+    .btn-toggle-refresh.disabled {
+      background: rgba(239,68,68,0.1);
+      border-color: rgba(239,68,68,0.2);
+      color: var(--accent-red);
+    }
+
+    /* ─── REFRESH TOGGLE (panel-right) ──────────────────────── */
+    .refresh-toggle {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .refresh-toggle .filter-item {
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .refresh-toggle input[type="checkbox"]:checked {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOOLBAR (Filter + Stats)
+       ═══════════════════════════════════════════════════════════ */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+      overflow-x: auto;
+    }
+
+    .toolbar-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .filter-chip {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      font-family: var(--font-sans);
+    }
+
+    .filter-chip:hover {
+      border-color: var(--border-active);
+      background: var(--bg-elevated);
+    }
+
+    .filter-chip.active {
+      background: rgba(58,109,240,0.15);
+      border-color: rgba(58,109,240,0.4);
+      color: var(--accent-blue);
+    }
+
+    .toolbar-spacer { flex: 1; }
+
+    .toolbar-stat {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .toolbar-stat strong {
+      color: var(--accent-cyan);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MESSAGE STREAM (Chat area)
+       ═══════════════════════════════════════════════════════════ */
+    .message-stream {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      animation: msgIn 0.25s ease;
+    }
+
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .msg-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .msg-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .msg-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .msg-time {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .msg-perspective {
+      font-size: 9px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .msg-content {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    .msg-scores {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .score-chip {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .score-m {
+      background: rgba(58,109,240,0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(58,109,240,0.15);
+    }
+
+    .score-e-pos {
+      background: rgba(34,197,94,0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(34,197,94,0.15);
+    }
+
+    .score-e-neg {
+      background: rgba(239,68,68,0.1);
+      color: var(--accent-red);
+      border: 1px solid rgba(239,68,68,0.15);
+    }
+
+    .score-e-neutral {
+      background: rgba(245,158,11,0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245,158,11,0.15);
+    }
+
+    /* Entity color coding */
+    .entity-tron     { background: rgba(58,109,240,0.15); color: var(--accent-blue); }
+    .entity-simon    { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+    .entity-eva      { background: rgba(34,197,94,0.15); color: var(--accent-green); }
+    .entity-semilla  { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+    .entity-system   { background: rgba(6,182,212,0.15); color: var(--accent-cyan); }
+    .entity-default  { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+
+    .name-tron    { color: var(--accent-blue); }
+    .name-simon   { color: var(--accent-purple); }
+    .name-eva     { color: var(--accent-green); }
+    .name-semilla { color: var(--accent-amber); }
+    .name-system  { color: var(--accent-cyan); }
+
+    /* ═══════════════════════════════════════════════════════════
+       EMPTY STATE
+       ═══════════════════════════════════════════════════════════ */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      gap: 12px;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      opacity: 0.3;
+    }
+
+    .empty-text {
+      font-size: 14px;
+    }
+
+    .empty-hint {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      opacity: 0.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       COMPOSER (Input area)
+       ═══════════════════════════════════════════════════════════ */
+    .composer {
+      padding: 12px 20px 16px;
+      background: linear-gradient(180deg, rgba(10,15,24,0.8), rgba(10,15,24,0.95));
+      border-top: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+
+    .composer-identity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .composer-identity label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .composer-select {
+      padding: 4px 10px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .composer-select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .composer-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .composer-input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.5;
+      resize: none;
+      min-height: 42px;
+      max-height: 150px;
+      transition: var(--transition);
+    }
+
+    .composer-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px var(--glow-blue);
+    }
+
+    .composer-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .context-note {
+      background: rgba(52, 152, 219, 0.1);
+      border-left: 3px solid #3498db;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #85c1e9;
+      line-height: 1.5;
+    }
+
+    .roadmap-panel {
+      background: rgba(46, 204, 113, 0.05);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    .roadmap-panel h4 {
+      color: #2ecc71;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .roadmap-panel ul {
+      color: #85c1e9;
+      font-size: 13px;
+      list-style-position: inside;
+      line-height: 1.6;
+    }
+
+    .roadmap-panel li {
+      margin-bottom: 6px;
+    }
+
+    .btn-send {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--accent-blue), #2556c9);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-sans);
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(58,109,240,0.3);
+    }
+
+    .btn-send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(58,109,240,0.4);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .composer-hint {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOAST
+       ═══════════════════════════════════════════════════════════ */
+    .toast-container {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toast {
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      animation: toastIn 0.3s ease, toastOut 0.3s ease 3s forwards;
+      backdrop-filter: blur(10px);
+      max-width: 360px;
+      font-family: var(--font-mono);
+    }
+
+    .toast-success {
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--accent-green);
+    }
+
+    .toast-error {
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: var(--accent-red);
+    }
+
+    .toast-info {
+      background: rgba(58,109,240,0.15);
+      border: 1px solid rgba(58,109,240,0.3);
+      color: var(--accent-blue);
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes toastOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LOADING SPINNER
+       ═══════════════════════════════════════════════════════════ */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border-subtle);
+      border-top-color: var(--accent-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LAYOUT NUEVO: 2 PANELES + FOOTER FIJO
+       ═══════════════════════════════════════════════════════════ */
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .header {
+      flex-shrink: 0;
+    }
+
+    .toolbar {
+      flex-shrink: 0;
+    }
+
+    .salon-container {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      flex: 1;
+      gap: 12px;
+      padding: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .panel-left {
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      max-height: calc(100vh - 300px);
+    }
+
+    .messages-container {
+      overflow-y: auto;
+      max-height: calc(100vh - 400px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .panel-right {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .stats-section,
+    .filters-section,
+    .agents-section {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+    }
+
+    .section-title {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .filters-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .filter-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      accent-color: var(--accent-blue);
+    }
+
+    .agents-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 10px;
+    }
+
+    .agent-item {
+      padding: 4px 6px;
+      background: rgba(34,197,94,0.08);
+      border-left: 2px solid var(--accent-green);
+      border-radius: 3px;
+      color: var(--text-muted);
+    }
+
+    .composer-footer {
+      flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(10,15,24,0.8), rgba(10,15,24,0.95));
+      border-top: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      padding: 12px 20px 16px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .composer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MODAL DE REGISTRO DE MIEMBROS (TAREA 4)
+       ═══════════════════════════════════════════════════════════ */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      padding: 24px;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 420px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--glow-blue);
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px 12px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 12px var(--glow-blue);
+      background: var(--bg-elevated);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: white;
+      box-shadow: 0 0 12px var(--glow-blue);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px var(--glow-blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+
+    /* Botones de acción (Refresh, Add) */
+    .btn-action {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .btn-action:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    .btn-action:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SCROLLBAR
+       ═══════════════════════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+    .panel-left::-webkit-scrollbar,
+    .panel-right::-webkit-scrollbar,
+    .composer-footer::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .panel-left::-webkit-scrollbar-thumb,
+    .panel-right::-webkit-scrollbar-thumb,
+    .composer-footer::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+    }
+
+    .panel-left::-webkit-scrollbar-thumb:hover,
+    .panel-right::-webkit-scrollbar-thumb:hover,
+    .composer-footer::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+       ═══════════════════════════════════════════════════════════ */
+    .agent-registration-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agent-registration-panel h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .agent-registration-panel form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .agent-registration-panel input,
+    .agent-registration-panel select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .agent-registration-panel input:focus,
+    .agent-registration-panel select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(58,109,240,0.08);
+    }
+
+    .agent-registration-panel button {
+      background: linear-gradient(135deg, var(--accent-blue), rgba(58,109,240,0.8));
+      border: 1px solid var(--accent-blue);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 12px rgba(58,109,240,0.2);
+    }
+
+    .agent-registration-panel button:hover {
+      box-shadow: 0 0 20px rgba(58,109,240,0.4);
+      transform: translateY(-1px);
+    }
+
+    .agent-registration-panel button:active {
+      transform: translateY(0);
+    }
+
+    #registeredAgents {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .agent-item {
+      padding: 6px 8px;
+      background: rgba(34,197,94,0.08);
+      border-left: 3px solid var(--accent-green);
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .agent-item .agent-name {
+      font-weight: 600;
+      color: var(--accent-green);
+    }
+
+    .agent-item .agent-platform {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .header { padding: 10px 12px; }
+      .toolbar { padding: 8px 12px; }
+      .message-stream { padding: 10px 12px; }
+      .composer { padding: 10px 12px 14px; }
+      .msg-scores { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="header" id="salon-header">
+  <div class="header-brand">
+    <div class="header-logo">🧠</div>
+    <div>
+      <div class="header-title">Salón de Reuniones</div>
+      <div class="header-subtitle">NEUROBIT · SOBERANÍA LOCAL · 127.0.0.1</div>
+    </div>
+  </div>
+  <div class="header-controls">
+    <div class="status-pill" id="statusPill">
+      <div class="status-dot"></div>
+      <span id="statusLabel">Conectando…</span>
+    </div>
+    <!-- TAREA 5: WebSocket Status Indicator -->
+    <div class="status-pill" id="wsStatus" style="background-color: #f5a623; opacity: 0.7;">
+      <div class="status-dot" style="background-color: #f5a623;"></div>
+      <span style="font-size: 12px;">WebSocket: INIT</span>
+    </div>
+    <button id="btnToggleRefresh" class="btn-toggle-refresh" title="Activar/Desactivar auto-refresh">⏸️ Auto-Refresh: ON</button>
+    <a href="/interface/index.html" class="link-station">📡 Estación Central</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOOLBAR
+     ═══════════════════════════════════════════════════════════ -->
+<div class="toolbar" id="toolbar">
+  <span class="toolbar-label">Filtro:</span>
+  <button class="filter-chip active" data-entity="ALL" id="filter-all">Todos</button>
+  <button class="filter-chip" data-entity="TRON">TRON</button>
+  <button class="filter-chip" data-entity="SIMON">SIMON</button>
+  <button class="filter-chip" data-entity="EVA">EVA</button>
+  <button class="filter-chip" data-entity="NODO_SEMILLA">NODO_SEMILLA</button>
+  <button class="filter-chip" data-entity="HID_DAEMON">HID</button>
+  <button class="filter-chip" data-entity="SYSTEM">SYSTEM</button>
+  <span class="toolbar-spacer"></span>
+  <span class="toolbar-stat" id="statTotal">Total: <strong>—</strong></span>
+  <span class="toolbar-stat" id="statDispatcher">Buffer: <strong>—</strong></span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN CONTENT: 2-PANEL GRID + FIXED FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="salon-container">
+  
+  <!-- PANEL IZQUIERDO: Historial de mensajes (70%) -->
+  <div class="panel-left">
+    <div class="messages-container" id="messagesContainer">
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- PANEL DERECHO: Registros + Estadísticas (30%) -->
+  <div class="panel-right">
+    
+    <!-- Estadísticas -->
+    <div class="stats-section">
+      <h4 class="section-title">📊 Estadísticas</h4>
+      <div class="stats-content">
+        <div class="stat-row">
+          <span class="stat-label">Total de registros:</span>
+          <span class="stat-value" id="statTotalValue">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">En buffer:</span>
+          <span class="stat-value" id="statBufferValue">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Coherencia:</span>
+          <span class="stat-value" id="statCoherenceValue">0.00</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Última actualización:</span>
+          <span class="stat-value" id="statLastUpdate">—</span>
+        </div>
+      </div>
+      
+      <!-- Auto-Refresh Toggle -->
+      <div class="stat-row refresh-toggle">
+        <label class="filter-item">
+          <input type="checkbox" id="autoRefreshToggle" checked>
+          🔄 Auto-Refresh (5s)
+        </label>
+      </div>
+    </div>
+    
+    <!-- Filtros por agente -->
+    <div class="filters-section">
+      <h4 class="section-title">🏷️ Filtros por Miembros</h4>
+      <div class="filters-content" id="filtersPanel">
+        <div class="filter-group">
+          <label class="filter-item">
+            <input type="checkbox" data-agent="ALL" checked> Todos
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="TRON"> TRON
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="SIMON"> SIMON
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="EVA"> EVA
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="NODO_SEMILLA"> NODO_SEMILLA
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="HID_DAEMON"> HID
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Agentes registrados -->
+    <div class="agents-section">
+      <h4 class="section-title">🔗 Agentes Registrados</h4>
+      <div class="agents-list" id="registeredAgentsList">
+        <p style="color: var(--text-muted); font-size: 11px;">Cargando agentes...</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER FIJO: COMPOSER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="composer-footer">
+  <div class="composer">
+    <div class="composer-identity">
+      <label for="senderEntity">Compañero del equipo:</label>
+      <div style="display: flex; gap: 4px; align-items: center;">
+        <select class="composer-select" id="senderEntity" disabled style="flex: 1;">
+          <option value="">Cargando miembros...</option>
+        </select>
+        <button id="btnRefreshMembers" class="btn-action" title="Actualizar lista de miembros">↻</button>
+        <button id="btnRegisterMember" class="btn-action" title="Registrar nuevo miembro">+ Miembro</button>
+      </div>
+      <small style="display:block; margin-top:4px; font-size:11px; color:var(--text-muted);">Seleccioná qué compañero está respondiendo</small>
+      <label for="perspective" style="margin-left:8px">Perspectiva:</label>
+      <select class="composer-select" id="perspective">
+        <option value="tecnica">Técnica</option>
+        <option value="coordinacion">Coordinación</option>
+        <option value="creativa">Creativa</option>
+        <option value="auditoria">Auditoría</option>
+      </select>
+    </div>
+    <!-- Context Note -->
+    <div class="context-note">
+      💡 <strong>Nota:</strong> El Salón centraliza las respuestas de tus compañeros 
+      en diferentes plataformas. Copiá y pegá las respuestas de cada pestaña aquí 
+      para mantener trazabilidad.
+    </div>
+    <div class="composer-row">
+      <textarea
+        class="composer-input"
+        id="messageInput"
+        placeholder="Escribe tu mensaje al Salón..."
+        rows="1"
+      ></textarea>
+      <button class="btn-send" id="btnSend" onclick="Salon.send()">
+        📝 Registrar Respuesta
+      </button>
+      <small style="display:block; margin-top:4px; text-align:center; font-size:11px; color:var(--text-muted);">O presioná Ctrl+Enter</small>
+    </div>
+    <div class="composer-hint">
+      <span>Enter = nueva línea · Ctrl+Enter = enviar</span>
+      <span id="autoRefreshLabel">Auto-refresh: 5s</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+     ═══════════════════════════════════════════════════════════ 
+<div class="agent-registration-panel">
+  <h4>🔗 Registrar Agente TEAMVIEWER</h4>
+  <form id="agentRegistrationForm">
+    <input 
+      type="text" 
+      id="agentName" 
+      placeholder="Nombre (TRON, SIMON, EVA, custom...)" 
+      required
+      maxlength="50"
+    >
+    <select id="agentPlatform" required>
+      <option value="teamviewer_extension">TEAMVIEWER SOBERANO (Local, sin API key)</option>
+      <option value="chatgpt">ChatGPT (API Key required)</option>
+      <option value="gemini">Gemini (API Key required)</option>
+      <option value="qwen">Qwen (API Key required)</option>
+      <option value="local_llama">Local LLaMA (sin API key)</option>
+    </select>
+    <input 
+      type="url" 
+      id="agentUrl" 
+      placeholder="URL (https://chat.openai.com)" 
+      required
+    >
+    <button type="submit">📌 Registrar Agente</button>
+  </form>
+  <div id="registeredAgents"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ROADMAP PANEL
+     ═══════════════════════════════════════════════════════════ 
+<div class="roadmap-panel">
+  <h4>🚀 Próximamente: Automatización</h4>
+  <ul>
+    <li>Daemon detectará pestaña activa automáticamente</li>
+    <li>Inyección vía HID (shift+tab, enter, capture)</li>
+    <li>Sin copiar/pegar manual</li>
+    <li>Trazabilidad completa en memoria_eva.jsonl</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOAST CONTAINER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL: REGISTRAR NUEVO MIEMBRO (TAREA 4)
+     ═══════════════════════════════════════════════════════════ -->
+<div id="modalRegisterMember" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h4 style="margin-bottom:16px; color:var(--text-primary);">🔗 Registrar Nuevo Miembro</h4>
+    <form id="formRegisterMember">
+      <div class="form-group">
+        <label for="reg_member_id">ID Único (máx 5 caracteres):</label>
+        <input type="text" id="reg_member_id" maxlength="5" required pattern="[A-Za-z0-9_]{1,5}" placeholder="Ej: qwen_01">
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_name">Nombre Simbólico:</label>
+        <input type="text" id="reg_name" required placeholder="Ej: Qwen Local">
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_platform">Plataforma:</label>
+        <select id="reg_platform">
+          <option value="ollama">Qwen Local (Ollama)</option>
+          <option value="vscode">Claude (VSCode)</option>
+          <option value="gemini_web">Gemini Web</option>
+          <option value="chatgpt_web">ChatGPT Web</option>
+          <option value="other">Otra</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_role">Rol:</label>
+        <select id="reg_role">
+          <option value="asistente_tecnico">Asistente Técnico</option>
+          <option value="coordinador">Coordinador</option>
+          <option value="validador">Validador de Coherencia</option>
+          <option value="observador">Observador</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_nickname">Nickname (opcional, asignado por Director):</label>
+        <input type="text" id="reg_nickname" placeholder="Ej: Hermes_V">
+      </div>
+      
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Registrar Miembro</button>
+        <button type="button" class="btn-secondary" onclick="Salon.closeRegisterModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOCKET.IO — TAREA 5 WebSocket Real-Time
+     ═══════════════════════════════════════════════════════════ -->
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SALON.JS — Logic
+     ═══════════════════════════════════════════════════════════ -->
+<script src="salon.js"></script>
+</body>
+</html>

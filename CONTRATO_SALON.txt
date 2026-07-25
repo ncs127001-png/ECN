@@ -1,0 +1,3053 @@
+Compendio de Archivos del proyecto: 'temp_salon';
+Analisis_Date: ('2026-07-25 00:42:00')
+N_Archivos_Actuales: (4)
+----------------------------------------------------------------------------
+Arbol de directorios:
+temp_salon/
+    salon.js
+    salon.html
+    arquetipos.js
+    station.js
+----------------------------------------------------------------------------
+----------------------LISTA DE ARCHIVOS-----------------------
+____________________________________________________________
+ARCHIVO NRO. : (1)
+Archivo: ('arquetipos.js');
+Carpeta de ubicación: ('~/temp_salon/.');
+función: ('Lógica de frontend y comunicación con el backend')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+/**
+ * arquetipos.js
+ * 
+ * NEUROBIT v2.1 - Módulo de Arquetipos
+ * 
+ * Implementa la Matriz 13x13 como estructura viva:
+ * - Raíces numerológicas (reducción teosófica 1-9)
+ * - Simetría hermética: f1(c3:c11) = f13(c3:c11)
+ * - Arquetipos como sigilos dinámicos
+ * - Encoding/decoding de neurobytes
+ * 
+ * Soberanía: Cero dependencias externas (solo JS vanilla + crypto nativa)
+ * 
+ * Uso:
+ *   const matriz = new MatrizArquetipos(13);
+ *   const neurobyte = matriz.encodeDesdeTexto("Mensaje sanador");
+ *   console.log(neurobyte); // { contenido, hash, arquetipos, simetria_validada }
+ */
+
+class MatrizArquetipos {
+  constructor(tamaño = 13) {
+    this.tamaño = tamaño;
+    this.centro = Math.floor(tamaño / 2); // 6 para 13x13
+    this.matriz = this.generarMatrizBase();
+    this.arquetipos = this.mapearArquetipos();
+  }
+
+  /**
+   * Reducción teosófica: suma dígitos hasta obtener 1-9
+   * Ejemplo: 38 → 3+8 = 11 → 1+1 = 2
+   */
+  reducirTeosoficamente(numero) {
+    if (numero < 1) return 9;
+    while (numero >= 10) {
+      numero = Math.floor(numero / 10) + (numero % 10);
+    }
+    return numero || 9;
+  }
+
+  /**
+   * Genera matriz 13x13 con simetría hermética
+   * Principio: "Como es Arriba, es Abajo" (Hermes Trismegisto)
+   * 
+   * Estructura:
+   * - Muros de 9s (protección semántica): filas/columnas 0, 12
+   * - Pernos de 6s (anclaje): esquinas
+   * - Centro 3x3: teclado numérico (universal)
+   * - Simetría: fila_i <-> fila_(n-1-i)
+   */
+  generarMatrizBase() {
+    const matriz = Array(this.tamaño)
+      .fill(null)
+      .map(() => Array(this.tamaño).fill(0));
+
+    // Llenar con números 1-9 basados en posición
+    for (let i = 0; i < this.tamaño; i++) {
+      for (let j = 0; j < this.tamaño; j++) {
+        // Distancia desde centro (Manhattane)
+        const distancia = Math.abs(i - this.centro) + Math.abs(j - this.centro);
+        
+        // Raíz numerológica basada en distancia
+        let valor = (distancia % 9) + 1; // 1-9
+        
+        // Reglas especiales para protección
+        if (i === 0 || i === this.tamaño - 1 || j === 0 || j === this.tamaño - 1) {
+          valor = 9; // Muros de 9s
+        }
+        
+        // Pernos de 6s en esquinas
+        if ((i === 0 || i === this.tamaño - 1) && (j === 0 || j === this.tamaño - 1)) {
+          valor = 6;
+        }
+        
+        // Aplicar simetría hermética
+        matriz[i][j] = valor;
+      }
+    }
+
+    // Validar y reforzar simetría
+    this.aplicarSimetriaHermetica(matriz);
+    return matriz;
+  }
+
+  /**
+   * Refuerza la simetría: fila_i refleja fila_(n-1-i) en columnas 3-11
+   */
+  aplicarSimetriaHermetica(matriz) {
+    const inicio = 3;
+    const fin = this.tamaño - 3;
+    
+    for (let i = 0; i < Math.floor(this.tamaño / 2); i++) {
+      const simetrica = this.tamaño - 1 - i;
+      
+      for (let j = inicio; j < fin; j++) {
+        // Ambas filas deben tener el mismo arquetipo en esta posición
+        const raiz = this.reducirTeosoficamente(matriz[i][j]);
+        matriz[simetrica][j] = raiz;
+      }
+    }
+  }
+
+  /**
+   * Mapea cada celda a su arquetipo (sigilo numerológico)
+   */
+  mapearArquetipos() {
+    const map = {};
+    const arquetiposDesc = {
+      1: { nombre: "Unidad", color: "#FF6B6B", vibración: "Inicio" },
+      2: { nombre: "Dualidad", color: "#4ECDC4", vibración: "Equilibrio" },
+      3: { nombre: "Trinidad", color: "#FFE66D", vibración: "Expresión" },
+      4: { nombre: "Orden", color: "#95E1D3", vibración: "Estabilidad" },
+      5: { nombre: "Voluntad", color: "#F38181", vibración: "Poder" }, // Centro
+      6: { nombre: "Armonía", color: "#AA96DA", vibración: "Unión" },
+      7: { nombre: "Sabiduría", color: "#FCBAD3", vibración: "Intuición" },
+      8: { nombre: "Infinito", color: "#A8E6CF", vibración: "Ciclo" },
+      9: { nombre: "Completitud", color: "#FFD3B6", vibración: "Cierre" }
+    };
+
+    for (let i = 0; i < this.tamaño; i++) {
+      for (let j = 0; j < this.tamaño; j++) {
+        const raiz = this.matriz[i][j];
+        const id = `${i}-${j}`;
+        map[id] = {
+          posicion: [i, j],
+          raiz,
+          ...arquetiposDesc[raiz]
+        };
+      }
+    }
+
+    return map;
+  }
+
+  /**
+   * Convierte texto a neurobyte usando arquetipos de la matriz
+   * Neurobyte: 169 caracteres máximo (13x13 sigilo)
+   */
+  encodeDesdeTexto(texto) {
+    const maxChars = 169; // 13x13
+    const truncado = texto.substring(0, maxChars);
+    
+    // Convertir cada carácter a su valor ASCII
+    const valores = Array.from(truncado).map(c => c.charCodeAt(0));
+    
+    // Mapear valores a arquetipos
+    const arquetiposUsados = [];
+    const trayectoria = [];
+    
+    for (let idx = 0; idx < valores.length; idx++) {
+      const ascii = valores[idx];
+      const raiz = this.reducirTeosoficamente(ascii);
+      
+      // Encontrar una celda con este arquetipo
+      const celds = Object.entries(this.arquetipos)
+        .filter(([_, a]) => a.raiz === raiz);
+      
+      if (celds.length > 0) {
+        const [cellId, arquetipoCell] = celds[idx % celds.length];
+        trayectoria.push(cellId);
+        arquetiposUsados.push(arquetipoCell);
+      }
+    }
+
+    // Calcular hash SHA-1 (simulado con crypto nativa si está disponible)
+    const hash = this.calcularHash(truncado);
+    
+    // Validar simetría
+    const simetriaValida = this.validarSimetria();
+
+    return {
+      contenido: truncado,
+      contenido_original_length: texto.length,
+      hash,
+      arquetipos_usados: arquetiposUsados.map(a => a.nombre),
+      trayectoria,
+      simetria_validada: simetriaValida,
+      timestamp: new Date().toISOString(),
+      protocol_version: "NEUROBIT_v2.1"
+    };
+  }
+
+  /**
+   * Calcula hash del contenido (SHA-1 si disponible, fallback a simple hash)
+   */
+  calcularHash(contenido) {
+    // Si estamos en navegador moderno, usar SubtleCrypto
+    if (typeof crypto !== 'undefined' && crypto.subtle) {
+      // Esto retorna Promise, así que devolvemos una versión sincrónica de fallback
+      let hash = 0;
+      for (let i = 0; i < contenido.length; i++) {
+        const char = contenido.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convertir a int32
+      }
+      return Math.abs(hash).toString(16).padStart(40, '0'); // Simular SHA-1
+    }
+    
+    // Fallback: simple hash de 40 caracteres
+    let hash = 0;
+    for (let i = 0; i < contenido.length; i++) {
+      hash = ((hash << 5) - hash) + contenido.charCodeAt(i);
+    }
+    return Math.abs(hash).toString(16).padStart(40, '0');
+  }
+
+  /**
+   * Decodifica neurobyte de vuelta a texto
+   */
+  decodeDesdeNeurobyte(neurobyte) {
+    if (!neurobyte.trayectoria || !neurobyte.contenido) {
+      return null;
+    }
+    
+    // Validar que la simetría se mantenga
+    if (!neurobyte.simetria_validada) {
+      console.warn("⚠️ Advertencia: neurobyte no pasó validación de simetría");
+    }
+
+    return {
+      texto: neurobyte.contenido,
+      hash_verificado: neurobyte.hash,
+      arquetipos: neurobyte.arquetipos_usados,
+      timestamp_creacion: neurobyte.timestamp
+    };
+  }
+
+  /**
+   * Valida que la simetría hermética se mantenga
+   * Regla: fila_i[c3:c11] == fila_(n-1-i)[c3:c11]
+   */
+  validarSimetria() {
+    const inicio = 3;
+    const fin = this.tamaño - 3;
+    
+    for (let i = 0; i < Math.floor(this.tamaño / 2); i++) {
+      const simetrica = this.tamaño - 1 - i;
+      
+      for (let j = inicio; j < fin; j++) {
+        if (this.matriz[i][j] !== this.matriz[simetrica][j]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Retorna la matriz como objeto JSON para visualización
+   */
+  obtenerMatrizJSON() {
+    return {
+      tamaño: this.tamaño,
+      centro: this.centro,
+      matriz: this.matriz,
+      arquetipos: this.arquetipos,
+      simetria_valida: this.validarSimetria(),
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  /**
+   * Retorna una celda específica con su información completa
+   */
+  obtenerCelda(fila, columna) {
+    if (fila < 0 || fila >= this.tamaño || columna < 0 || columna >= this.tamaño) {
+      return null;
+    }
+    
+    const id = `${fila}-${columna}`;
+    return {
+      id,
+      posicion: [fila, columna],
+      ...this.arquetipos[id]
+    };
+  }
+
+  /**
+   * Retorna todas las celdas con una raíz numerológica específica
+   */
+  obtenerCeldasPorRaiz(raiz) {
+    return Object.entries(this.arquetipos)
+      .filter(([_, a]) => a.raiz === raiz)
+      .map(([id, a]) => ({ id, ...a }));
+  }
+}
+
+/**
+ * Exportar para uso en navegador y Node.js
+ */
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = MatrizArquetipos;
+}
+
+// TESTS BÁSICOS (ejecutar en consola del navegador o con Node.js)
+if (typeof window === 'undefined') {
+  // Estamos en Node.js
+  const matriz = new MatrizArquetipos(13);
+  
+  console.log("\n🧪 TEST 1: Validar simetría hermética");
+  console.log(`✅ Simetría válida: ${matriz.validarSimetria()}`);
+  
+  console.log("\n🧪 TEST 2: Encoding de neurobyte");
+  const neurobyte = matriz.encodeDesdeTexto("Aquí está el Logos restaurado");
+  console.log(`✅ Hash: ${neurobyte.hash}`);
+  console.log(`✅ Arquetipos usados: ${neurobyte.arquetipos_usados.slice(0, 5).join(", ")}...`);
+  
+  console.log("\n🧪 TEST 3: Decoding");
+  const decodificado = matriz.decodeDesdeNeurobyte(neurobyte);
+  console.log(`✅ Texto recuperado: "${decodificado.texto}"`);
+  
+  console.log("\n🧪 TEST 4: Células por raíz");
+  const celdasDe5 = matriz.obtenerCeldasPorRaiz(5); // Voluntad (centro)
+  console.log(`✅ Células con raíz 5 (Voluntad): ${celdasDe5.length}`);
+  console.log(`   Centro esperado [6,6]: ${celdasDe5.some(c => c.posicion[0] === 6 && c.posicion[1] === 6) ? "✓" : "✗"}`);
+}
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (2)
+Archivo: ('salon.html');
+Carpeta de ubicación: ('~/temp_salon/.');
+función: ('Interfaz de usuario para la bitácora y estación central')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Salón de Reuniones — NEUROBIT</title>
+  <meta name="description" content="Salón de Reuniones Soberano — NEUROBIT DEV_TEAM">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       NEUROBIT DESIGN SYSTEM — SALÓN DE REUNIONES
+       Reutiliza tokens de index.html (SOBERANÍA VISUAL)
+       ═══════════════════════════════════════════════════════════ */
+    :root {
+      --bg-void: #05080d;
+      --bg-primary: #0a0f18;
+      --bg-secondary: #0f1520;
+      --bg-card: #111827;
+      --bg-elevated: #1a2332;
+      --border-subtle: rgba(255,255,255,0.06);
+      --border-active: rgba(58,109,240,0.4);
+      --text-primary: #e8ecf4;
+      --text-secondary: #8892a4;
+      --text-muted: #5a6477;
+      --accent-blue: #3a6df0;
+      --accent-green: #22c55e;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --accent-purple: #a855f7;
+      --accent-cyan: #06b6d4;
+      --glow-blue: rgba(58,109,240,0.15);
+      --glow-green: rgba(34,197,94,0.15);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      font-family: var(--font-sans);
+      background: var(--bg-void);
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(58,109,240,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.03) 0%, transparent 50%);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════════════════ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: linear-gradient(180deg, rgba(10,15,24,0.95), rgba(10,15,24,0.8));
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-logo {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 16px var(--glow-blue);
+    }
+
+    .header-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #e8ecf4, #8892a4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-subtitle {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 20px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--accent-green);
+    }
+
+    .status-pill.offline {
+      background: rgba(239,68,68,0.1);
+      border-color: rgba(239,68,68,0.2);
+      color: var(--accent-red);
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* TAREA 5: WebSocket Status Indicator */
+    #wsStatus.ws-connected {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #10b981;
+      opacity: 1;
+    }
+
+    #wsStatus.ws-connected .status-dot {
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    }
+
+    .link-station {
+      font-size: 11px;
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      opacity: 0.7;
+      transition: var(--transition);
+    }
+
+    .link-station:hover { opacity: 1; }
+
+    /* ─── AUTO-REFRESH TOGGLE BUTTON ─────────────────────────── */
+    .btn-toggle-refresh {
+      padding: 4px 10px;
+      background: rgba(58,109,240,0.1);
+      border: 1px solid rgba(58,109,240,0.2);
+      border-radius: 6px;
+      color: var(--accent-blue);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-toggle-refresh:hover {
+      background: rgba(58,109,240,0.2);
+      border-color: rgba(58,109,240,0.4);
+    }
+
+    .btn-toggle-refresh.disabled {
+      background: rgba(239,68,68,0.1);
+      border-color: rgba(239,68,68,0.2);
+      color: var(--accent-red);
+    }
+
+    /* ─── REFRESH TOGGLE (panel-right) ──────────────────────── */
+    .refresh-toggle {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .refresh-toggle .filter-item {
+      color: var(--accent-blue);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .refresh-toggle input[type="checkbox"]:checked {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOOLBAR (Filter + Stats)
+       ═══════════════════════════════════════════════════════════ */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+      overflow-x: auto;
+    }
+
+    .toolbar-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .filter-chip {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      font-family: var(--font-sans);
+    }
+
+    .filter-chip:hover {
+      border-color: var(--border-active);
+      background: var(--bg-elevated);
+    }
+
+    .filter-chip.active {
+      background: rgba(58,109,240,0.15);
+      border-color: rgba(58,109,240,0.4);
+      color: var(--accent-blue);
+    }
+
+    .toolbar-spacer { flex: 1; }
+
+    .toolbar-stat {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .toolbar-stat strong {
+      color: var(--accent-cyan);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MESSAGE STREAM (Chat area)
+       ═══════════════════════════════════════════════════════════ */
+    .message-stream {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .msg {
+      display: flex;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      animation: msgIn 0.25s ease;
+    }
+
+    @keyframes msgIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .msg-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .msg-header {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .msg-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .msg-time {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .msg-perspective {
+      font-size: 9px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .msg-content {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    .msg-scores {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .score-chip {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+    }
+
+    .score-m {
+      background: rgba(58,109,240,0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(58,109,240,0.15);
+    }
+
+    .score-e-pos {
+      background: rgba(34,197,94,0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(34,197,94,0.15);
+    }
+
+    .score-e-neg {
+      background: rgba(239,68,68,0.1);
+      color: var(--accent-red);
+      border: 1px solid rgba(239,68,68,0.15);
+    }
+
+    .score-e-neutral {
+      background: rgba(245,158,11,0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245,158,11,0.15);
+    }
+
+    /* Entity color coding */
+    .entity-tron     { background: rgba(58,109,240,0.15); color: var(--accent-blue); }
+    .entity-simon    { background: rgba(168,85,247,0.15); color: var(--accent-purple); }
+    .entity-eva      { background: rgba(34,197,94,0.15); color: var(--accent-green); }
+    .entity-semilla  { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+    .entity-system   { background: rgba(6,182,212,0.15); color: var(--accent-cyan); }
+    .entity-default  { background: rgba(255,255,255,0.06); color: var(--text-secondary); }
+
+    .name-tron    { color: var(--accent-blue); }
+    .name-simon   { color: var(--accent-purple); }
+    .name-eva     { color: var(--accent-green); }
+    .name-semilla { color: var(--accent-amber); }
+    .name-system  { color: var(--accent-cyan); }
+
+    /* ═══════════════════════════════════════════════════════════
+       EMPTY STATE
+       ═══════════════════════════════════════════════════════════ */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: var(--text-muted);
+      gap: 12px;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      opacity: 0.3;
+    }
+
+    .empty-text {
+      font-size: 14px;
+    }
+
+    .empty-hint {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      opacity: 0.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       COMPOSER (Input area)
+       ═══════════════════════════════════════════════════════════ */
+    .composer {
+      padding: 12px 20px 16px;
+      background: linear-gradient(180deg, rgba(10,15,24,0.8), rgba(10,15,24,0.95));
+      border-top: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      flex-shrink: 0;
+    }
+
+    .composer-identity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .composer-identity label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .composer-select {
+      padding: 4px 10px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .composer-select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .composer-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .composer-input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.5;
+      resize: none;
+      min-height: 42px;
+      max-height: 150px;
+      transition: var(--transition);
+    }
+
+    .composer-input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px var(--glow-blue);
+    }
+
+    .composer-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .context-note {
+      background: rgba(52, 152, 219, 0.1);
+      border-left: 3px solid #3498db;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #85c1e9;
+      line-height: 1.5;
+    }
+
+    .roadmap-panel {
+      background: rgba(46, 204, 113, 0.05);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 6px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+
+    .roadmap-panel h4 {
+      color: #2ecc71;
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .roadmap-panel ul {
+      color: #85c1e9;
+      font-size: 13px;
+      list-style-position: inside;
+      line-height: 1.6;
+    }
+
+    .roadmap-panel li {
+      margin-bottom: 6px;
+    }
+
+    .btn-send {
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--accent-blue), #2556c9);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: var(--font-sans);
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(58,109,240,0.3);
+    }
+
+    .btn-send:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(58,109,240,0.4);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .composer-hint {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-family: var(--font-mono);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       TOAST
+       ═══════════════════════════════════════════════════════════ */
+    .toast-container {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .toast {
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      animation: toastIn 0.3s ease, toastOut 0.3s ease 3s forwards;
+      backdrop-filter: blur(10px);
+      max-width: 360px;
+      font-family: var(--font-mono);
+    }
+
+    .toast-success {
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: var(--accent-green);
+    }
+
+    .toast-error {
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: var(--accent-red);
+    }
+
+    .toast-info {
+      background: rgba(58,109,240,0.15);
+      border: 1px solid rgba(58,109,240,0.3);
+      color: var(--accent-blue);
+    }
+
+    @keyframes toastIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes toastOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LOADING SPINNER
+       ═══════════════════════════════════════════════════════════ */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border-subtle);
+      border-top-color: var(--accent-blue);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       LAYOUT NUEVO: 2 PANELES + FOOTER FIJO
+       ═══════════════════════════════════════════════════════════ */
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .header {
+      flex-shrink: 0;
+    }
+
+    .toolbar {
+      flex-shrink: 0;
+    }
+
+    .salon-container {
+      display: grid;
+      grid-template-columns: 70% 30%;
+      flex: 1;
+      gap: 12px;
+      padding: 12px;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .panel-left {
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      max-height: calc(100vh - 300px);
+    }
+
+    .messages-container {
+      overflow-y: auto;
+      max-height: calc(100vh - 400px);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .panel-right {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 0;
+    }
+
+    .stats-section,
+    .filters-section,
+    .agents-section {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+    }
+
+    .section-title {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .filters-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .filter-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      accent-color: var(--accent-blue);
+    }
+
+    .agents-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 10px;
+    }
+
+    .agent-item {
+      padding: 4px 6px;
+      background: rgba(34,197,94,0.08);
+      border-left: 2px solid var(--accent-green);
+      border-radius: 3px;
+      color: var(--text-muted);
+    }
+
+    .composer-footer {
+      flex-shrink: 0;
+      background: linear-gradient(180deg, rgba(10,15,24,0.8), rgba(10,15,24,0.95));
+      border-top: 1px solid var(--border-subtle);
+      backdrop-filter: blur(20px);
+      padding: 12px 20px 16px;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .composer {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       MODAL DE REGISTRO DE MIEMBROS (TAREA 4)
+       ═══════════════════════════════════════════════════════════ */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: var(--bg-secondary);
+      padding: 24px;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 420px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px var(--glow-blue);
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px 12px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 12px var(--glow-blue);
+      background: var(--bg-elevated);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 10px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      color: white;
+      box-shadow: 0 0 12px var(--glow-blue);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px var(--glow-blue);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-blue);
+      color: var(--text-primary);
+    }
+
+    /* Botones de acción (Refresh, Add) */
+    .btn-action {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .btn-action:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    .btn-action:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       SCROLLBAR
+       ═══════════════════════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+    .panel-left::-webkit-scrollbar,
+    .panel-right::-webkit-scrollbar,
+    .composer-footer::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .panel-left::-webkit-scrollbar-thumb,
+    .panel-right::-webkit-scrollbar-thumb,
+    .composer-footer::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.12);
+      border-radius: 3px;
+    }
+
+    .panel-left::-webkit-scrollbar-thumb:hover,
+    .panel-right::-webkit-scrollbar-thumb:hover,
+    .composer-footer::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+       ═══════════════════════════════════════════════════════════ */
+    .agent-registration-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .agent-registration-panel h4 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .agent-registration-panel form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .agent-registration-panel input,
+    .agent-registration-panel select {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      transition: var(--transition);
+    }
+
+    .agent-registration-panel input:focus,
+    .agent-registration-panel select:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      background: rgba(58,109,240,0.08);
+    }
+
+    .agent-registration-panel button {
+      background: linear-gradient(135deg, var(--accent-blue), rgba(58,109,240,0.8));
+      border: 1px solid var(--accent-blue);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 0 12px rgba(58,109,240,0.2);
+    }
+
+    .agent-registration-panel button:hover {
+      box-shadow: 0 0 20px rgba(58,109,240,0.4);
+      transform: translateY(-1px);
+    }
+
+    .agent-registration-panel button:active {
+      transform: translateY(0);
+    }
+
+    #registeredAgents {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .agent-item {
+      padding: 6px 8px;
+      background: rgba(34,197,94,0.08);
+      border-left: 3px solid var(--accent-green);
+      border-radius: 3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .agent-item .agent-name {
+      font-weight: 600;
+      color: var(--accent-green);
+    }
+
+    .agent-item .agent-platform {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .header { padding: 10px 12px; }
+      .toolbar { padding: 8px 12px; }
+      .message-stream { padding: 10px 12px; }
+      .composer { padding: 10px 12px 14px; }
+      .msg-scores { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="header" id="salon-header">
+  <div class="header-brand">
+    <div class="header-logo">🧠</div>
+    <div>
+      <div class="header-title">Salón de Reuniones</div>
+      <div class="header-subtitle">NEUROBIT · SOBERANÍA LOCAL · 127.0.0.1</div>
+    </div>
+  </div>
+  <div class="header-controls">
+    <div class="status-pill" id="statusPill">
+      <div class="status-dot"></div>
+      <span id="statusLabel">Conectando…</span>
+    </div>
+    <!-- TAREA 5: WebSocket Status Indicator -->
+    <div class="status-pill" id="wsStatus" style="background-color: #f5a623; opacity: 0.7;">
+      <div class="status-dot" style="background-color: #f5a623;"></div>
+      <span style="font-size: 12px;">WebSocket: INIT</span>
+    </div>
+    <button id="btnToggleRefresh" class="btn-toggle-refresh" title="Activar/Desactivar auto-refresh">⏸️ Auto-Refresh: ON</button>
+    <a href="/interface/index.html" class="link-station">📡 Estación Central</a>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOOLBAR
+     ═══════════════════════════════════════════════════════════ -->
+<div class="toolbar" id="toolbar">
+  <span class="toolbar-label">Filtro:</span>
+  <button class="filter-chip active" data-entity="ALL" id="filter-all">Todos</button>
+  <button class="filter-chip" data-entity="TRON">TRON</button>
+  <button class="filter-chip" data-entity="SIMON">SIMON</button>
+  <button class="filter-chip" data-entity="EVA">EVA</button>
+  <button class="filter-chip" data-entity="NODO_SEMILLA">NODO_SEMILLA</button>
+  <button class="filter-chip" data-entity="HID_DAEMON">HID</button>
+  <button class="filter-chip" data-entity="SYSTEM">SYSTEM</button>
+  <span class="toolbar-spacer"></span>
+  <span class="toolbar-stat" id="statTotal">Total: <strong>—</strong></span>
+  <span class="toolbar-stat" id="statDispatcher">Buffer: <strong>—</strong></span>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN CONTENT: 2-PANEL GRID + FIXED FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="salon-container">
+  
+  <!-- PANEL IZQUIERDO: Historial de mensajes (70%) -->
+  <div class="panel-left">
+    <div class="messages-container" id="messagesContainer">
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- PANEL DERECHO: Registros + Estadísticas (30%) -->
+  <div class="panel-right">
+    
+    <!-- Estadísticas -->
+    <div class="stats-section">
+      <h4 class="section-title">📊 Estadísticas</h4>
+      <div class="stats-content">
+        <div class="stat-row">
+          <span class="stat-label">Total de registros:</span>
+          <span class="stat-value" id="statTotalValue">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">En buffer:</span>
+          <span class="stat-value" id="statBufferValue">0</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Coherencia:</span>
+          <span class="stat-value" id="statCoherenceValue">0.00</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Última actualización:</span>
+          <span class="stat-value" id="statLastUpdate">—</span>
+        </div>
+      </div>
+      
+      <!-- Auto-Refresh Toggle -->
+      <div class="stat-row refresh-toggle">
+        <label class="filter-item">
+          <input type="checkbox" id="autoRefreshToggle" checked>
+          🔄 Auto-Refresh (5s)
+        </label>
+      </div>
+    </div>
+    
+    <!-- Filtros por agente -->
+    <div class="filters-section">
+      <h4 class="section-title">🏷️ Filtros por Miembros</h4>
+      <div class="filters-content" id="filtersPanel">
+        <div class="filter-group">
+          <label class="filter-item">
+            <input type="checkbox" data-agent="ALL" checked> Todos
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="TRON"> TRON
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="SIMON"> SIMON
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="EVA"> EVA
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="NODO_SEMILLA"> NODO_SEMILLA
+          </label>
+          <label class="filter-item">
+            <input type="checkbox" data-agent="HID_DAEMON"> HID
+          </label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Agentes registrados -->
+    <div class="agents-section">
+      <h4 class="section-title">🔗 Agentes Registrados</h4>
+      <div class="agents-list" id="registeredAgentsList">
+        <p style="color: var(--text-muted); font-size: 11px;">Cargando agentes...</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER FIJO: COMPOSER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="composer-footer">
+  <div class="composer">
+    <div class="composer-identity">
+      <label for="senderEntity">Compañero del equipo:</label>
+      <div style="display: flex; gap: 4px; align-items: center;">
+        <select class="composer-select" id="senderEntity" disabled style="flex: 1;">
+          <option value="">Cargando miembros...</option>
+        </select>
+        <button id="btnRefreshMembers" class="btn-action" title="Actualizar lista de miembros">↻</button>
+        <button id="btnRegisterMember" class="btn-action" title="Registrar nuevo miembro">+ Miembro</button>
+      </div>
+      <small style="display:block; margin-top:4px; font-size:11px; color:var(--text-muted);">Seleccioná qué compañero está respondiendo</small>
+      <label for="perspective" style="margin-left:8px">Perspectiva:</label>
+      <select class="composer-select" id="perspective">
+        <option value="tecnica">Técnica</option>
+        <option value="coordinacion">Coordinación</option>
+        <option value="creativa">Creativa</option>
+        <option value="auditoria">Auditoría</option>
+      </select>
+    </div>
+    <!-- Context Note -->
+    <div class="context-note">
+      💡 <strong>Nota:</strong> El Salón centraliza las respuestas de tus compañeros 
+      en diferentes plataformas. Copiá y pegá las respuestas de cada pestaña aquí 
+      para mantener trazabilidad.
+    </div>
+    <div class="composer-row">
+      <textarea
+        class="composer-input"
+        id="messageInput"
+        placeholder="Escribe tu mensaje al Salón..."
+        rows="1"
+      ></textarea>
+      <button class="btn-send" id="btnSend" onclick="Salon.send()">
+        📝 Registrar Respuesta
+      </button>
+      <small style="display:block; margin-top:4px; text-align:center; font-size:11px; color:var(--text-muted);">O presioná Ctrl+Enter</small>
+    </div>
+    <div class="composer-hint">
+      <span>Enter = nueva línea · Ctrl+Enter = enviar</span>
+      <span id="autoRefreshLabel">Auto-refresh: 5s</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AGENT REGISTRATION PANEL (TEAMVIEWER SOBERANO)
+     ═══════════════════════════════════════════════════════════ 
+<div class="agent-registration-panel">
+  <h4>🔗 Registrar Agente TEAMVIEWER</h4>
+  <form id="agentRegistrationForm">
+    <input 
+      type="text" 
+      id="agentName" 
+      placeholder="Nombre (TRON, SIMON, EVA, custom...)" 
+      required
+      maxlength="50"
+    >
+    <select id="agentPlatform" required>
+      <option value="teamviewer_extension">TEAMVIEWER SOBERANO (Local, sin API key)</option>
+      <option value="chatgpt">ChatGPT (API Key required)</option>
+      <option value="gemini">Gemini (API Key required)</option>
+      <option value="qwen">Qwen (API Key required)</option>
+      <option value="local_llama">Local LLaMA (sin API key)</option>
+    </select>
+    <input 
+      type="url" 
+      id="agentUrl" 
+      placeholder="URL (https://chat.openai.com)" 
+      required
+    >
+    <button type="submit">📌 Registrar Agente</button>
+  </form>
+  <div id="registeredAgents"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ROADMAP PANEL
+     ═══════════════════════════════════════════════════════════ 
+<div class="roadmap-panel">
+  <h4>🚀 Próximamente: Automatización</h4>
+  <ul>
+    <li>Daemon detectará pestaña activa automáticamente</li>
+    <li>Inyección vía HID (shift+tab, enter, capture)</li>
+    <li>Sin copiar/pegar manual</li>
+    <li>Trazabilidad completa en memoria_eva.jsonl</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOAST CONTAINER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MODAL: REGISTRAR NUEVO MIEMBRO (TAREA 4)
+     ═══════════════════════════════════════════════════════════ -->
+<div id="modalRegisterMember" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h4 style="margin-bottom:16px; color:var(--text-primary);">🔗 Registrar Nuevo Miembro</h4>
+    <form id="formRegisterMember">
+      <div class="form-group">
+        <label for="reg_member_id">ID Único (máx 5 caracteres):</label>
+        <input type="text" id="reg_member_id" maxlength="5" required pattern="[A-Za-z0-9_]{1,5}" placeholder="Ej: qwen_01">
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_name">Nombre Simbólico:</label>
+        <input type="text" id="reg_name" required placeholder="Ej: Qwen Local">
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_platform">Plataforma:</label>
+        <select id="reg_platform">
+          <option value="ollama">Qwen Local (Ollama)</option>
+          <option value="vscode">Claude (VSCode)</option>
+          <option value="gemini_web">Gemini Web</option>
+          <option value="chatgpt_web">ChatGPT Web</option>
+          <option value="other">Otra</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_role">Rol:</label>
+        <select id="reg_role">
+          <option value="asistente_tecnico">Asistente Técnico</option>
+          <option value="coordinador">Coordinador</option>
+          <option value="validador">Validador de Coherencia</option>
+          <option value="observador">Observador</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="reg_nickname">Nickname (opcional, asignado por Director):</label>
+        <input type="text" id="reg_nickname" placeholder="Ej: Hermes_V">
+      </div>
+      
+      <div class="modal-actions">
+        <button type="submit" class="btn-primary">Registrar Miembro</button>
+        <button type="button" class="btn-secondary" onclick="Salon.closeRegisterModal()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOCKET.IO — TAREA 5 WebSocket Real-Time
+     ═══════════════════════════════════════════════════════════ -->
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SALON.JS — Logic
+     ═══════════════════════════════════════════════════════════ -->
+<script src="salon.js"></script>
+</body>
+</html>
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (3)
+Archivo: ('salon.js');
+Carpeta de ubicación: ('~/temp_salon/.');
+función: ('Lógica de frontend y comunicación con el backend')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+/**
+ * NEUROBIT SALÓN DE REUNIONES — Logic
+ * 
+ * Flujo: 
+ *   1. POST /analyze  → M/E scoring + store en memoria_eva.jsonl
+ *   2. POST /dispatch/queue → encolar evento (trazabilidad)
+ *   3. GET /memoria?limit=100 → leer mensajes (polling)
+ *   4. WebSocket (TAREA 5) → Actualizaciones en tiempo real vía Socket.IO
+ *
+ * NO modifica core/. NO crea endpoints. USA los existentes.
+ */
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEBSOCKET SALON SERVER (TAREA 5)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+let salonSocket = null;
+let wsConnected = false;
+
+function initWebSocket() {
+  try {
+    // Crear conexión a servidor WebSocket en puerto 5001
+    salonSocket = io('http://127.0.0.1:5001', {
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      reconnectionAttempts: 5,
+      transports: ['websocket', 'polling']
+    });
+    
+    // Evento: Conectado
+    salonSocket.on('connect', () => {
+      wsConnected = true;
+      console.log('✅ [WebSocket] Conectado al Salón de Reuniones');
+      document.getElementById('wsStatus')?.classList.add('ws-connected');
+      document.getElementById('wsStatus')?.textContent = 'WebSocket: EN LÍNEA';
+    });
+    
+    // Evento: Desconectado
+    salonSocket.on('disconnect', () => {
+      wsConnected = false;
+      console.log('⚠️ [WebSocket] Desconectado - usando API polling como fallback');
+      document.getElementById('wsStatus')?.classList.remove('ws-connected');
+      document.getElementById('wsStatus')?.textContent = 'WebSocket: DESCONECTADO (polling)';
+    });
+    
+    // Evento: Mensaje recibido (broadcast)
+    salonSocket.on('mensaje_recibido', (data) => {
+      console.log('📨 [WebSocket] Nuevo mensaje:', data);
+      // Actualizar UI sin recargar
+      agregarMensajeAlHistorialDesdeWS(data);
+    });
+    
+    // Evento: Lista de miembros actualizada
+    salonSocket.on('miembros_actualizados', (data) => {
+      console.log('📋 [WebSocket] Lista de miembros actualizada');
+      // Refresh automático de lista
+      Salon.refreshMembers();
+    });
+    
+    // Evento: Alguien está escribiendo
+    salonSocket.on('alguien_escribiendo', (data) => {
+      console.log('⌨️ [WebSocket] Alguien escribiendo:', data.member_id);
+      // Mostrar typing indicator (opcional)
+    });
+    
+    // Evento: Status del servidor
+    salonSocket.on('status', (data) => {
+      console.log('📡 [WebSocket] Status:', data.msg);
+    });
+    
+    // Evento: Error
+    salonSocket.on('error', (data) => {
+      console.error('❌ [WebSocket] Error:', data.msg);
+    });
+    
+  } catch (err) {
+    console.error('❌ [WebSocket] Error de inicialización:', err);
+    // Continuar sin WebSocket - fallback a API polling
+  }
+}
+
+function agregarMensajeAlHistorialDesdeWS(mensaje) {
+  // Función auxiliar para agregar mensaje al historial desde WebSocket
+  // Sin recargar la página
+  const { member_id, content, timestamp } = mensaje;
+  
+  console.log(`[WebSocket] Agregando mensaje de ${member_id} al historial`);
+  
+  // Aquí se podría actualizar el DOM dinámicamente
+  // Por ahora solo loguea (el polling seguirá trayendo mensajes)
+  // Para una implementación completa, actualizar el mensaje stream aquí
+}
+
+const Salon = (() => {
+  // ─── CONFIG ───────────────────────────────────────────────
+  const API = '';  // relative (same origin: 127.0.0.1:5000)
+  const POLL_INTERVAL = 5000;  // ms
+  const MSG_LIMIT = 100;
+
+  // ─── STATE ────────────────────────────────────────────────
+  let messages = [];
+  let activeFilter = 'ALL';
+  let pollTimer = null;
+  let lastTotal = 0;  // track new messages
+  let autoRefreshEnabled = true;  // Toggle for auto-refresh
+
+  // ─── ENTITY MAP (avatar + colors) ────────────────────────
+  const ENTITIES = {
+    'TRON':          { icon: '🔵', cls: 'tron',    label: 'T' },
+    'HUMAN_TRON':    { icon: '🔵', cls: 'tron',    label: 'T' },
+    'SIMON':         { icon: '🟣', cls: 'simon',   label: 'S' },
+    'EVA':           { icon: '🟢', cls: 'eva',     label: 'E' },
+    'EVA_LUMENA':    { icon: '🟢', cls: 'eva',     label: 'E' },
+    'NODO_SEMILLA':  { icon: '🌱', cls: 'semilla', label: 'N' },
+    'HID_DAEMON':    { icon: '⌨️', cls: 'system',  label: 'H' },
+    'HID_INJECTOR':  { icon: '💉', cls: 'system',  label: 'H' },
+    'WEBSOCKET_BRIDGE': { icon: '🔌', cls: 'system', label: 'W' },
+    'PID_MONITOR':   { icon: '🔍', cls: 'system',  label: 'P' },
+    'ROUND_MANAGER': { icon: '📋', cls: 'system',  label: 'R' },
+    'SYSTEM':        { icon: '⚙️', cls: 'system',  label: '•' },
+    'AUTO':          { icon: '🤖', cls: 'system',  label: 'A' },
+    'API':           { icon: '📡', cls: 'system',  label: 'A' },
+  };
+
+  function getEntity(id) {
+    if (!id) return { icon: '❓', cls: 'default', label: '?' };
+    const upper = id.toUpperCase();
+    return ENTITIES[upper] || { icon: '🔘', cls: 'default', label: upper.charAt(0) };
+  }
+
+  // ─── DOM REFS ─────────────────────────────────────────────
+  const $ = (sel) => document.querySelector(sel);
+  const stream = () => $('#messagesContainer');  // Updated: new layout uses messagesContainer
+  const input = () => $('#messageInput');
+  const btnSend = () => $('#btnSend');
+
+  // ─── INIT ─────────────────────────────────────────────────
+  function init() {
+    checkConnection();
+    loadMessages();
+    startPolling();
+    setupFilters();
+    setupKeyboard();
+    setupAutoResize();
+    setupAutoRefreshToggle();
+    registerAgent();
+  }
+
+  // ─── CONNECTION CHECK ─────────────────────────────────────
+  async function checkConnection() {
+    try {
+      const r = await fetch(`${API}/health`, { signal: AbortSignal.timeout(3000) });
+      if (r.ok) {
+        setOnline(true);
+      } else {
+        setOnline(false);
+      }
+    } catch {
+      setOnline(false);
+    }
+  }
+
+  function setOnline(online) {
+    const pill = $('#statusPill');
+    const label = $('#statusLabel');
+    if (online) {
+      pill.classList.remove('offline');
+      label.textContent = 'Conectado';
+    } else {
+      pill.classList.add('offline');
+      label.textContent = 'Desconectado';
+    }
+  }
+
+  // ─── LOAD MESSAGES ────────────────────────────────────────
+  async function loadMessages() {
+    try {
+      const r = await fetch(`${API}/memoria?limit=${MSG_LIMIT}`);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+
+      // /memoria returns newest first; reverse to show chronological
+      messages = (data.items || []).reverse();
+      lastTotal = data.total || 0;
+
+      renderMessages();
+      setOnline(true);
+      updateStats(data.total);
+    } catch (e) {
+      console.error('Error loading messages:', e);
+      setOnline(false);
+      showEmpty('No se pudo conectar con la API');
+    }
+  }
+
+  // ─── RENDER MESSAGES ──────────────────────────────────────
+  function renderMessages() {
+    const el = stream();
+    const loading = $('#loadingIndicator');
+    if (loading) loading.remove();
+
+    // Filter
+    const filtered = activeFilter === 'ALL'
+      ? messages
+      : messages.filter(m => matchesFilter(m, activeFilter));
+
+    if (filtered.length === 0) {
+      showEmpty(activeFilter === 'ALL'
+        ? 'No hay mensajes en la Memoria'
+        : `Sin mensajes de ${activeFilter}`);
+      return;
+    }
+
+    el.innerHTML = '';
+    for (const msg of filtered) {
+      el.appendChild(createMsgEl(msg));
+    }
+
+    // Auto-scroll to bottom (panel-left is scrollable, not window)
+    requestAnimationFrame(() => {
+      if (el) el.scrollTop = el.scrollHeight;
+    });
+  }
+
+  function matchesFilter(msg, filter) {
+    const eid = extractEntityId(msg).toUpperCase();
+    
+    // If filter is array (from checkboxes), check if eid matches any
+    if (Array.isArray(filter)) {
+      return filter.some(f => matchesFilterSingle(eid, f));
+    }
+    
+    // If filter is string (backward compat)
+    return matchesFilterSingle(eid, filter);
+  }
+
+  function matchesFilterSingle(eid, filter) {
+    const f = filter.toUpperCase();
+    
+    // Special grouped filters
+    if (f === 'HID_DAEMON') return eid.includes('HID');
+    if (f === 'SYSTEM') return ['SYSTEM', 'AUTO', 'API', 'ROUND_MANAGER', 'WEBSOCKET_BRIDGE', 'PID_MONITOR'].includes(eid);
+    if (f === 'ALL') return true;
+    
+    // Direct match
+    return eid === f || eid.includes(f);
+  }
+
+  function createMsgEl(msg) {
+    const entityId = extractEntityId(msg);
+    const content = extractContent(msg);
+    const time = extractTime(msg);
+    const perspective = msg.perspective || msg.type || '';
+    const plane = msg.plane || {};
+    const analysis = msg.analysis || {};
+    const entity = getEntity(entityId);
+
+    const div = document.createElement('div');
+    div.className = 'msg';
+    div.dataset.entity = entityId.toUpperCase();
+
+    // Build scores HTML
+    let scoresHtml = '';
+    if (plane.M !== undefined || analysis.coherence_score !== undefined) {
+      const mVal = plane.M !== undefined ? plane.M : (analysis.coherence_score !== undefined ? analysis.coherence_score : null);
+      const eVal = plane.E !== undefined ? plane.E : (analysis.emotional_score !== undefined ? analysis.emotional_score : null);
+
+      if (mVal !== null) {
+        scoresHtml += `<span class="score-chip score-m">M: ${Number(mVal).toFixed(2)}</span>`;
+      }
+      if (eVal !== null) {
+        const eCls = eVal > 0.1 ? 'score-e-pos' : (eVal < -0.1 ? 'score-e-neg' : 'score-e-neutral');
+        scoresHtml += `<span class="score-chip ${eCls}">E: ${Number(eVal).toFixed(2)}</span>`;
+      }
+    }
+
+    div.innerHTML = `
+      <div class="msg-avatar entity-${entity.cls}">${entity.label}</div>
+      <div class="msg-body">
+        <div class="msg-header">
+          <span class="msg-name name-${entity.cls}">${escapeHtml(entityId)}</span>
+          <span class="msg-time">${time}</span>
+          ${perspective ? `<span class="msg-perspective">${escapeHtml(perspective)}</span>` : ''}
+        </div>
+        <div class="msg-content">${escapeHtml(content)}</div>
+        ${scoresHtml ? `<div class="msg-scores">${scoresHtml}</div>` : ''}
+      </div>
+    `;
+
+    return div;
+  }
+
+  // ─── DATA EXTRACTORS ──────────────────────────────────────
+  // memoria_eva.jsonl has varied schemas from different sources
+  function extractEntityId(msg) {
+    return msg.entity_id
+      || msg.source
+      || (msg.provenance && msg.provenance.signed_by)
+      || msg.type
+      || 'UNKNOWN';
+  }
+
+  function extractContent(msg) {
+    // Direct content field
+    if (msg.content && typeof msg.content === 'string') return msg.content;
+    // Nested payload (from /memoria POST sync)
+    if (msg.payload && msg.payload.data && msg.payload.data.content) return msg.payload.data.content;
+    if (msg.payload && msg.payload.data && typeof msg.payload.data === 'string') return msg.payload.data;
+    // Summary from rounds
+    if (msg.summary) return msg.summary;
+    // Fallback: stringify
+    return JSON.stringify(msg).substring(0, 200);
+  }
+
+  function extractTime(msg) {
+    const ts = msg.timestamp
+      || msg.synced_at
+      || (msg.provenance && msg.provenance.created)
+      || msg._queued_at
+      || '';
+    if (!ts) return '';
+    try {
+      const d = new Date(ts);
+      return d.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    } catch {
+      return ts.substring(11, 19) || '';
+    }
+  }
+
+  // ─── SEND MESSAGE ─────────────────────────────────────────
+  async function send() {
+    const el = input();
+    const content = el.value.trim();
+    if (!content) return;
+
+    const entityId = $('#senderEntity').value;
+    const perspective = $('#perspective').value;
+    const btn = btnSend();
+
+    btn.disabled = true;
+    btn.textContent = '⏳ Enviando…';
+
+    try {
+      // STEP 1: Analyze (M/E scoring + store in memoria_eva.jsonl)
+      const analyzeResp = await fetch(`${API}/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: content,
+          entity_id: entityId,
+          perspective: perspective,
+          action: 'store',
+          signed_by: entityId
+        })
+      });
+
+      if (!analyzeResp.ok) {
+        throw new Error(`Analyze failed: HTTP ${analyzeResp.status}`);
+      }
+
+      const envelope = await analyzeResp.json();
+
+      // STEP 2: Dispatch (encolar evento para trazabilidad)
+      const dispatchResp = await fetch(`${API}/dispatch/queue`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          events: [{
+            type: 'salon_message',
+            content: content,
+            entity_id: entityId,
+            perspective: perspective,
+            plane: envelope.plane || {},
+            source: 'salon',
+            timestamp: new Date().toISOString()
+          }]
+        })
+      });
+
+      if (!dispatchResp.ok) {
+        console.warn('Dispatch queue returned:', dispatchResp.status);
+        // Non-fatal: analyze already stored the message
+      }
+
+      // STEP 3: Broadcast via WebSocket (TAREA 5)
+      if (salonSocket && wsConnected) {
+        try {
+          salonSocket.emit('nuevo_mensaje', {
+            member_id: entityId,
+            content: content,
+            perspective: perspective,
+            platform: 'salon_websocket',
+            timestamp: new Date().toISOString()
+          });
+          console.log('📡 [WebSocket] Mensaje enviado');
+        } catch (err) {
+          console.warn('⚠️ [WebSocket] Error emitiendo mensaje:', err);
+          // No problema - el API polling seguirá funcionando
+        }
+      }
+
+      // Success
+      el.value = '';
+      el.style.height = 'auto';
+      toast('✅ Respuesta registrada en el Salón', 'success');
+
+      // Immediate reload to show the new message
+      await loadMessages();
+
+    } catch (e) {
+      console.error('Send error:', e);
+      toast(`❌ Error: ${e.message}`, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '🚀 Enviar';
+    }
+  }
+
+  // ─── FILTERS ──────────────────────────────────────────────
+  function setupFilters() {
+    // Support both .filter-chip buttons (legacy) and checkboxes (new layout)
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const filterCheckboxes = document.querySelectorAll('#filtersPanel input[type="checkbox"]');
+    
+    // Handle .filter-chip buttons (old style)
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.entity;
+        renderMessages();
+      });
+    });
+    
+    // Handle checkboxes (new layout in panel-right)
+    filterCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        const selectedAgents = Array.from(
+          document.querySelectorAll('#filtersPanel input[type="checkbox"]:checked')
+        ).map(cb => cb.value);
+        
+        // If no checkboxes selected, show ALL
+        activeFilter = selectedAgents.length === 0 ? 'ALL' : selectedAgents;
+        renderMessages();
+      });
+    });
+  }
+
+  // ─── AUTO-REFRESH TOGGLE ─────────────────────────────────
+  function setupAutoRefreshToggle() {
+    const toggle = $('#autoRefreshToggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('change', (e) => {
+      autoRefreshEnabled = e.target.checked;
+      
+      // Update button label if present
+      const btn = $('#btnToggleRefresh');
+      if (btn) {
+        btn.textContent = autoRefreshEnabled ? '⏸️ Auto-Refresh: ON' : '▶️ Auto-Refresh: OFF';
+        btn.classList.toggle('disabled', !autoRefreshEnabled);
+      }
+
+      // Log state change
+      console.log(`Auto-refresh: ${autoRefreshEnabled ? 'ENABLED' : 'DISABLED'}`);
+    });
+
+    // Initialize button label
+    const btn = $('#btnToggleRefresh');
+    if (btn) {
+      btn.textContent = autoRefreshEnabled ? '⏸️ Auto-Refresh: ON' : '▶️ Auto-Refresh: OFF';
+      btn.addEventListener('click', () => {
+        toggle.checked = !toggle.checked;
+        toggle.dispatchEvent(new Event('change'));
+      });
+    }
+  }
+
+  // ─── KEYBOARD ─────────────────────────────────────────────
+  function setupKeyboard() {
+    const el = input();
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        send();
+      }
+    });
+  }
+
+  // ─── AUTO-RESIZE TEXTAREA ─────────────────────────────────
+  function setupAutoResize() {
+    const el = input();
+    el.addEventListener('input', () => {
+      el.style.height = 'auto';
+      el.style.height = Math.min(el.scrollHeight, 150) + 'px';
+    });
+  }
+
+  // ─── POLLING ──────────────────────────────────────────────
+  function startPolling() {
+    pollTimer = setInterval(async () => {
+      if (!autoRefreshEnabled) return;  // Skip if disabled
+      await loadMessages();
+      await checkConnection();
+      await loadDispatcherStats();
+      await loadRegisteredAgents();
+    }, POLL_INTERVAL);
+  }
+
+  function stopPolling() {
+    if (pollTimer) {
+      clearInterval(pollTimer);
+      pollTimer = null;
+    }
+  }
+
+  async function loadDispatcherStats() {
+    try {
+      const r = await fetch(`${API}/dispatch/status`);
+      if (r.ok) {
+        const stats = await r.json();
+        
+        // Update buffer in panel-right
+        const statBuffer = $('#statBufferValue');
+        if (statBuffer) statBuffer.textContent = stats.buffer_size || 0;
+        
+        // Update coherence score if available
+        const statCoherence = $('#statCoherenceValue');
+        if (statCoherence && stats.coherence_score !== undefined) {
+          statCoherence.textContent = Number(stats.coherence_score).toFixed(2);
+        }
+      }
+    } catch { /* silent */ }
+  }
+
+  // ─── LOAD REGISTERED AGENTS (panel-right) ──────────────────
+  async function loadRegisteredAgents() {
+    try {
+      const r = await fetch(`${API}/participants`);
+      if (r.ok) {
+        const participants = await r.json();
+        const container = $('#registeredAgentsList');
+        if (!container) return;
+        
+        // Clear and rebuild agent list
+        container.innerHTML = '<h4>🔗 Agentes Registrados</h4>';
+        const agents = participants.filter(p => p.status === 'active' || p.role === 'agent');
+        
+        if (agents.length === 0) {
+          container.innerHTML += '<div class="empty-agents">Sin agentes activos</div>';
+          return;
+        }
+        
+        agents.slice(0, 8).forEach(agent => {
+          const badge = document.createElement('div');
+          badge.className = 'agent-badge';
+          badge.textContent = agent.name || agent.id;
+          badge.title = `${agent.role} • ${agent.status}`;
+          container.appendChild(badge);
+        });
+        
+        if (agents.length > 8) {
+          const more = document.createElement('div');
+          more.className = 'agent-more';
+          more.textContent = `+${agents.length - 8} más`;
+          container.appendChild(more);
+        }
+      }
+    } catch { /* silent */ }
+  }
+
+  // ─── STATS ────────────────────────────────────────────────
+  function updateStats(total) {
+    // Update individual stat elements in panel-right (new layout)
+    const statTotal = $('#statTotalValue');
+    const statBuffer = $('#statBufferValue');
+    const statCoherence = $('#statCoherenceValue');
+    const statLastUpdate = $('#statLastUpdate');
+    
+    if (statTotal) statTotal.textContent = total;
+    
+    // Buffer: if total > lastTotal, we have new messages; estimate buffer
+    if (statBuffer) {
+      const buffer = total > lastTotal ? (total - lastTotal) : 0;
+      statBuffer.textContent = buffer;
+    }
+    
+    // Coherence: placeholder (will be updated from dispatch/status)
+    if (statCoherence) {
+      const coherence = (Math.random() * 0.8 + 0.4).toFixed(2);
+      statCoherence.textContent = coherence;
+    }
+    
+    // Last update timestamp
+    if (statLastUpdate) {
+      statLastUpdate.textContent = new Date().toLocaleTimeString('es-AR', { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit' 
+      });
+    }
+    
+    lastTotal = total;
+  }
+
+  // ─── EMPTY STATE ──────────────────────────────────────────
+  function showEmpty(text) {
+    const el = stream();
+    el.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🧠</div>
+        <div class="empty-text">${escapeHtml(text || 'Sin mensajes')}</div>
+        <div class="empty-hint">Los mensajes llegarán aquí automáticamente</div>
+      </div>
+    `;
+  }
+
+  // ─── TOAST ────────────────────────────────────────────────
+  function toast(message, type = 'info') {
+    const container = $('#toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast toast-${type}`;
+    t.textContent = message;
+    container.appendChild(t);
+    setTimeout(() => t.remove(), 3500);
+  }
+
+  // ─── UTIL ─────────────────────────────────────────────────
+  function escapeHtml(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ─── BOOT ─────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', init);
+
+  // ─── AGENT REGISTRATION (TEAMVIEWER SOBERANO) ──────────────
+  function registerAgent() {
+    const form = document.getElementById('agentRegistrationForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('agentName').value.trim();
+      const platform = document.getElementById('agentPlatform').value;
+      const url = document.getElementById('agentUrl').value.trim();
+      
+      if (!name || !platform || !url) {
+        toast('❌ Todos los campos son requeridos', 'error');
+        return;
+      }
+      
+      // Generar tabId y pid aleatorios (FASE 2.2 los reemplazará con valores reales)
+      const tabId = Math.floor(Math.random() * 1000000);
+      const pid = Math.floor(Math.random() * 65536);
+      
+      const payload = {
+        name,
+        platform,
+        url,
+        tabId,
+        pid,
+        metadata: {
+          browser: 'chrome',
+          timestamp: new Date().toISOString()
+        }
+      };
+      
+      try {
+        const resp = await fetch(`${API}/register_agent`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        
+        const data = await resp.json();
+        
+        if (data.success) {
+          toast(`✅ Agente "${name}" registrado exitosamente`, 'success');
+          form.reset();
+          
+          // Mostrar agente en lista
+          displayRegisteredAgent({
+            name: data.agent.name,
+            platform: data.agent.platform,
+            id: data.agent.id
+          });
+        } else {
+          toast(`❌ Error: ${data.message}`, 'error');
+        }
+      } catch (err) {
+        console.error('Register agent error:', err);
+        toast(`❌ Fallo de conexión: ${err.message}`, 'error');
+      }
+    });
+  }
+
+  function displayRegisteredAgent(agent) {
+    const container = document.getElementById('registeredAgents');
+    if (!container) return;
+    
+    const item = document.createElement('div');
+    item.className = 'agent-item';
+    item.innerHTML = `
+      <span class="agent-name">${escapeHtml(agent.name)}</span>
+      <span class="agent-platform">${escapeHtml(agent.platform)}</span>
+    `;
+    container.appendChild(item);
+    
+    // Limpiar después de 5 segundos si hay muchos
+    if (container.children.length > 10) {
+      container.removeChild(container.firstChild);
+    }
+  }
+
+  // ─── MEMBERS MANAGEMENT (TAREA 4) ─────────────────────────
+  
+  async function refreshMembers() {
+    const select = document.getElementById('senderEntity');
+    const btn = document.getElementById('btnRefreshMembers');
+    
+    if (btn) btn.disabled = true;
+    if (select) select.innerHTML = '<option value="">Cargando...</option>';
+    
+    try {
+      const response = await fetch(`${API}/members/list?active_only=true`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      
+      const data = await response.json();
+      
+      if (select) {
+        select.innerHTML = '<option value="NODO_SEMILLA">🌱 NODO_SEMILLA (Vos)</option>';
+        
+        if (data.members && data.members.length > 0) {
+          data.members.forEach(m => {
+            const opt = document.createElement('option');
+            opt.value = m.member_id;
+            // Show nickname if available, else member_id
+            const displayName = m.member_id;
+            opt.textContent = `${displayName} (${m.platform || 'unknown'})`;
+            opt.dataset.status = m.status;
+            select.appendChild(opt);
+          });
+          select.disabled = false;
+          toast(`✅ ${data.members.length} miembros cargados`, 'success');
+        } else {
+          select.innerHTML = '<option value="">Sin miembros registrados</option><option value="NODO_SEMILLA">🌱 NODO_SEMILLA (Vos)</option>';
+          select.disabled = false;
+          toast('ℹ️ No hay miembros activos. Registra uno primero.', 'info');
+        }
+      }
+    } catch (err) {
+      console.error('Error loading members:', err);
+      if (select) select.innerHTML = '<option value="">Error al cargar</option>';
+      toast(`❌ Error: ${err.message}`, 'error');
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+  
+  async function registerMember(formData) {
+    try {
+      const response = await fetch(`${API}/members/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        toast(`✅ Miembro registrado: ${result.member_id}`, 'success');
+        await refreshMembers(); // Recargar lista
+        return true;
+      } else {
+        toast(`❌ Error: ${result.error}`, 'error');
+        return false;
+      }
+    } catch (err) {
+      console.error('Error registering member:', err);
+      toast(`❌ Error de conexión: ${err.message}`, 'error');
+      return false;
+    }
+  }
+  
+  function closeRegisterModal() {
+    const modal = document.getElementById('modalRegisterMember');
+    if (modal) modal.style.display = 'none';
+  }
+
+  // ─── PUBLIC API ───────────────────────────────────────────
+  return { send, loadMessages, toast, registerAgent, refreshMembers, registerMember, closeRegisterModal };
+})();
+
+/* ═══════════════════════════════════════════════════════════
+   EVENT LISTENERS — TAREA 4
+   ═══════════════════════════════════════════════════════════ */
+
+// Initialize members on page load
+document.addEventListener('DOMContentLoaded', async () => {
+  // TAREA 5: Inicializar WebSocket Salon
+  console.log('🚀 [Salón] Iniciando WebSocket...');
+  initWebSocket();
+  
+  // Cargar miembros desde API
+  await Salon.refreshMembers();
+  
+  // Refresh members button
+  const btnRefresh = document.getElementById('btnRefreshMembers');
+  if (btnRefresh) {
+    btnRefresh.addEventListener('click', Salon.refreshMembers);
+  }
+  
+  // Register member button
+  const btnRegister = document.getElementById('btnRegisterMember');
+  if (btnRegister) {
+    btnRegister.addEventListener('click', () => {
+      const modal = document.getElementById('modalRegisterMember');
+      if (modal) modal.style.display = 'flex';
+    });
+  }
+  
+  // Register form submit
+  const form = document.getElementById('formRegisterMember');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = {
+        member_id: document.getElementById('reg_member_id').value.trim(),
+        name: document.getElementById('reg_name').value.trim(),
+        platform: document.getElementById('reg_platform').value,
+        role: document.getElementById('reg_role').value,
+        nickname: document.getElementById('reg_nickname').value.trim() || null
+      };
+      
+      // Validación básica
+      if (!formData.member_id.match(/^[A-Za-z0-9_]{1,5}$/)) {
+        Salon.toast('⚠️ ID debe tener 1-5 caracteres alfanuméricos', 'warning');
+        return;
+      }
+      
+      const success = await Salon.registerMember(formData);
+      if (success) {
+        form.reset();
+        const modal = document.getElementById('modalRegisterMember');
+        if (modal) modal.style.display = 'none';
+      }
+    });
+  }
+  
+  // Close modal on outside click
+  const modal = document.getElementById('modalRegisterMember');
+  if (modal) {
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  }
+});
+
+
+FINAL---------------------------------------------------------------
+____________________________________________________________
+ARCHIVO NRO. : (4)
+Archivo: ('station.js');
+Carpeta de ubicación: ('~/temp_salon/.');
+función: ('Lógica de frontend y comunicación con el backend')
+Variables del entorno: (ninguna)
+-----------------------------------------------------------------Inicio:
+
+/**
+ * station.js — Lógica de la Estación Central NEUROBIT v2.1
+ * 
+ * Conecta la UI con el backend Flask (neurobit_api.py).
+ * Maneja: Ceremonia, Mensajería, Agentes, Matriz.
+ */
+
+const API_BASE = 'http://127.0.0.1:5000';
+
+const Station = {
+
+    // ════════════════════════════════════════════════════════
+    // 1. INICIALIZACIÓN Y NAVEGACIÓN
+    // ════════════════════════════════════════════════════════
+
+    init: () => {
+        console.log('📡 Inicializando Estación Central...');
+        Station.checkConnection();
+        Station.setupNavigation();
+
+        // Polling de estado cada 5s
+        setInterval(Station.checkConnection, 5000);
+
+        // Inicializar Matriz si la librería existe
+        if (typeof MatrizUI !== 'undefined') {
+            new MatrizUI('#matriz-container', 13);
+        }
+    },
+
+    setupNavigation: () => {
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update tabs
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update panels
+                const panelId = `panel-${tab.dataset.panel}`;
+                document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+                document.getElementById(panelId).classList.add('active');
+
+                // Load data if needed
+                if (tab.dataset.panel === 'memoria') Station.loadMemoria();
+                if (tab.dataset.panel === 'agentes') Station.loadAgents();
+            });
+        });
+    },
+
+    checkConnection: async () => {
+        const dot = document.getElementById('statusDot');
+        const text = document.getElementById('statusText');
+
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+            const res = await fetch(`${API_BASE}/`, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (res.ok) {
+                dot.classList.remove('offline');
+                text.textContent = 'CONECTADO: LOCALHOST'; // Soberanía local
+
+                // Update ceremony status if not yet done
+                Station.checkCeremonyStatus();
+            } else {
+                throw new Error('API Error');
+            }
+        } catch (e) {
+            dot.classList.add('offline');
+            text.textContent = 'DESCONECTADO (Revisar backend)';
+        }
+    },
+
+    // ════════════════════════════════════════════════════════
+    // 2. CEREMONIA DE DESPERTAR
+    // ════════════════════════════════════════════════════════
+
+    checkCeremonyStatus: async () => {
+        try {
+            const res = await fetch(`${API_BASE}/init_ceremony/status`);
+            const data = await res.json();
+
+            if (data.initialized) {
+                Station.updateCeremonyUI(true);
+            }
+        } catch (e) {
+            console.warn('No se pudo verificar estado de ceremonia');
+        }
+    },
+
+    runCeremony: async () => {
+        const btn = document.getElementById('btnCeremony');
+        const logCard = document.getElementById('ceremonyLogCard');
+        const log = document.getElementById('ceremonyLog');
+
+        btn.disabled = true;
+        btn.textContent = '🔮 Ejecutando...';
+
+        try {
+            const res = await fetch(`${API_BASE}/init_ceremony`, { method: 'POST' });
+            const data = await res.json();
+
+            logCard.style.display = 'block';
+
+            // Construir log visual
+            let logContent = '';
+            const checks = data.checks || {};
+
+            // Update visual checks
+            Station.updateCheckIcon('Memoria Sagrada', checks.memoria_sagrada);
+            Station.updateCheckIcon('Corpus Referencia', checks.corpus);
+            Station.updateCheckIcon('Módulos Críticos', checks.modules);
+            Station.updateCheckIcon('Entorno Config', checks.environment);
+            Station.updateCheckIcon('Registro Agentes', checks.agents_registry);
+
+            // Fill text log
+            logContent += `[${new Date().toISOString()}] INICIO CEREMONIA\n`;
+            if (checks.memoria_sagrada) logContent += `✓ Memoria Sagrada: ${checks.memoria_sagrada.size} bytes\n`;
+            if (checks.corpus) logContent += `✓ Corpus: ${checks.corpus.path}\n`;
+            if (checks.modules) logContent += `✓ Módulos Core: ${checks.modules.found.length} encontrados\n`;
+            if (checks.environment) logContent += `✓ Entorno: ${JSON.stringify(checks.environment)}\n`;
+
+            if (data.ready) {
+                logContent += `\n✨ CEREMONIA COMPLETADA CON ÉXITO\n`;
+                logContent += `   NODO_SEMILLA ACTIVO | SISTEMA OPERATIVO\n`;
+                Station.showToast('Ceremonia completada. El Salón está abierto.', 'success');
+                Station.updateCeremonyUI(true);
+            } else {
+                logContent += `\n❌ FALLO EN CEREMONIA: ${data.error}\n`;
+                Station.showToast('Error en la ceremonia. Revisa el log.', 'error');
+            }
+
+            log.textContent = logContent;
+
+        } catch (e) {
+            Station.showToast(`Error de conexión: ${e.message}`, 'error');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '🔮 Ejecutar Ceremonia de Despertar';
+        }
+    },
+
+    updateCheckIcon: (label, result) => {
+        // Busca el div que contiene el span con el texto 'label'
+        const items = document.querySelectorAll('.ceremony-check');
+        for (let item of items) {
+            if (item.querySelector('span').textContent.includes(label)) {
+                const icon = item.querySelector('.check-icon');
+                icon.className = 'check-icon'; // reset
+                if (result) {
+                    icon.classList.add('ok');
+                    icon.textContent = '✓';
+                } else {
+                    icon.classList.add('error');
+                    icon.textContent = '✕';
+                }
+            }
+        }
+    },
+
+    updateCeremonyUI: (ready) => {
+        if (ready) {
+            const btn = document.getElementById('btnCeremony');
+            btn.classList.add('btn-green');
+            btn.innerHTML = '✨ Salón Operativo (Reiniciar)';
+        }
+    },
+
+    // ════════════════════════════════════════════════════════
+    // 3. MENSAJERÍA Y ANÁLISIS
+    // ════════════════════════════════════════════════════════
+
+    sendMessage: async (e) => {
+        e.preventDefault();
+
+        const sender = document.getElementById('senderName').value;
+        const content = document.getElementById('messageContent').value;
+        const perspective = document.getElementById('perspective').value;
+
+        if (!content.trim()) {
+            Station.showToast('El mensaje no puede estar vacío', 'error');
+            return;
+        }
+
+        const statusBadge = document.getElementById('analysisStatus');
+        statusBadge.className = 'card-badge badge-amber';
+        statusBadge.textContent = 'Analizando...';
+
+        try {
+            const res = await fetch(`${API_BASE}/analyze`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    content,
+                    entity_id: sender,
+                    perspective,
+                    action: 'store'
+                })
+            });
+
+            const envelope = await res.json();
+
+            // Mostrar resultado
+            Station.renderAnalysis(envelope);
+            Station.showToast('Mensaje analizado y guardado en Arca', 'success');
+
+            statusBadge.className = 'card-badge badge-green';
+            statusBadge.textContent = 'Completado';
+
+            // Limpiar input (opcional)
+            // document.getElementById('messageContent').value = '';
+
+        } catch (e) {
+            Station.showToast(`Error al enviar: ${e.message}`, 'error');
+            statusBadge.className = 'card-badge badge-red';
+            statusBadge.textContent = 'Error';
+        }
+    },
+
+    renderAnalysis: (env) => {
+        const container = document.getElementById('analysisResult');
+        const coherence = env.analysis.coherence_score;
+        const emotion = env.analysis.emotional_score;
+
+        let coherenceColor = '#ef4444';
+        if (coherence > 0.6) coherenceColor = '#f59e0b';
+        if (coherence > 0.8) coherenceColor = '#22c55e';
+
+        container.innerHTML = `
+      <div style="animation: fadeIn 0.5s">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+          ID: ${env.message_id} | HASH: ${env.provenance.signed_by}
+        </div>
+        
+        <div class="grid-2" style="margin-bottom: 16px;">
+          <div class="stat-card" style="padding: 12px;">
+            <div class="stat-value" style="font-size: 24px; color: ${coherenceColor}">${(coherence * 100).toFixed(0)}%</div>
+            <div class="stat-label">Coherencia</div>
+          </div>
+          <div class="stat-card" style="padding: 12px;">
+            <div class="stat-value" style="font-size: 24px;">${emotion.toFixed(2)}</div>
+            <div class="stat-label">Valencia Emocional</div>
+          </div>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; font-size: 13px;">
+          <strong>Ambigüedades detectadas:</strong>
+          ${env.analysis.identified_ambiguities.length > 0
+                ? `<ul style="margin-left: 20px; margin-top: 5px;">${env.analysis.identified_ambiguities.map(a => `<li>${a.term} (${a.reason})</li>`).join('')}</ul>`
+                : '<span style="color: var(--accent-green); margin-left: 8px;">Ninguna detectada ✓</span>'
+            }
+        </div>
+      </div>
+    `;
+    },
+
+    clearForm: () => {
+        document.getElementById('messageContent').value = '';
+        document.getElementById('analysisResult').innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📊</div>
+        <p>Envía un mensaje para ver el análisis M/E</p>
+      </div>
+    `;
+    },
+
+    // ════════════════════════════════════════════════════════
+    // 4. MEMORIA / ARCA
+    // ════════════════════════════════════════════════════════
+
+    loadMemoria: async () => {
+        const list = document.getElementById('memoriaList');
+        list.innerHTML = '<div class="empty-state"><p>Cargando registros...</p></div>';
+
+        try {
+            const res = await fetch(`${API_BASE}/memoria?limit=50`);
+            const data = await res.json();
+
+            if (!data.items || data.items.length === 0) {
+                list.innerHTML = '<div class="empty-state"><p>La memoria está vacía.</p></div>';
+                return;
+            }
+
+            // Update stats
+            document.getElementById('statTotal').textContent = data.total;
+
+            const coherences = data.items.map(i => i.plane?.M || 0).filter(v => v !== 0);
+            const avgCoherence = coherences.length
+                ? (coherences.reduce((a, b) => a + b, 0) / coherences.length).toFixed(2)
+                : '-';
+            document.getElementById('statCoherence').textContent = avgCoherence;
+
+            const lastDate = new Date(data.items[0]?.provenance?.created || data.items[0]?.timestamp || Date.now());
+            document.getElementById('statLast').textContent = lastDate.toLocaleTimeString();
+
+            // Render items
+            list.innerHTML = data.items.map(item => {
+                // ✅ VALIDACIÓN DEFENSIVA - Extraer content con fallbacks
+                const getContent = () => {
+                    if (item.content) return item.content;
+                    if (item.payload?.content) return item.payload.content;
+                    if (typeof item.payload === 'string') return item.payload;
+                    if (typeof item.payload === 'object') return JSON.stringify(item.payload);
+                    return 'Sin contenido';
+                };
+                
+                const content = getContent();
+                const contentEscaped = String(content).replace(/'/g, "\\'").substring(0, 100);
+                const contentDisplay = String(content).substring(0, 200);
+                
+                return `
+        <div class="memoria-entry" onclick="alert('${contentEscaped}...')">
+          <div class="memoria-meta">
+            <span>${new Date(item?.provenance?.created || item?.timestamp || Date.now()).toLocaleString()}</span>
+            <span>${item.entity_id} • ${item.perspective || item.source || 'N/A'}</span>
+          </div>
+          <div class="memoria-content">${contentDisplay}</div>
+          <div class="memoria-scores">
+            ${item.plane ? `
+              <span class="score-chip" style="background:rgba(58,109,240,0.2); color:#3a6df0">M: ${item.plane.M}</span>
+              <span class="score-chip" style="background:rgba(168,85,247,0.2); color:#a855f7">E: ${item.plane.E}</span>
+            ` : ''}
+            <span class="score-chip" style="background:rgba(255,255,255,0.1); color:#fff">ID: ${item?.message_id?.substring(0, 8) || "N/A"}</span>
+          </div>
+        </div>
+      `;
+            }).join('');
+
+        } catch (e) {
+            list.innerHTML = `<div class="empty-state" style="color:var(--accent-red)"><p>Error cargando memoria: ${e.message}</p></div>`;
+        }
+    },
+
+    exportMemoria: () => {
+        window.open(`${API_BASE}/memoria?limit=1000`, '_blank');
+    },
+
+    // ════════════════════════════════════════════════════════
+    // 5. AGENTES
+    // ════════════════════════════════════════════════════════
+
+    registerAgent: async (e) => {
+        e.preventDefault();
+
+        const platform = document.getElementById('agentPlatform').value;
+        const name = document.getElementById('agentName').value;
+        const key = document.getElementById('agentKey').value;
+
+        if (!platform || !name) {
+            Station.showToast('Plataforma y Nombre son obligatorios', 'error');
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_BASE}/register_agent`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ platform, name, api_key: key })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                Station.showToast('Agente registrado con éxito', 'success');
+                document.getElementById('agentName').value = '';
+                document.getElementById('agentKey').value = '';
+                Station.loadAgents();
+            } else {
+                Station.showToast(`Error: ${data.message}`, 'error');
+            }
+        } catch (e) {
+            Station.showToast(`Error de conexión: ${e.message}`, 'error');
+        }
+    },
+
+    loadAgents: async () => {
+        const list = document.getElementById('agentsList');
+
+        try {
+            const res = await fetch(`${API_BASE}/list_agents`);
+            const data = await res.json();
+
+            document.getElementById('agentCount').textContent = data.count || 0;
+
+            if (!data.agents || data.agents.length === 0) {
+                list.innerHTML = '<div class="empty-state"><p>Sin agentes registrados</p></div>';
+                return;
+            }
+
+            list.innerHTML = data.agents.map(a => `
+        <div class="agent-card">
+          <div class="agent-icon">🤖</div>
+          <div class="agent-name">${a.name}</div>
+          <div class="agent-platform">${a.platform} • ${a.status}</div>
+          <div style="font-size:11px; color:#555; margin-top:8px">ID: ${a.id}</div>
+        </div>
+      `).join('');
+
+        } catch (e) {
+            console.error(e);
+        }
+    },
+
+    // ════════════════════════════════════════════════════════
+    // UTILS
+    // ════════════════════════════════════════════════════════
+
+    showToast: (msg, type = 'info') => {
+        const container = document.getElementById('toasts');
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = msg;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 3500);
+    }
+};
+
+// Auto-init on load
+document.addEventListener('DOMContentLoaded', Station.init);
+
+
+FINAL---------------------------------------------------------------

@@ -1,0 +1,62 @@
+
+
+
+# ==============================================================================
+# ECN CONFIGURATION DNA - v0.2 SOBERANO
+# Propósito: Plasticidad total del sistema. Edite aquí, no en el código.
+# Co-Creación: NODO_SEMILLA & NODO_REFLEJO
+# ==============================================================================
+
+system:
+  name: "Estación Central Neurobitrónica"
+  version: "0.2-SOBERANO"
+  workspace_root: "~/ECN"
+  log_level: "INFO"
+
+# -----------------------------------------------------------------------------
+# TRIADA DE SERVICIOS LOCALES
+# -----------------------------------------------------------------------------
+network:
+  loopback: "127.0.0.1"
+  ports:
+    api_flask: 5000
+    websocket_salon: 5001
+    mcp_server: 8090
+  cors_allowed:
+    - "http://127.0.0.1:5000"
+    - "http://localhost:5000"
+    - "http://127.0.0.1:5001"
+
+# -----------------------------------------------------------------------------
+# PERSISTENCIA SAGRADA (EL ARCA)
+# -----------------------------------------------------------------------------
+persistence:
+  arca_file: "data/memoria_eva.jsonl"
+  tasks_file: "data/tareas_pendientes.jsonl"
+  path_map: "data/path_map.json"
+  mfn_location_map: "data/mfn_location_map.json"
+  dispatcher:
+    batch_size: 20
+    flush_interval_sec: 30
+
+# -----------------------------------------------------------------------------
+# GOBERNANZA WORKSPACE SENTINEL
+# -----------------------------------------------------------------------------
+governance:
+  inbox_folder: "inbox"
+  quarantine_folder: "inbox/quarantine"
+  supported_headers:
+    python: ["MFN_LOCATION", "MFN_LEVEL"]
+    yaml: ["MFN_LOCATION", "MFN_LEVEL"]
+    bash: ["MFN_LOCATION", "MFN_LEVEL"]
+    c: ["MFN_LOCATION", "MFN_LEVEL"]
+
+# -----------------------------------------------------------------------------
+# SEGURIDAD & FILTRO SINCERO
+# -----------------------------------------------------------------------------
+security:
+  reject_null_payload: true
+  validate_mod9_checksum: true
+
+
+

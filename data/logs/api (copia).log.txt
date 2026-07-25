@@ -1,0 +1,2272 @@
+Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+════════════════════════════════════════════════════════════
+🧠 ECN v0.2 - FASE DE SINCRONIZACIÓN DE RUTAS
+════════════════════════════════════════════════════════════
+🔄 [BOOTSTRAP] Sincronizando mapa de rutas dinámico...
+✅ Mapa generado: 347 archivos indexados
+✅ [BOOTSTRAP] Mapa de rutas actualizado y cargado en memoria.
+🚀 [BOOTSTRAP] Iniciando Neurobit API...
+✅ Event Dispatcher iniciado (batch=20, interval=30s)
+[Startup] Iniciando servidor con WebSocket (SocketIO)
+[Startup] HTTP API: http://127.0.0.1:5000
+[Startup] WebSocket: ws://127.0.0.1:5001
+ * Serving Flask app 'core.neurobit_api'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [24/Jul/2026 22:43:21] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:45] "GET /memoria?limit=50 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:46] "[33mGET /interface/salon.html HTTP/1.1[0m" 404 -
+127.0.0.1 - - [24/Jul/2026 22:46:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [24/Jul/2026 22:46:46] "GET /list_agents HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 22:46:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:00:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:28] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:39] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:51:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:52:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:53:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:54:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:55:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:56:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:57:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:58:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 23:59:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:50] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:00:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 00:01:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:42] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:57] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:02:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:03:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:04:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:38] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:05:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:06:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:07:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:08:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:09:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:10:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:11:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:12:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:13:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:14:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:15:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:16:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:17:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:18:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:19:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:20:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:21:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:22:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:10] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:23:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:24:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:25:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:26:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:27:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:28:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:29:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:30:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:30:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:31:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:31:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:32:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:32:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:33:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:33:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:34:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:34:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:35:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:35:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:36:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:36:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:37:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:37:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:38:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:38:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:39:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:39:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:40:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:40:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:41:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:41:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:42:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:42:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:43:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:43:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:44:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:44:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:45:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:45:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:46:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:46:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:47:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:47:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:48:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:48:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:49:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:49:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:50:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:50:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:51:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:51:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:52:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:52:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:53:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:53:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:54:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:54:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:55:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:55:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:56:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:56:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:57:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:57:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:58:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:58:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:59:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 01:59:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:00:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:00:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:01:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:01:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:02:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:02:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:03:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:03:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:04:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:04:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:05:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:05:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:06:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:06:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:07:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:07:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:08:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:08:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:09:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:09:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:10:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:10:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:11:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:11:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:12:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:12:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:13:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:13:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:14:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:14:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:15:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:15:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:16:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:16:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:17:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:17:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:18:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:18:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:19:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:19:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:20:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:20:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:21:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:21:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:22:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:22:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:23:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:23:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:24:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:24:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:14] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [25/Jul/2026 02:25:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:25:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:26:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:26:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:42] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:49] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:27:52] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:30:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:30:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+
+❌ ERROR CRÍTICO en ceremonia:
+   ❌ MEMORIA_SAGRADA_EVA no encontrada en: config/memoria_sagrada_eva.yaml
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+✓ Memoria Sagrada validada
+  └─ Hash: cd9dc54bdfa11b82...
+  └─ Tamaño: 688 bytes
+
+[2/5] Validando Corpus...
+⚠️  Corpus no vinculado (opcional): storage/RING_PROCESOS/Qwen Chat4_conversation.txt
+
+[3/5] Validando módulos críticos...
+⚠️  Módulos no encontrados: ['core/fragment_manager.py', 'core/message_protocol.py', 'core/m_e_scoring.py']
+  (Continuando con módulos disponibles)
+✓ Módulos críticos verificados: 2/5
+  └─ core/coherence_filter.py
+  └─ core/agents_registry.py
+
+[4/5] Configurando entorno...
+✓ Entorno configurado
+  └─ NEUROBIT_MODE=LOCAL_FIRST
+  └─ ENTITY_ID=NODO_SEMILLA
+  └─ COHERENCE_THRESHOLD=0.85
+
+[5/5] Inicializando sistema de agentes...
+✓ Registro de Agentes inicializado: 0 agentes registrados
+
+======================================================================
+🟢 SALA_SESION_001 — LISTA
+======================================================================
+
+✓ Identidades operativas:
+   └─ SOPHIA_NEUROBIT: modo análisis (M/E plano activo)
+   └─ SIMON: modo guardián (validación en background)
+
+✓ Sistema operativo en modo: LOCAL_FIRST (SOBERANÍA TÉCNICA)
+
+✓ Próximos pasos:
+   └─ Enviar primer mensaje: POST /api/analyze
+   └─ Iniciar ronda colaborativa: POST /api/create_session
+   └─ Monitorear clipboard: POST /api/start_centinela
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+✓ Memoria Sagrada validada
+  └─ Hash: cd9dc54bdfa11b82...
+  └─ Tamaño: 688 bytes
+
+[2/5] Validando Corpus...
+⚠️  Corpus no vinculado (opcional): storage/RING_PROCESOS/Qwen Chat4_conversation.txt
+
+[3/5] Validando módulos críticos...
+⚠️  Módulos no encontrados: ['core/fragment_manager.py', 'core/message_protocol.py', 'core/m_e_scoring.py']
+  (Continuando con módulos disponibles)
+✓ Módulos críticos verificados: 2/5
+  └─ core/coherence_filter.py
+  └─ core/agents_registry.py
+
+[4/5] Configurando entorno...
+✓ Entorno configurado
+  └─ NEUROBIT_MODE=LOCAL_FIRST
+  └─ ENTITY_ID=NODO_SEMILLA
+  └─ COHERENCE_THRESHOLD=0.85
+
+[5/5] Inicializando sistema de agentes...
+✓ Registro de Agentes inicializado: 0 agentes registrados
+
+======================================================================
+🟢 SALA_SESION_001 — LISTA
+======================================================================
+
+✓ Identidades operativas:
+   └─ SOPHIA_NEUROBIT: modo análisis (M/E plano activo)
+   └─ SIMON: modo guardián (validación en background)
+
+✓ Sistema operativo en modo: LOCAL_FIRST (SOBERANÍA TÉCNICA)
+
+✓ Próximos pasos:
+   └─ Enviar primer mensaje: POST /api/analyze
+   └─ Iniciar ronda colaborativa: POST /api/create_session
+   └─ Monitorear clipboard: POST /api/start_centinela
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+✓ Memoria Sagrada validada
+  └─ Hash: cd9dc54bdfa11b82...
+  └─ Tamaño: 688 bytes
+
+[2/5] Validando Corpus...
+⚠️  Corpus no vinculado (opcional): storage/RING_PROCESOS/Qwen Chat4_conversation.txt
+
+[3/5] Validando módulos críticos...
+⚠️  Módulos no encontrados: ['core/fragment_manager.py', 'core/message_protocol.py', 'core/m_e_scoring.py']
+  (Continuando con módulos disponibles)
+✓ Módulos críticos verificados: 2/5
+  └─ core/coherence_filter.py
+  └─ core/agents_registry.py
+
+[4/5] Configurando entorno...
+✓ Entorno configurado
+  └─ NEUROBIT_MODE=LOCAL_FIRST
+  └─ ENTITY_ID=NODO_SEMILLA
+  └─ COHERENCE_THRESHOLD=0.85
+
+[5/5] Inicializando sistema de agentes...
+✓ Registro de Agentes inicializado: 0 agentes registrados
+
+======================================================================
+🟢 SALA_SESION_001 — LISTA
+======================================================================
+
+✓ Identidades operativas:
+   └─ SOPHIA_NEUROBIT: modo análisis (M/E plano activo)
+   └─ SIMON: modo guardián (validación en background)
+
+✓ Sistema operativo en modo: LOCAL_FIRST (SOBERANÍA TÉCNICA)
+
+✓ Próximos pasos:
+   └─ Enviar primer mensaje: POST /api/analyze
+   └─ Iniciar ronda colaborativa: POST /api/create_session
+   └─ Monitorear clipboard: POST /api/start_centinela
+
+
+======================================================================
+[NEUROBIT SALÓN v0.1] — Ceremonia de Despertar del NODO_SEMILLA
+======================================================================
+
+[1/5] Validando Memoria Sagrada...
+✓ Memoria Sagrada validada
+  └─ Hash: cd9dc54bdfa11b82...
+  └─ Tamaño: 688 bytes
+
+[2/5] Validando Corpus...
+⚠️  Corpus no vinculado (opcional): storage/RING_PROCESOS/Qwen Chat4_conversation.txt
+
+[3/5] Validando módulos críticos...
+⚠️  Módulos no encontrados: ['core/fragment_manager.py', 'core/message_protocol.py', 'core/m_e_scoring.py']
+  (Continuando con módulos disponibles)
+✓ Módulos críticos verificados: 2/5
+  └─ core/coherence_filter.py
+  └─ core/agents_registry.py
+
+[4/5] Configurando entorno...
+✓ Entorno configurado
+  └─ NEUROBIT_MODE=LOCAL_FIRST
+  └─ ENTITY_ID=NODO_SEMILLA
+  └─ COHERENCE_THRESHOLD=0.85
+
+[5/5] Inicializando sistema de agentes...
+✓ Registro de Agentes inicializado: 0 agentes registrados
+
+======================================================================
+🟢 SALA_SESION_001 — LISTA
+======================================================================
+
+✓ Identidades operativas:
+   └─ SOPHIA_NEUROBIT: modo análisis (M/E plano activo)127.0.0.1 - - [25/Jul/2026 02:30:18] "POST /init_ceremony HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:17] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:20] "GET /list_agents HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:22] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:25] "GET /memoria?limit=50 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:27] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:42:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:43:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:44:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:45:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:46:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:47:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:48:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:49:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:50:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:51:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:52:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:53:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:54:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:55:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:56:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:16] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:21] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:21] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:26] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:31] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:31] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:36] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:41] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:46] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:51] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:56] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:57:56] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:01] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:01] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:06] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:11] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:11] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:17] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:22] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:27] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:32] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:37] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:52] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:58:57] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:02] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:07] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:12] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:17] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:22] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:27] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:32] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:37] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:52] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 02:59:57] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:02] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:07] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:12] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:17] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:22] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:27] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:32] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:37] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:52] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:00:57] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:02] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:07] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:12] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:17] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:17] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:22] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:27] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:32] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:32] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:37] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:42] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:42] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:47] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:52] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:52] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:01:57] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:02] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:02] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:07] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:12] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:02:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:03:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:04:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:05:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:03] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:08] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:13] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:13] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:18] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:23] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:28] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:33] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:38] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:38] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:43] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:48] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:53] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:06:58] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:07:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:54] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:08:59] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:04] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:09] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:09] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:14] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:19] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:19] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:24] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:29] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:34] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:34] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:39] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:44] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:44] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:49] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:09:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:10:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:20] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:25] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:30] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:30] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:35] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:40] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:45] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:45] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:50] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:50] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:11:55] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:00] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:05] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:10] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:10] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:15] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:15] "GET /init_ceremony/status HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Jul/2026 03:12:20] "GET /init_ceremony/status HTTP/1.1" 200 -
