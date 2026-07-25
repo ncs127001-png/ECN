@@ -1,0 +1,8 @@
+path_resolver.py
+neurobit_postman_daemon.py
+adapter_modulo_integrador.py
+adapter_dispatcher_lite.py
+declaraciones_base.yaml
+sos_file_manager.py
+neurobit_declarator.py
+module.yaml

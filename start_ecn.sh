@@ -119,7 +119,13 @@ echo -e "\n${YELLOW}[4/6] Iniciando servicios en background...${NC}"
 # 4.1 API Central
 echo -e "   📡 Levantando API Flask (Puerto $API_PORT)..."
 # NOTA: Al tener PYTHONPATH seteado arriba, 'core.neurobit_api' funciona
-python3 -m core.neurobit_api > data/logs/api.log 2>&1 &
+
+# Reemplazar la línea:
+# python3 -m core.neurobit_api > data/logs/api.log 2>&1 &
+
+# Por esta:
+mkdir -p "$WORKSPACE/data/logs"
+python3 "$WORKSPACE/core/bootstrap.py" > data/logs/api.log 2>&1 &
 API_PID=$!
 echo -e "      ${BLUE}PID: $API_PID${NC}"
 

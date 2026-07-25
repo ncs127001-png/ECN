@@ -1,0 +1,37 @@
+# NEUROBIT Module Specification v1.0
+# Formato para co-creación e instalación de módulos
+
+module:
+  id: "nombre_del_modulo"
+  version: "1.0.0"
+  author: "NODO_SEMILLA"
+  description: "Descripción del propósito del módulo"
+  
+dependencies:
+  python:
+    - "flask>=2.0"
+    - "requests>=2.28"
+  system:
+    - "xclip"
+    - "xdotool"
+
+endpoints:
+  - path: "/api/modulo/accion"
+    method: "POST"
+    handler: "modulo.py:accion_handler"
+    description: "Descripción del endpoint"
+
+config:
+  defaults:
+    pulse_seconds: 2
+    max_retries: 3
+  editable: true
+
+installation:
+  script: "install.sh"
+  post_install: "python3 post_install.py"
+  
+sovereignty:
+  local_only: true
+  no_remote_transmission: true
+  audit_log: "data/logs/modulo_name.jsonl"

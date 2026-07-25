@@ -111,7 +111,7 @@
   "adapter.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/adapter.py",
   "adapter_llama_dispatcher_connector.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/adapter_llama_dispatcher_connector.py",
   "adapter_dispatcher_lite.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/adapter_dispatcher_lite.py",
-  "__init__.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/__init__.py",
+  "__init__.py": "/home/gus/ECN/core/__init__.py",
   "adapter_simon_validator.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/adapter_simon_validator.py",
   "adapter_msg_builder.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/adapter_msg_builder.py",
   "_loader.py": "/home/gus/ECN/NEUROBIT_SOS_FOLDER_MODULES/SOS_NF-ADAPTERS/_loader.py",

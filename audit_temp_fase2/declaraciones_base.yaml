@@ -1,0 +1,21 @@
+# ## ESTACIÓN CENTRAL NEUROBITRÓNICA - MAPA NEMOTÉCNICO v0.3 ##
+estacion_central:
+  nodo_raiz: "AG-001 (NODO_SEMILLA)"
+  pivote_g7: 5
+  clausura: "127.0.0.1"
+
+modulos_heredados:
+  mu_mcp_server:
+    meridiano: "mu"
+    coordenada_mfn: [6, 6]
+    opcode_gate: "GATE_EAND" # Osar / Expansión
+    funcion_interna: "mcp_server/neurobit_mcp_server.py"
+    nemotecnico: "BASTION_MCP"
+    
+  alpha_pic_interface:
+    meridiano: "alpha"
+    coordenada_mfn: [0, 6]
+    opcode_gate: "GATE_NAND" # Callar / Inmunidad
+    funcion_interna: "core/neurobit_pic_com.py"
+    nemotecnico: "OPTO_GALVANICO"
+
